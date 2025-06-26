@@ -721,9 +721,54 @@
                 <div id="doctor-portal-login-error" style="color:#e53e3e;margin-top:1rem;display:none;">Incorrect password.</div>
             </div>
             <div id="doctor-portal-main" style="display:none;">
-                <h2>Appointments</h2>
-                <div id="appointments-list" style="margin-bottom:2rem;max-height:200px;overflow:auto;border:1px solid #eee;border-radius:8px;padding:8px 0;"></div>
-                <button id="show-bill-page" style="margin-bottom:1.5rem;padding:10px 24px;border-radius:8px;background:#764ba2;color:#fff;font-weight:bold;border:none;cursor:pointer;">Go to Bill Generation</button>
+                <!-- Sub-page navigation -->
+                <div style="display:flex;gap:8px;margin-bottom:2rem;">
+                    <button id="tab-patient-entry" class="doctor-tab-btn" style="flex:1;padding:10px;border-radius:8px;border:none;background:#3182ce;color:#fff;font-weight:bold;cursor:pointer;">Patient Entry</button>
+                    <button id="tab-appointments" class="doctor-tab-btn" style="flex:1;padding:10px;border-radius:8px;border:none;background:#eee;color:#333;font-weight:bold;cursor:pointer;">Appointments</button>
+                    <button id="tab-bill" class="doctor-tab-btn" style="flex:1;padding:10px;border-radius:8px;border:none;background:#eee;color:#333;font-weight:bold;cursor:pointer;">Bill Generation</button>
+                </div>
+                <!-- Patient Details Entry Page -->
+                <div id="doctor-patient-entry-page">
+                    <h2>Patient Details Entry</h2>
+                    <form id="doctor-patient-entry-form">
+                        <div style="margin-bottom:1rem;">
+                            <label>Patient Name</label>
+                            <input type="text" id="entry-patient-name" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Phone</label>
+                            <input type="tel" id="entry-patient-phone" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Email</label>
+                            <input type="email" id="entry-patient-email" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Service</label>
+                            <input type="text" id="entry-patient-service" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Date</label>
+                            <input type="date" id="entry-patient-date" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Time</label>
+                            <input type="text" id="entry-patient-time" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Message</label>
+                            <input type="text" id="entry-patient-message" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <button type="submit" style="padding:10px 24px;border-radius:8px;background:#3182ce;color:#fff;font-weight:bold;border:none;cursor:pointer;">Add Patient</button>
+                        <div id="doctor-patient-entry-success" style="color:#38a169;margin-top:1rem;display:none;">Patient added successfully.</div>
+                    </form>
+                </div>
+                <!-- Appointments Page -->
+                <div id="doctor-appointments-page" style="display:none;">
+                    <h2>Appointments</h2>
+                    <div id="appointments-list" style="margin-bottom:2rem;max-height:200px;overflow:auto;border:1px solid #eee;border-radius:8px;padding:8px 0;"></div>
+                </div>
+                <!-- Bill Generation Page -->
                 <div id="bill-page" style="display:none;">
                     <h2>Bill Generation</h2>
                     <form id="bill-form">
@@ -935,8 +980,17 @@
         const doctorPortalPassword = document.getElementById('doctor-portal-password');
         const doctorPortalLoginError = document.getElementById('doctor-portal-login-error');
         const appointmentsList = document.getElementById('appointments-list');
-        const showBillPageBtn = document.getElementById('show-bill-page');
+        // New tab/page elements
+        const tabPatientEntry = document.getElementById('tab-patient-entry');
+        const tabAppointments = document.getElementById('tab-appointments');
+        const tabBill = document.getElementById('tab-bill');
+        const patientEntryPage = document.getElementById('doctor-patient-entry-page');
+        const appointmentsPage = document.getElementById('doctor-appointments-page');
         const billPage = document.getElementById('bill-page');
+        // Patient entry form
+        const patientEntryForm = document.getElementById('doctor-patient-entry-form');
+        const patientEntrySuccess = document.getElementById('doctor-patient-entry-success');
+        // Bill form logic (unchanged)
         const billForm = document.getElementById('bill-form');
         const billPrintArea = document.getElementById('bill-print-area');
         const billDetails = document.getElementById('bill-details');
@@ -963,12 +1017,68 @@
             if (doctorPortalPassword.value === DOCTOR_PORTAL_PASSWORD) {
                 doctorPortalLogin.style.display = 'none';
                 doctorPortalMain.style.display = '';
-                showAppointments();
-                billPage.style.display = 'none';
-                billPrintArea.style.display = 'none';
+                // Show patient entry page by default
+                showDoctorPortalPage('patient');
             } else {
                 doctorPortalLoginError.style.display = '';
             }
+        });
+
+        // Tab navigation logic
+        function showDoctorPortalPage(page) {
+            // Reset tab styles
+            tabPatientEntry.style.background = '#eee';
+            tabPatientEntry.style.color = '#333';
+            tabAppointments.style.background = '#eee';
+            tabAppointments.style.color = '#333';
+            tabBill.style.background = '#eee';
+            tabBill.style.color = '#333';
+            // Hide all pages
+            patientEntryPage.style.display = 'none';
+            appointmentsPage.style.display = 'none';
+            billPage.style.display = 'none';
+            billPrintArea.style.display = 'none';
+            // Show selected page
+            if (page === 'patient') {
+                patientEntryPage.style.display = '';
+                tabPatientEntry.style.background = '#3182ce';
+                tabPatientEntry.style.color = '#fff';
+            } else if (page === 'appointments') {
+                appointmentsPage.style.display = '';
+                tabAppointments.style.background = '#3182ce';
+                tabAppointments.style.color = '#fff';
+                showAppointments();
+            } else if (page === 'bill') {
+                billPage.style.display = '';
+                tabBill.style.background = '#3182ce';
+                tabBill.style.color = '#fff';
+            }
+        }
+        tabPatientEntry.addEventListener('click', function() { showDoctorPortalPage('patient'); });
+        tabAppointments.addEventListener('click', function() { showDoctorPortalPage('appointments'); });
+        tabBill.addEventListener('click', function() { showDoctorPortalPage('bill'); });
+
+        // Patient entry form logic
+        patientEntryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Get form data
+            const patient = {
+                name: patientEntryForm['entry-patient-name'].value,
+                phone: patientEntryForm['entry-patient-phone'].value,
+                email: patientEntryForm['entry-patient-email'].value,
+                service: patientEntryForm['entry-patient-service'].value,
+                date: patientEntryForm['entry-patient-date'].value,
+                time: patientEntryForm['entry-patient-time'].value,
+                message: patientEntryForm['entry-patient-message'].value
+            };
+            // Save to localStorage
+            let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            appointments.push(patient);
+            localStorage.setItem('appointments', JSON.stringify(appointments));
+            // Show success
+            patientEntrySuccess.style.display = '';
+            setTimeout(() => { patientEntrySuccess.style.display = 'none'; }, 1500);
+            patientEntryForm.reset();
         });
 
         function showAppointments() {
@@ -987,19 +1097,13 @@
             `).join('');
         }
 
-        showBillPageBtn.addEventListener('click', function() {
-            billPage.style.display = '';
-            billPrintArea.style.display = 'none';
-        });
-
+        // Bill form logic (unchanged)
         billForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Fill bill details
+            // Fill bill details (only clinic name and amount)
             billDetails.innerHTML = `
-                <div><strong>Patient Name:</strong> ${billForm['bill-patient-name'].value}</div>
-                <div><strong>Service:</strong> ${billForm['bill-service'].value}</div>
+                <div style="font-size:1.3rem;font-weight:bold;margin-bottom:1rem;">Shalom Dental Care</div>
                 <div><strong>Amount:</strong> ₹${billForm['bill-amount'].value}</div>
-                <div><strong>Date:</strong> ${billForm['bill-date'].value}</div>
             `;
             billPrintArea.style.display = '';
         });
