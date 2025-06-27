@@ -568,9 +568,9 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-gif">
-                    <!-- Static image instead of GIF -->
-                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Smiling Tooth" style="width: 100%; height: 100%; object-fit: contain;" />
+                <div class="hero-gif" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; border-radius: 50%; overflow: hidden; width: 320px; height: 320px; margin: 0 auto 2rem;">
+                    <!-- Custom smile image merged with background -->
+                    <img src="https://nashvillesmilesup.com/wp-content/uploads/2017/06/Beautiful-Smile.png" alt="Beautiful Smile with Teeth" style="width: 100%; height: 100%; object-fit: cover; mix-blend-mode: lighten; background: transparent;" />
                 </div>
                 <h1>Your Smile, Our Priority</h1>
                 <p>Experience world-class dental care in the heart of Chennai with our state-of-the-art facilities and expert dentists</p>
@@ -778,11 +778,19 @@
                         </div>
                         <div style="margin-bottom:1rem;">
                             <label>Service</label>
-                            <input type="text" id="bill-service" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                            <select id="bill-service" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                                <option value="Consultation">Consultation - ₹200</option>
+                                <option value="General Checkup">General Checkup - ₹300</option>
+                                <option value="Cosmetic Dentistry">Cosmetic Dentistry - ₹1500</option>
+                                <option value="Orthodontics">Orthodontics - ₹2500</option>
+                                <option value="Oral Surgery">Oral Surgery - ₹3500</option>
+                                <option value="Pediatric Dentistry">Pediatric Dentistry - ₹800</option>
+                                <option value="Emergency Care">Emergency Care - ₹1000</option>
+                            </select>
                         </div>
                         <div style="margin-bottom:1rem;">
                             <label>Amount (₹)</label>
-                            <input type="number" id="bill-amount" required min="0" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                            <input type="number" id="bill-amount" required min="0" value="200" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
                         </div>
                         <div style="margin-bottom:1rem;">
                             <label>Date</label>
@@ -1088,27 +1096,81 @@
                 return;
             }
             appointmentsList.innerHTML = appointments.map((a, i) => `
-                <div style="padding:8px 16px;border-bottom:1px solid #eee;">
-                    <strong>${a.name}</strong> (${a.phone})<br>
-                    <span style="color:#555;">${a.service} | ${a.date} ${a.time}</span><br>
-                    <span style="font-size:0.95em;color:#888;">${a.email}</span>
-                    ${a.message ? `<div style="font-size:0.95em;color:#888;">${a.message}</div>` : ''}
+                <div style="padding:8px 16px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;">
+                    <div>
+                        <strong>${a.name}</strong> (${a.phone})<br>
+                        <span style="color:#555;">${a.service} | ${a.date} ${a.time}</span><br>
+                        <span style="font-size:0.95em;color:#888;">${a.email}</span>
+                        ${a.message ? `<div style="font-size:0.95em;color:#888;">${a.message}</div>` : ''}
+                    </div>
+                    <button onclick="deleteAppointment(${i})" style="background:#e53e3e;color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:0.95em;">Delete</button>
                 </div>
             `).join('');
         }
 
-        // Bill form logic (unchanged)
+        // Add delete appointment function
+        function deleteAppointment(index) {
+            let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            if (index >= 0 && index < appointments.length) {
+                if (confirm('Are you sure you want to delete this appointment?')) {
+                    appointments.splice(index, 1);
+                    localStorage.setItem('appointments', JSON.stringify(appointments));
+                    showAppointments();
+                }
+            }
+        }
+
+        // Make deleteAppointment globally accessible
+        window.deleteAppointment = deleteAppointment;
+
+        // Set default amount based on selected service
+        const servicePriceMap = {
+    
+            "General Checkup": 300,
+            "Cosmetic Dentistry": 1500,
+            "Orthodontics": 2500,
+            "Oral Surgery": 3500,
+            "Pediatric Dentistry": 800,
+            "Emergency Care": 1000
+        };
+
+        const billServiceSelect = document.getElementById('bill-service');
+        const billAmountInput = document.getElementById('bill-amount');
+
+        function updateBillAmountFromService() {
+            const selected = billServiceSelect.options[billServiceSelect.selectedIndex];
+            if (!selected) return;
+            // Extract service name (before ' - ₹')
+            const serviceName = selected.value;
+            if (servicePriceMap[serviceName] !== undefined) {
+                billAmountInput.value = servicePriceMap[serviceName];
+            }
+        }
+
+        billServiceSelect.addEventListener('change', updateBillAmountFromService);
+
+        // Set default on load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateBillAmountFromService();
+        });
+
+        // Bill form logic (print only from bill generation form)
         billForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Fill bill details (only clinic name and amount)
+            // Get values from bill form only
+            const patientName = document.getElementById('bill-patient-name').value;
+            const service = billServiceSelect.options[billServiceSelect.selectedIndex].text;
+            const amount = billAmountInput.value;
+            const date = document.getElementById('bill-date').value;
+
             billDetails.innerHTML = `
-                <div style="font-size:1.3rem;font-weight:bold;margin-bottom:1rem;">Shalom Dental Care</div>
-                <div><strong>Amount:</strong> ₹${billForm['bill-amount'].value}</div>
+                <div style="margin-bottom:0.5rem;"><strong>Patient Name:</strong> ${patientName}</div>
+                <div style="margin-bottom:0.5rem;"><strong>Service:</strong> ${service}</div>
+                <div style="margin-bottom:0.5rem;"><strong>Amount:</strong> ₹${amount}</div>
+                <div style="margin-bottom:0.5rem;"><strong>Date:</strong> ${date}</div>
             `;
             billPrintArea.style.display = '';
         });
-
-        // ...existing code...
     </script>
 </body>
 </html>
