@@ -1,0 +1,3431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shalom Dental Care - Premier dental clinic in Chennai offering comprehensive dental services including general dentistry, cosmetic treatments, orthodontics, and emergency care. Book your appointment today!">
+    <meta name="keywords" content="dental care, dentist Chennai, teeth cleaning, cosmetic dentistry, orthodontics, dental clinic, emergency dental care, Shalom Dental Care">
+    <meta name="author" content="Shalom Dental Care">
+    <meta property="og:title" content="Shalom Dental Care - Premier Dental Care in Chennai">
+    <meta property="og:description" content="Experience world-class dental care with our expert dentists and state-of-the-art facilities in Chennai.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80">
+    <meta property="og:url" content="https://shalomdentalcare.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Shalom Dental Care - Premier Dental Care in Chennai</title>
+    
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "Shalom Dental Care",
+      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+      "telephone": "+91 86107 76477",
+      "email": "shalomdentalcare19@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "76/2, Gandhi Road, Srinivasa Nagar, Alappakkam",
+        "addressLocality": "New Perungalathur",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "600063",
+        "addressCountry": "IN"
+      },
+      "openingHours": [
+        "Mo-Sa 09:00-20:00",
+        "Su 10:00-18:00"
+      ],
+      "priceRange": "₹₹",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "150"
+      }
+    }
+    </script>
+    
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        /* Removed GIF sparkle, using static SVG instead */
+        .logo .sparkle {
+            position: absolute;
+            right: -18px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            pointer-events: none;
+            animation: sparkle-rotate 2.5s linear infinite;
+        }
+        @keyframes sparkle-rotate {
+            0% { transform: rotate(0deg) scale(1);}
+            50% { transform: rotate(180deg) scale(1.2);}
+            100% { transform: rotate(360deg) scale(1);}
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #63b3ed;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #63b3ed;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced Hero Section with Advanced Animations */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floating Particles Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 2px, transparent 2px),
+                radial-gradient(circle at 70% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 60% 80%, rgba(255,255,255,0.2) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.12) 1px, transparent 1px),
+                radial-gradient(circle at 80% 60%, rgba(255,255,255,0.08) 1px, transparent 1px),
+                radial-gradient(circle at 90% 30%, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 200px 200px, 300px 300px, 250px 250px, 180px 180px, 220px 220px, 160px 160px;
+            animation: floatingParticles 25s ease-in-out infinite;
+        }
+
+        /* Animated Gradient Orbs */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);
+            animation: orbitalMotion 30s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatingParticles {
+            0%, 100% { 
+                background-position: 0% 50%, 50% 0%, 100% 50%, 0% 100%, 50% 100%, 25% 25%;
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                background-position: 25% 25%, 75% 25%, 75% 75%, 25% 75%, 50% 50%, 75% 0%;
+                transform: rotate(2deg) scale(1.1);
+            }
+            50% { 
+                background-position: 50% 0%, 100% 50%, 50% 100%, 0% 50%, 100% 0%, 0% 75%;
+                transform: rotate(0deg) scale(1.05);
+            }
+            75% {
+                background-position: 75% 75%, 25% 75%, 25% 25%, 75% 25%, 50% 50%, 100% 100%;
+                transform: rotate(-2deg) scale(0.95);
+            }
+        }
+
+        @keyframes orbitalMotion {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Hero Content with Staggered Animations */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: heroSlideIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: heroSlideIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards;
+            transform: translateY(50px);
+        }
+
+        @keyframes heroSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
+            animation: heroSlideIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.6s forwards, buttonPulse 3s infinite 2s;
+            transform: translateY(50px);
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(238, 90, 36, 0.5);
+            background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.02); }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2d3748;
+            position: relative;
+            animation: titleReveal 1s ease-out forwards;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .section-title.visible {
+            animation: titleReveal 1s ease-out forwards;
+        }
+
+        @keyframes titleReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            border-radius: 2px;
+            animation: underlineExpand 0.8s ease-out 0.5s forwards;
+        }
+
+        .section-title.visible::after {
+            animation: underlineExpand 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes underlineExpand {
+            to {
+                transform: translateX(-50%) scaleX(1);
+            }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Enhanced Service Cards with Advanced Animations */
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: serviceCardSlideIn 0.8s ease-out forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes serviceCardSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1), transparent);
+            transition: all 0.6s;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: serviceIconFloat 3s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        @keyframes serviceIconFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-5px) rotate(2deg) scale(1.05);
+            }
+            50% { 
+                transform: translateY(-8px) rotate(0deg) scale(1.1);
+            }
+            75% {
+                transform: translateY(-5px) rotate(-2deg) scale(1.05);
+            }
+        }
+
+        .service-card:hover .service-icon {
+            animation: serviceIconSpin 0.8s ease-in-out;
+        }
+
+        @keyframes serviceIconSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            color: #3182ce;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: auto;
+            padding: 8px 12px;
+            background: rgba(49, 130, 206, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2d3748;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #718096;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: aboutFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes aboutFloat {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-12px);}
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Location Section */
+        .location {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+            color: white;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .location-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .location-item::before {
+            content: '📍';
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .map-placeholder {
+            background: rgba(255,255,255,0.1);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #f7fafc;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            transform: translateY(5px);
+            opacity: 0;
+            animation: formElementSlideIn 0.6s ease-out forwards;
+        }
+
+        .form-group:nth-child(1) input,
+        .form-group:nth-child(1) textarea,
+        .form-group:nth-child(1) select { animation-delay: 0.1s; }
+        .form-group:nth-child(2) input,
+        .form-group:nth-child(2) textarea,
+        .form-group:nth-child(2) select { animation-delay: 0.2s; }
+        .form-group:nth-child(3) input,
+        .form-group:nth-child(3) textarea,
+        .form-group:nth-child(3) select { animation-delay: 0.3s; }
+        .form-group:nth-child(4) input,
+        .form-group:nth-child(4) textarea,
+        .form-group:nth-child(4) select { animation-delay: 0.4s; }
+        .form-group:nth-child(5) input,
+        .form-group:nth-child(5) textarea,
+        .form-group:nth-child(5) select { animation-delay: 0.5s; }
+        .form-group:nth-child(6) input,
+        .form-group:nth-child(6) textarea,
+        .form-group:nth-child(6) select { animation-delay: 0.6s; }
+        .form-group:nth-child(7) input,
+        .form-group:nth-child(7) textarea,
+        .form-group:nth-child(7) select { animation-delay: 0.7s; }
+        .form-group:nth-child(8) input,
+        .form-group:nth-child(8) textarea,
+        .form-group:nth-child(8) select { animation-delay: 0.8s; }
+
+        @keyframes formElementSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 10px 25px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(10px);
+            opacity: 0;
+            animation: formElementSlideIn 0.6s ease-out 0.9s forwards;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(45deg, #764ba2, #667eea);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #63b3ed;
+        }
+
+        /* Enhanced Hero GIF with Morphing Animation */
+        .hero-gif {
+            width: 320px;
+            height: 320px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            animation: heroGifMorph 4s ease-in-out infinite, heroGifGlow 2s ease-in-out infinite alternate;
+        }
+
+        .hero-gif::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: heroGifShine 3s linear infinite;
+        }
+
+        @keyframes heroGifMorph {
+            0%, 100% { 
+                border-radius: 50%;
+                transform: rotate(0deg);
+            }
+            25% {
+                border-radius: 60% 40% 40% 60%;
+                transform: rotate(5deg);
+            }
+            50% {
+                border-radius: 40% 60% 60% 40%;
+                transform: rotate(0deg);
+            }
+            75% {
+                border-radius: 60% 40% 60% 40%;
+                transform: rotate(-5deg);
+            }
+        }
+
+        @keyframes heroGifGlow {
+            0% { box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            100% { box-shadow: 0 25px 80px rgba(0,0,0,0.3), 0 0 0 20px rgba(102, 126, 234, 0); }
+        }
+
+        @keyframes heroGifShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Service GIFs */
+        .service-gif {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 0.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(102,126,234,0.08);
+            animation: serviceGifBounce 2.2s infinite;
+            background: #f8fafc;
+            object-fit: cover;
+        }
+        @keyframes serviceGifBounce {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-10px);}
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #3182ce;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .review-card .stars {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #fbbf24;
+        }
+
+        .review-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .reviewer {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+
+        .reviewer strong {
+            display: block;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .reviewer span {
+            color: #3182ce;
+            font-size: 0.9rem;
+        }
+
+        /* --- End of Reviews Section --- */
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Compact chatbot on mobile */
+            #chatbot-widget {
+                width: 280px !important;
+                right: 16px !important;
+                bottom: 140px !important;
+            }
+            
+            #chatbot-btn {
+                right: 16px !important;
+                bottom: 80px !important;
+            }
+            
+            #chatbot-btn button {
+                width: 48px !important;
+                height: 48px !important;
+                font-size: 1.4rem !important;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Chatbot styles --- */
+        /* Enhanced Chatbot Button with Bounce Animation */
+        #chatbot-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 32px;
+            z-index: 3000;
+            animation: chatbotEntrance 1s ease-out 1.5s forwards;
+            transform: scale(0) rotate(180deg);
+            opacity: 0;
+        }
+
+        @keyframes chatbotEntrance {
+            0% {
+                transform: scale(0) rotate(180deg);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.1) rotate(20deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        #chatbot-btn button {
+            background: linear-gradient(45deg, #3182ce, #764ba2);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            box-shadow: 0 4px 16px rgba(49,130,206,0.18);
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: chatbotPulse 3s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #chatbot-btn button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            transform: scale(0);
+            transition: transform 0.6s;
+        }
+
+        #chatbot-btn button:hover::before {
+            transform: scale(1);
+        }
+
+        #chatbot-btn button:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(49,130,206,0.3);
+        }
+
+        @keyframes chatbotPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { 
+                transform: scale(1); 
+            }
+            20% { 
+                transform: scale(1.2); 
+            }
+            40% { 
+                transform: scale(1.1); 
+            }
+            60% { 
+                transform: scale(1.15); 
+            }
+            80% { 
+                transform: scale(1.05); 
+            }
+        }
+
+        #chatbot-widget {
+            display: none;
+            position: fixed;
+            bottom: 170px;
+            right: 32px;
+            width: 420px;
+            max-width: 95vw;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            z-index: 4000;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Enhanced Chatbot Animations */
+        @keyframes chatbotSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes typingDots {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.3;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes messageSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Message Styles */
+        .chatbot-message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            animation: messageSlideIn 0.3s ease-out;
+            margin-bottom: 8px;
+        }
+
+        .chatbot-message.bot {
+            background: linear-gradient(45deg, #e2e8f0, #f1f5f9);
+            color: #2d3748;
+            align-self: flex-start;
+            border: 1px solid #cbd5e0;
+        }
+
+        .chatbot-message.user {
+            background: linear-gradient(45deg, #3182ce, #4299e1);
+            color: white;
+            align-self: flex-end;
+        }
+
+        /* Suggestion Buttons */
+        .suggestion-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .suggestion-btn {
+            background: rgba(49, 130, 206, 0.1);
+            color: #3182ce;
+            border: 1px solid rgba(49, 130, 206, 0.3);
+            border-radius: 16px;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .suggestion-btn:hover {
+            background: #3182ce;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Enhanced Input Focus */
+        #chatbot-input:focus {
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        }
+
+        /* Enhanced Button Hover Effects */
+        #chatbot-form button:hover {
+            background: linear-gradient(45deg, #2c5282, #3182ce);
+            transform: translateY(-2px);
+        }
+
+        #chatbot-quick-buttons button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        #chatbot-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Print styles for bills */
+        @media print {
+            * {
+                visibility: hidden;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            #bill-print-area, 
+            #bill-print-area *,
+            .bill-content,
+            .bill-content * {
+                visibility: visible;
+            }
+            
+            #bill-print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 20px;
+                background: white !important;
+                box-shadow: none !important;
+                border: none !important;
+                page-break-inside: avoid;
+            }
+            
+            .bill-content {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            /* Hide all buttons during print */
+            button,
+            .floating-contact-container,
+            #chatbot-btn,
+            #chatbot-widget {
+                display: none !important;
+                visibility: hidden !important;
+            }
+            
+            /* Ensure single page print */
+            @page {
+                margin: 0.5in;
+                size: A4;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                Shalom Dental Care
+                <!-- Static SVG sparkle icon instead of GIF -->
+                <svg class="sparkle" viewBox="0 0 20 20" fill="gold" width="18" height="18" style="right:-18px;top:0;position:absolute;">
+                    <polygon points="10,2 12,8 18,8 13,12 15,18 10,14 5,18 7,12 2,8 8,8"/>
+                </svg>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="doctor-portal-link">Doctor Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-gif" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; border-radius: 50%; overflow: hidden; width: 320px; height: 320px; margin: 0 auto 2rem;">
+                    <!-- Custom smile image merged with background -->
+                    <img src="https://nashvillesmilesup.com/wp-content/uploads/2017/06/Beautiful-Smile.png" alt="Beautiful Smile with Teeth" style="width: 100%; height: 100%; object-fit: cover; mix-blend-mode: lighten; background: transparent;" />
+                </div>
+                <h1>Your Smile, Our Priority</h1>
+                <p>Experience world-class dental care in the heart of Chennai with our state-of-the-art facilities and expert dentists</p>
+                <div style="display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="#contact" class="cta-button" style="
+                        background: linear-gradient(135deg, #38a169 0%, #48bb78 50%, #4fd1c7 100%);
+                        color: #fff;
+                        padding: 12px 24px;
+                        border-radius: 30px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        font-size: 0.95rem;
+                        letter-spacing: 0.3px;
+                        box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3);
+                        border: 2px solid rgba(255, 255, 255, 0.3);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        position: relative;
+                        overflow: hidden;
+                    " onmouseover="
+                        this.style.transform = 'translateY(-3px) scale(1.03)';
+                        this.style.boxShadow = '0 12px 35px rgba(56, 161, 105, 0.5)';
+                        this.style.background = 'linear-gradient(135deg, #48bb78 0%, #4fd1c7 50%, #38a169 100%)';
+                    " onmouseout="
+                        this.style.transform = 'translateY(0) scale(1)';
+                        this.style.boxShadow = '0 8px 25px rgba(56, 161, 105, 0.3)';
+                        this.style.background = 'linear-gradient(135deg, #38a169 0%, #48bb78 50%, #4fd1c7 100%)';
+                    ">
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1.1rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">📅</span>
+                            <span>Book Now</span>
+                        </span>
+                    </a>
+                    <a href="tel:+918610776477" class="cta-button" style="
+                        background: linear-gradient(135deg, #3182ce 0%, #4299e1 50%, #63b3ed 100%);
+                        color: #fff;
+                        padding: 12px 24px;
+                        border-radius: 30px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        font-size: 0.95rem;
+                        letter-spacing: 0.3px;
+                        box-shadow: 0 8px 25px rgba(49, 130, 206, 0.3);
+                        border: 2px solid rgba(255, 255, 255, 0.3);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        position: relative;
+                        overflow: hidden;
+                    " onmouseover="
+                        this.style.transform = 'translateY(-3px) scale(1.03)';
+                        this.style.boxShadow = '0 12px 35px rgba(49, 130, 206, 0.5)';
+                        this.style.background = 'linear-gradient(135deg, #4299e1 0%, #63b3ed 50%, #3182ce 100%)';
+                    " onmouseout="
+                        this.style.transform = 'translateY(0) scale(1)';
+                        this.style.boxShadow = '0 8px 25px rgba(49, 130, 206, 0.3)';
+                        this.style.background = 'linear-gradient(135deg, #3182ce 0%, #4299e1 50%, #63b3ed 100%)';
+                    " onclick="trackCall('hero-call')">
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1.1rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); animation: pulse 2s infinite;">📞</span>
+                            <span>Call Now</span>
+                        </span>
+                    </a>
+                    <a href="https://wa.me/918610776477?text=Hi,%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" class="cta-button" style="
+                        background: linear-gradient(135deg, #25d366 0%, #128c7e 50%, #075e54 100%);
+                        color: #fff;
+                        padding: 12px 24px;
+                        border-radius: 30px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        font-size: 0.95rem;
+                        letter-spacing: 0.3px;
+                        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+                        border: 2px solid rgba(255, 255, 255, 0.3);
+                        backdrop-filter: blur(10px);
+                        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        position: relative;
+                        overflow: hidden;
+                    " onmouseover="
+                        this.style.transform = 'translateY(-3px) scale(1.03)';
+                        this.style.boxShadow = '0 12px 35px rgba(37, 211, 102, 0.5)';
+                        this.style.background = 'linear-gradient(135deg, #128c7e 0%, #075e54 50%, #25d366 100%)';
+                    " onmouseout="
+                        this.style.transform = 'translateY(0) scale(1)';
+                        this.style.boxShadow = '0 8px 25px rgba(37, 211, 102, 0.3)';
+                        this.style.background = 'linear-gradient(135deg, #25d366 0%, #128c7e 50%, #075e54 100%)';
+                    " onclick="trackCall('hero-whatsapp')">
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1.1rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">💬</span>
+                            <span>WhatsApp</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <img class="service-gif" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=64&q=80" alt="General Dentistry" />
+                    <span class="service-icon">🦷</span>
+                    <h3>General Dentistry</h3>
+                    <p>Comprehensive dental care including cleanings, fillings, and preventive treatments to maintain your oral health.</p>
+                    <div class="service-price">Starting from ₹300</div>
+                </div>
+                <div class="service-card fade-in">
+                    <img class="service-gif" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=64&q=80" alt="Cosmetic Dentistry" />
+                    <span class="service-icon">✨</span>
+                    <h3>Cosmetic Dentistry</h3>
+                    <p>Transform your smile with veneers, whitening, and cosmetic procedures for a confident, radiant appearance.</p>
+                    <div class="service-price">Starting from ₹1,500</div>
+                </div>
+                <div class="service-card fade-in">
+                    <img class="service-gif" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=64&q=80" alt="Orthodontics" />
+                    <span class="service-icon">🔧</span>
+                    <h3>Orthodontics</h3>
+                    <p>Straighten your teeth with modern braces and Invisalign treatments customized for your needs.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <img class="service-gif" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=64&q=80" alt="Oral Surgery" />
+                    <span class="service-icon">🏥</span>
+                    <h3>Oral Surgery</h3>
+                    <p>Advanced surgical procedures including wisdom tooth extraction and dental implants with minimal discomfort.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <img class="service-gif" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=64&q=80" alt="Pediatric Dentistry" />
+                    <span class="service-icon">👶</span>
+                    <h3>Pediatric Dentistry</h3>
+                    <p>Specialized dental care for children in a friendly, comfortable environment to build lifelong oral health habits.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <img class="service-gif" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=64&q=80" alt="Emergency Care" />
+                    <span class="service-icon">🚨</span>
+                    <h3>Emergency Care</h3>
+                    <p>24/7 emergency dental services for urgent situations, ensuring you get the care you need when you need it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>About Shalom Dental Care</h2>
+                    <p>With over 15 years of experience serving the Chennai community, Shalom Dental Care has established itself as a premier destination for comprehensive dental care. Our team of highly qualified dentists and specialists are committed to providing personalized treatment in a comfortable, modern environment.</p>
+                    <p>We utilize the latest technology and techniques to ensure the highest quality care, from routine cleanings to complex procedures. Our patient-centered approach means we take the time to understand your unique needs and develop treatment plans that work for you.</p>
+                    <p>Located in the heart of Chennai, we're easily accessible and offer flexible scheduling to accommodate your busy lifestyle. Your oral health is our mission, and your smile is our reward.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Dental Clinic" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px;"/>
+                    <!-- <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center;">
+                        Modern Dental Clinic<br>
+                        <small style="opacity: 0.8; font-size: 1rem;">State-of-the-art equipment & comfortable environment</small>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2 class="section-title fade-in">What Our Patients Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Excellent service and very professional staff. Dr. Shalom is extremely skilled and made my treatment completely painless. Highly recommend!"</p>
+                    <div class="reviewer">
+                        <strong>Priya Sharma</strong>
+                        <span>General Checkup</span>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Best dental care in Chennai! The clinic is very clean and modern. Got my teeth whitening done here and the results are amazing."</p>
+                    <div class="reviewer">
+                        <strong>Rajesh Kumar</strong>
+                        <span>Cosmetic Dentistry</span>
+                    </div>
+                </div>
+                <div class="review-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"My kids love coming here! The staff is so patient and gentle with children. Thank you for making dental visits fun for them."</p>
+                    <div class="reviewer">
+                        <strong>Anitha Menon</strong>
+                        <span>Pediatric Dentistry</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="location">
+        <div class="container">
+            <div class="location-content">
+                <div class="location-info fade-in">
+                    <h2>Visit Us in Chennai</h2>
+                    <div class="location-item">Address: 76/2, Gandhi Road, Srinivasa Nagar, Alappakkam, Alappakkam, New Perungalathur, Tamil Nadu 600063, India</div>
+                    <div class="location-item">Phone: +91 86107 76477</div>
+                    <div class="location-item">✉️ shalomdentalcare19@gmail.com</div>
+                    <div class="location-item">🕒 Mon-Sat: 9:00 AM - 8:00 PM</div>
+                    <div class="location-item">🕒 Sunday: 10:00 AM - 6:00 PM</div>
+                </div>
+                <div class="map-placeholder fade-in" style="padding:0; height:auto;">
+                    <!-- Embedded Google Map -->
+                    <iframe
+                        src="https://www.google.com/maps?q=76/2,+Gandhi+Road,+Srinivasa+Nagar,+Alappakkam,+New+Perungalathur,+Tamil+Nadu+600063,+India&output=embed"
+                        width="100%" height="300" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Book Your Appointment</h2>
+            <form class="contact-form fade-in">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Preferred Service</label>
+                    <select id="service" name="service" style="width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
+                        <option>General Checkup</option>
+                        <option>Cosmetic Dentistry</option>
+                        <option>Orthodontics</option>
+                        <option>Oral Surgery</option>
+                        <option>Pediatric Dentistry</option>
+                        <option>Emergency Care</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointment-date">Appointment Date</label>
+                    <input type="date" id="appointment-date" name="appointment-date" required min="">
+                </div>
+                <div class="form-group">
+                    <label for="appointment-time">Preferred Time</label>
+                    <select id="appointment-time" name="appointment-time" required style="width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem;">
+                        <!-- Time slots will be populated by JS -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your dental concerns or preferred appointment time..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Schedule Appointment</button>
+            </form>
+        </div>
+        <!-- Floating Chatbot Button -->
+    <div id="chatbot-btn" style="position:fixed;bottom:100px;right:32px;z-index:3000;transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        <button style="background:linear-gradient(45deg,#3182ce,#764ba2);color:#fff;border:none;border-radius:50%;width:60px;height:60px;box-shadow:0 4px 16px rgba(49,130,206,0.18);font-size:2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);transform:scale(1);" 
+               onmouseover="this.style.transform='scale(1.1) translateY(-2px)';this.style.boxShadow='0 8px 25px rgba(49,130,206,0.3)';" 
+               onmouseout="this.style.transform='scale(1) translateY(0)';this.style.boxShadow='0 4px 16px rgba(49,130,206,0.18)';">
+            💬
+        </button>
+    </div>
+    <!-- Enhanced Chatbot Widget - Compact Size -->
+    <div id="chatbot-widget" style="display:none;position:fixed;bottom:170px;right:32px;width:300px;max-width:90vw;background:#fff;border-radius:14px;box-shadow:0 12px 35px rgba(0,0,0,0.12);z-index:4000;overflow:hidden;flex-direction:column;transform:translateY(20px) scale(0.95);opacity:0;transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        <div style="background:linear-gradient(45deg,#3182ce,#764ba2);color:#fff;padding:10px 12px;position:relative;text-align:center;">
+            <div style="font-size:1.3rem;margin-bottom:2px;animation:bounce 2s infinite;">🤖</div>
+            <h3 style="margin:0;font-size:0.9rem;margin-bottom:1px;">Dental Assistant</h3>
+            <p style="margin:0;opacity:0.9;font-size:0.7rem;">Ask about our services!</p>
+            <button id="chatbot-close" style="position:absolute;top:6px;right:6px;background:rgba(255,255,255,0.2);border:none;color:#fff;font-size:1rem;cursor:pointer;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;" 
+                    onmouseover="this.style.background='rgba(255,255,255,0.3)';this.style.transform='scale(1.1)';" 
+                    onmouseout="this.style.background='rgba(255,255,255,0.2)';this.style.transform='scale(1)';">&times;</button>
+        </div>
+        
+        <div id="chatbot-messages" style="padding:10px;height:180px;overflow-y:auto;font-size:0.8rem;background:#f8fafc;display:flex;flex-direction:column;gap:8px;"></div>
+        
+        <!-- Typing Indicator -->
+        <div id="chatbot-typing" style="display:none;padding:0 10px;background:#f8fafc;">
+            <div style="max-width:80%;padding:8px 10px;border-radius:10px;background:#e2e8f0;border:1px solid #cbd5e0;align-self:flex-start;">
+                <div style="display:flex;gap:2px;">
+                    <span style="width:5px;height:5px;background:#718096;border-radius:50%;animation:typingDots 1.4s infinite;"></span>
+                    <span style="width:5px;height:5px;background:#718096;border-radius:50%;animation:typingDots 1.4s infinite 0.2s;"></span>
+                    <span style="width:5px;height:5px;background:#718096;border-radius:50%;animation:typingDots 1.4s infinite 0.4s;"></span>
+                </div>
+            </div>
+        </div>
+        
+        <form id="chatbot-form" style="display:flex;padding:10px;background:#fff;gap:6px;border-top:1px solid #e2e8f0;">
+            <input id="chatbot-input" type="text" placeholder="Type your message..." autocomplete="off" style="flex:1;padding:8px 10px;border:2px solid #e2e8f0;border-radius:16px;font-size:0.8rem;outline:none;transition:all 0.3s ease;">
+            <button type="submit" style="background:linear-gradient(45deg,#3182ce,#4299e1);color:#fff;border:none;border-radius:16px;padding:8px 12px;font-size:0.8rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;min-width:50px;">Send</button>
+        </form>
+        
+       
+         
+    </div>
+
+    <!-- Doctor Portal Sub-Page -->
+    <div id="doctor-portal-page" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#f8fafc; z-index:4000; overflow-y:auto; opacity:0; transform:translateX(100%); transition:all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        <!-- Doctor Portal Header -->
+        <header style="background:linear-gradient(135deg, #2c5282 0%, #3182ce 100%); color:white; padding:1rem 0; box-shadow:0 4px 20px rgba(0,0,0,0.1); transform:translateY(-100%); transition:transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;">
+            <nav style="max-width:1200px; margin:0 auto; padding:0 20px; display:flex; justify-content:space-between; align-items:center;">
+                <div style="font-size:1.8rem; font-weight:bold; display:flex; align-items:center; gap:10px;">
+                    <span style="animation:heartbeat 2s ease-in-out infinite;">🏥</span>
+                    Shalom Dental Care - Doctor Portal
+                </div>
+                <button id="close-doctor-portal" style="background:rgba(255,255,255,0.2); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer; font-size:1rem; font-weight:bold; transition:all 0.3s ease; backdrop-filter:blur(10px);" 
+                        onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='scale(1.05)'" 
+                        onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1)'">
+                    ← Back to Main Site
+                </button>
+            </nav>
+        </header>
+        
+        <div id="doctor-portal-content" style="max-width:1200px; margin:2rem auto; padding:0 20px; opacity:0; transform:translateY(30px); transition:all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s;">
+            <div style="background:#fff; border-radius:16px; box-shadow:0 8px 32px rgba(0,0,0,0.1); padding:2rem; margin-bottom:2rem; border:1px solid rgba(49,130,206,0.1);">
+            <div id="doctor-portal-login">
+                <div style="text-align:center; margin-bottom:2rem;">
+                    <div style="font-size:3rem; margin-bottom:1rem; animation:heartbeat 2s ease-in-out infinite;">🔐</div>
+                    <h2 style="color:#2d3748; margin-bottom:0.5rem; font-size:2rem; background:linear-gradient(45deg, #3182ce, #764ba2); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Doctor Portal Access</h2>
+                    <p style="color:#666; margin:0; font-size:1.1rem;">Please enter your credentials to access the doctor portal</p>
+                </div>
+                <div style="max-width:400px; margin:0 auto;">
+                    <input type="password" id="doctor-portal-password" placeholder="Enter password" 
+                           style="width:100%; padding:18px; border-radius:12px; border:2px solid #e2e8f0; margin-bottom:1.5rem; font-size:1.1rem; transition:all 0.3s ease; background:rgba(249,250,251,0.8); backdrop-filter:blur(10px);"
+                           onfocus="this.style.borderColor='#3182ce'; this.style.boxShadow='0 0 0 3px rgba(49,130,206,0.1)'"
+                           onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                    <button id="doctor-portal-login-btn" 
+                            style="width:100%; padding:18px; border-radius:12px; background:linear-gradient(45deg, #3182ce, #764ba2); color:#fff; font-weight:bold; border:none; cursor:pointer; font-size:1.1rem; transition:all 0.3s ease; box-shadow:0 4px 15px rgba(49,130,206,0.3);"
+                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(49,130,206,0.4)'"
+                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(49,130,206,0.3)'">
+                        🔐 Access Portal
+                    </button>
+                    <div id="doctor-portal-login-error" style="color:#e53e3e; margin-top:1rem; display:none; text-align:center; padding:12px; background:rgba(254,226,226,0.9); border-radius:10px; border:1px solid #fca5a5; backdrop-filter:blur(10px);">
+                        ❌ Incorrect password. Please try again.
+                    </div>
+                </div>
+            </div>
+            
+            <div id="doctor-portal-main" style="display:none;">
+                <!-- Enhanced Navigation Tabs -->
+                <div style="display:flex; gap:12px; margin-bottom:2rem; flex-wrap:wrap; border-bottom:2px solid #e2e8f0; padding-bottom:1rem;">
+                    <button id="tab-patient-entry" class="doctor-tab-btn" 
+                            style="flex:1; min-width:150px; padding:12px 20px; border-radius:10px; border:none; background:#3182ce; color:#fff; font-weight:bold; cursor:pointer; transition:all 0.3s ease; font-size:0.95rem;">
+                        👤 Patient Entry
+                    </button>
+                    <button id="tab-appointments" class="doctor-tab-btn" 
+                            style="flex:1; min-width:150px; padding:12px 20px; border-radius:10px; border:none; background:#e2e8f0; color:#333; font-weight:bold; cursor:pointer; transition:all 0.3s ease; font-size:0.95rem;">
+                        📅 Appointments
+                    </button>
+                    <button id="tab-bill" class="doctor-tab-btn" 
+                            style="flex:1; min-width:150px; padding:12px 20px; border-radius:10px; border:none; background:#e2e8f0; color:#333; font-weight:bold; cursor:pointer; transition:all 0.3s ease; font-size:0.95rem;">
+                        💰 Bill Generation
+                    </button>
+                    <button id="tab-analytics" class="doctor-tab-btn" 
+                            style="flex:1; min-width:150px; padding:12px 20px; border-radius:10px; border:none; background:#e2e8f0; color:#333; font-weight:bold; cursor:pointer; transition:all 0.3s ease; font-size:0.95rem;">
+                        📊 Analytics
+                    </button>
+                </div>
+                <!-- Patient Details Entry Page -->
+                <div id="doctor-patient-entry-page">
+                    <h2>Patient Details Entry</h2>
+                    <form id="doctor-patient-entry-form">
+                        <div style="margin-bottom:1rem;">
+                            <label>Patient Name</label>
+                            <input type="text" id="entry-patient-name" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Phone</label>
+                            <input type="tel" id="entry-patient-phone" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Email</label>
+                            <input type="email" id="entry-patient-email" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Service</label>
+                            <input type="text" id="entry-patient-service" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Date</label>
+                            <input type="date" id="entry-patient-date" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Time</label>
+                            <input type="text" id="entry-patient-time" required style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label>Message</label>
+                            <input type="text" id="entry-patient-message" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;">
+                        </div>
+                        <button type="submit" style="padding:10px 24px;border-radius:8px;background:#3182ce;color:#fff;font-weight:bold;border:none;cursor:pointer;">Add Patient</button>
+                        <div id="doctor-patient-entry-success" style="color:#38a169;margin-top:1rem;display:none;">Patient added successfully.</div>
+                    </form>
+                </div>
+                <!-- Appointments Page -->
+                <div id="doctor-appointments-page" style="display:none;">
+                    <h2>Appointments</h2>
+                    <div style="display:flex;gap:12px;align-items:center;margin-bottom:1rem;flex-wrap:wrap;">
+                        <input id="appointments-search" type="text" placeholder="Search by name, phone, service, date..." style="flex:2;min-width:180px;padding:8px 12px;border-radius:8px;border:1px solid #ccc;">
+                        <button id="export-appointments-csv" style="padding:8px 16px;border-radius:8px;background:#3182ce;color:#fff;font-weight:bold;border:none;cursor:pointer;">Export CSV</button>
+                        <button id="export-appointments-pdf" style="padding:8px 16px;border-radius:8px;background:#764ba2;color:#fff;font-weight:bold;border:none;cursor:pointer;">Export PDF</button>
+                    </div>
+                    <div id="appointments-list" style="margin-bottom:2rem;max-height:200px;overflow:auto;border:1px solid #eee;border-radius:8px;padding:8px 0;"></div>
+                </div>
+                <!-- Bill Generation Page -->
+                <div id="bill-page" style="display:none;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:2rem;">
+                        <span style="font-size:2rem;">💰</span>
+                        <h2 style="margin:0; color:#2d3748;">Bill Generation</h2>
+                    </div>
+                    <div style="background:#fff; border-radius:12px; padding:2rem; box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px solid rgba(49,130,206,0.1);">
+                        <form id="bill-form">
+                            <div style="margin-bottom:1.5rem;">
+                                <label style="display:block; margin-bottom:0.5rem; font-weight:600; color:#2d3748;">Patient Name</label>
+                                <input type="text" id="bill-patient-name" required style="width:100%;padding:12px;border-radius:8px;border:2px solid #e2e8f0;font-size:1rem;transition:all 0.3s ease;" 
+                                       onfocus="this.style.borderColor='#3182ce'; this.style.boxShadow='0 0 0 3px rgba(49,130,206,0.1)'"
+                                       onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                            </div>
+                            <div style="margin-bottom:1.5rem;">
+                                <label style="display:block; margin-bottom:0.5rem; font-weight:600; color:#2d3748;">Services (Select multiple services)</label>
+                                <div id="bill-services" style="padding:12px;border-radius:8px;border:2px solid #e2e8f0;background:white;max-height:200px;overflow-y:auto;">
+                                    <div style="margin-bottom:8px;">
+                                        <label style="display:flex; align-items:center; gap:8px; padding:8px; border-radius:6px; cursor:pointer; transition:background 0.2s;"
+                                               onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                                            <input type="checkbox" name="bill-service" value="Consultation" data-price="200" 
+                                                   style="width:16px;height:16px;accent-color:#3182ce;">
+                                            <span style="flex:1;">Consultation</span>
+                                            <span style="color:#3182ce;font-weight:600;">₹200</span>
+                                        </label>
+                                    </div>
+                                    <div style="margin-bottom:8px;">
+                                        <label style="display:flex; align-items:center; gap:8px; padding:8px; border-radius:6px; cursor:pointer; transition:background 0.2s;"
+                                               onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                                            <input type="checkbox" name="bill-service" value="General Checkup" data-price="300" 
+                                                   style="width:16px;height:16px;accent-color:#3182ce;">
+                                            <span style="flex:1;">General Checkup</span>
+                                            <span style="color:#3182ce;font-weight:600;">₹300</span>
+                                        </label>
+                                    </div>
+                                    <div style="margin-bottom:8px;">
+                                        <label style="display:flex; align-items:center; gap:8px; padding:8px; border-radius:6px; cursor:pointer; transition:background 0.2s;"
+                                               onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                                            <input type="checkbox" name="bill-service" value="Cosmetic Dentistry" data-price="1500" 
+                                                   style="width:16px;height:16px;accent-color:#3182ce;">
+                                            <span style="flex:1;">Cosmetic Dentistry</span>
+                                            <span style="color:#3182ce;font-weight:600;">₹1,500</span>
+                                        </label>
+                                    </div>
+                                    <div style="margin-bottom:8px;">
+                                        <label style="display:flex; align-items:center; gap:8px; padding:8px; border-radius:6px; cursor:pointer; transition:background 0.2s;"
+                                               onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                                            <input type="checkbox" name="bill-service" value="Orthodontics" data-price="2500" 
+                                                   style="width:16px;height:16px;accent-color:#3182ce;">
+                                            <span style="flex:1;">Orthodontics</span>
+                                            <span style="color:#3182ce;font-weight:600;">₹2,500</span>
+                                        </label>
+                                    </div>
+                                    <div style="margin-bottom:8px;">
+                                        <label style="display:flex; align-items:center; gap:8px; padding:8px; border-radius:6px; cursor:pointer; transition:background 0.2s;"
+                                               onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                                            <input type="checkbox" name="bill-service" value="Oral Surgery" data-price="3500" 
+                                                   style="width:16px;height:16px;accent-color:#3182ce;">
+                                            <span style="flex:1;">Oral Surgery</span>
+                                            <span style="color:#3182ce;font-weight:600;">₹3,500</span>
+                                        </label>
+                                    </div>
+                                    <div style="margin-bottom:8px;">
+                                        <label style="display:flex; align-items:center; gap:8px; padding:8px; border-radius:6px; cursor:pointer; transition:background 0.2s;"
+                                               onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                                            <input type="checkbox" name="bill-service" value="Pediatric Dentistry" data-price="800" 
+                                                   style="width:16px;height:16px;accent-color:#3182ce;">
+                                            <span style="flex:1;">Pediatric Dentistry</span>
+                                            <span style="color:#3182ce;font-weight:600;">₹800</span>
+                                        </label>
+                                    </div>
+                                    <div style="margin-bottom:8px;">
+                                        <label style="display:flex; align-items:center; gap:8px; padding:8px; border-radius:6px; cursor:pointer; transition:background 0.2s;"
+                                               onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                                            <input type="checkbox" name="bill-service" value="Emergency Care" data-price="1000" 
+                                                   style="width:16px;height:16px;accent-color:#3182ce;">
+                                            <span style="flex:1;">Emergency Care</span>
+                                            <span style="color:#3182ce;font-weight:600;">₹1,000</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div style="margin-top:8px; padding:8px; background:#f0f9ff; border-radius:6px; font-size:0.9rem; color:#1e40af;">
+                                    💡 <strong>Tip:</strong> Select multiple services to combine them in one bill. The total amount will be calculated automatically.
+                                </div>
+                                <div id="services-summary" style="display:none; margin-top:12px; padding:12px; background:#e6fffa; border-radius:8px; border-left:4px solid #38a169; font-size:0.95rem; color:#2d3748; font-weight:500;"></div>
+                            </div>
+                            <div style="margin-bottom:1.5rem;">
+                                <label style="display:block; margin-bottom:0.5rem; font-weight:600; color:#2d3748;">Amount (₹)</label>
+                                <input type="number" id="bill-amount" required min="0" value="0" readonly style="width:100%;padding:12px;border-radius:8px;border:2px solid #e2e8f0;font-size:1rem;transition:all 0.3s ease;background:#f8fafc;" 
+                                       onfocus="this.style.borderColor='#3182ce'; this.style.boxShadow='0 0 0 3px rgba(49,130,206,0.1)'"
+                                       onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                                <div style="margin-top:4px; font-size:0.8rem; color:#666;">
+                                    💡 Amount is automatically calculated based on selected services
+                                </div>
+                            </div>
+                            <div style="margin-bottom:2rem;">
+                                <label style="display:block; margin-bottom:0.5rem; font-weight:600; color:#2d3748;">Date</label>
+                                <input type="date" id="bill-date" required style="width:100%;padding:12px;border-radius:8px;border:2px solid #e2e8f0;font-size:1rem;transition:all 0.3s ease;" 
+                                       onfocus="this.style.borderColor='#3182ce'; this.style.boxShadow='0 0 0 3px rgba(49,130,206,0.1)'"
+                                       onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                            </div>
+                            <button type="submit" style="background:linear-gradient(45deg, #3182ce, #764ba2);color:#fff;border:none;padding:15px 30px;border-radius:10px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(49,130,206,0.3);"
+                                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(49,130,206,0.4)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(49,130,206,0.3)'">
+                                💰 Generate Bill
+                            </button>
+                        </form>
+                    </div>
+                    <div id="bill-print-area" style="display:none;margin-top:2rem;background:#fff;padding:2rem;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px solid rgba(49,130,206,0.1);">
+                        <div id="bill-details"></div>
+                        <div style="text-align:center; margin-top:2rem; padding-top:2rem; border-top:2px solid #e2e8f0;">
+                            <button onclick="printBill()" style="background:linear-gradient(45deg, #ee5a24, #fd79a8);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(238,90,36,0.3); margin-right:1rem;"
+                                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(238,90,36,0.4)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(238,90,36,0.3)'">
+                                🖨️ Print Bill
+                            </button>
+                            <button onclick="downloadBillPDF()" style="background:linear-gradient(45deg, #38a169, #68d391);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:1rem;font-weight:bold;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(56,161,105,0.3);"
+                                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(56,161,105,0.4)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(56,161,105,0.3)'">
+                                📄 Download PDF
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bills History Section -->
+                    <div style="margin-top:2rem; background:#fff; border-radius:12px; padding:2rem; box-shadow:0 4px 20px rgba(0,0,0,0.1); border:1px solid rgba(49,130,206,0.1);">
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+                            <h3 style="margin:0; color:#2d3748; display:flex; align-items:center; gap:8px;">
+                                📋 Bills History
+                            </h3>
+                            <button onclick="clearBillsHistory()" style="background:#e53e3e; color:#fff; border:none; padding:8px 16px; border-radius:6px; font-size:0.9rem; cursor:pointer; transition:all 0.3s ease;"
+                                    onmouseover="this.style.background='#c53030'"
+                                    onmouseout="this.style.background='#e53e3e'">
+                                🗑️ Clear History
+                            </button>
+                        </div>
+                        <div id="bills-history-list" style="max-height:300px; overflow-y:auto; border:1px solid #e2e8f0; border-radius:8px; padding:8px 0;">
+                            <div style="padding:20px; text-align:center; color:#888;">No bills generated yet.</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Analytics Dashboard Page -->
+                <div id="doctor-analytics-page" style="display:none;">
+                    <h2>Analytics Dashboard</h2>
+                    <div id="analytics-summary" style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:2rem;"></div>
+                    <div style="display:flex;flex-wrap:wrap;gap:32px;">
+                        <div style="flex:1;min-width:320px;">
+                            <canvas id="analytics-service-chart" height="220"></canvas>
+                        </div>
+                        <div style="flex:1;min-width:320px;">
+                            <canvas id="analytics-daily-chart" height="220"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Scheduling...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you! Your appointment request has been received. We will contact you within 24 hours to confirm your appointment.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Add floating animation to hero background
+        const hero = document.querySelector('.hero');
+        let mouseX = 0;
+        let mouseY = 0;
+
+        hero.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 100;
+            mouseY = (e.clientY / window.innerHeight) * 100;
+            
+            hero.style.background = `linear-gradient(135deg, 
+                hsl(${220 + mouseX * 0.1}, 70%, ${60 + mouseY * 0.1}%) 0%, 
+                hsl(${260 + mouseX * 0.1}, 60%, ${65 + mouseY * 0.1}%) 100%)`;
+        });
+
+        // Populate appointment time slots
+        function populateTimeSlots() {
+            const timeSelect = document.getElementById('appointment-time');
+            if (!timeSelect) return;
+            timeSelect.innerHTML = '';
+            // Morning: 10:00 AM to 2:00 PM
+            for (let h = 10; h < 14; h++) {
+                for (let m = 0; m < 60; m += 30) {
+                    let hour = h;
+                    let min = m === 0 ? '00' : m;
+                    let ampm = hour < 12 ? 'AM' : 'PM';
+                    let displayHour = hour > 12 ? hour - 12 : hour;
+                    if (displayHour === 0) displayHour = 12;
+                    timeSelect.innerHTML += `<option>${displayHour}:${min} ${ampm}</option>`;
+                }
+            }
+            // Evening: 4:00 PM to 8:00 PM
+            for (let h = 16; h < 20; h++) {
+                for (let m = 0; m < 60; m += 30) {
+                    let hour = h;
+                    let min = m === 0 ? '00' : m;
+                    let ampm = hour < 12 ? 'AM' : 'PM';
+                    let displayHour = hour > 12 ? hour - 12 : hour;
+                    if (displayHour === 0) displayHour = 12;
+                    timeSelect.innerHTML += `<option>${displayHour}:${min} ${ampm}</option>`;
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', populateTimeSlots);
+
+        // Set min date for appointment to today
+        document.addEventListener('DOMContentLoaded', function() {
+            var today = new Date();
+            var yyyy = today.getFullYear();
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var dd = String(today.getDate()).padStart(2, '0');
+            var minDate = yyyy + '-' + mm + '-' + dd;
+            var dateInput = document.getElementById('appointment-date');
+            if (dateInput) {
+                dateInput.setAttribute('min', minDate);
+            }
+        });
+
+        // Store appointment in localStorage on form submit
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Generate appointment ID
+            const appointmentId = 'APT' + Date.now().toString().slice(-6);
+            
+            // Save appointment to localStorage
+            let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            const newAppointment = {
+                id: appointmentId,
+                name: this.name.value,
+                phone: this.phone.value,
+                email: this.email.value,
+                service: this.service.value,
+                date: this['appointment-date'].value,
+                time: this['appointment-time'].value,
+                message: this.message.value,
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            };
+            appointments.push(newAppointment);
+            localStorage.setItem('appointments', JSON.stringify(appointments));
+            
+            // Show confirmation modal
+            showAppointmentConfirmation(newAppointment);
+            
+            // Reset form
+            this.reset();
+        });
+
+               // Appointment confirmation modal
+        function showAppointmentConfirmation(appointment) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                background: rgba(0,0,0,0.8); z-index: 5000; display: flex;
+                align-items: center; justify-content: center;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: 16px; padding: 32px; max-width: 500px; width: 90%; text-align: center;">
+                    <div style="color: #38a169; font-size: 3rem; margin-bottom: 16px;">✅</div>
+                    <h2 style="color: #333; margin-bottom: 16px;">Appointment Confirmed!</h2>
+                    <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin: 20px 0; text-align: left;">
+                        <p><strong>Appointment ID:</strong> ${appointment.id}</p>
+                        <p><strong>Name:</strong> ${appointment.name}</p>
+                        <p><strong>Service:</strong> ${appointment.service}</p>
+                        <p><strong>Date:</strong> ${appointment.date}</p>
+                        <p><strong>Time:</strong> ${appointment.time}</p>
+                        <p><strong>Phone:</strong> ${appointment.phone}</p>
+                    </div>
+                    <p style="color: #666; margin-bottom: 24px;">
+                        We will contact you within 24 hours to confirm your appointment.
+                        Please save your appointment ID for reference.
+                    </p>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <button onclick="downloadAppointmentPDF('${appointment.id}')" 
+                                style="background: #3182ce; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer;">
+                            Download PDF
+                        </button>
+                        <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" 
+                            Download PDF
+                        </button>
+                        <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" 
+                                style="background: #ee5a24; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer;">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Auto-close after 10 seconds
+            setTimeout(() => {
+                if (document.body.contains(modal)) {
+                    modal.remove();
+                }
+            }, 10000);
+        }
+
+        // Download appointment PDF
+        function downloadAppointmentPDF(appointmentId) {
+            const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            const appointment = appointments.find(a => a.id === appointmentId);
+            
+            if (!appointment) return;
+            
+            try {
+                // Create new jsPDF instance
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                // Set font
+                doc.setFont('helvetica');
+                
+                // Header
+                doc.setFontSize(20);
+                doc.setTextColor(44, 82, 130);
+                doc.text('SHALOM DENTAL CARE', 105, 25, { align: 'center' });
+                
+                doc.setFontSize(10);
+                doc.setTextColor(0, 0, 0);
+                doc.text('76/2, Gandhi Road, Srinivasa Nagar, Alappakkam', 105, 35, { align: 'center' });
+                doc.text('New Perungalathur, Tamil Nadu 600063', 105, 42, { align: 'center' });
+                doc.text('Phone: +91 86107 76477 | Email: shalomdentalcare19@gmail.com', 105, 49, { align: 'center' });
+                
+                // Line separator
+                doc.setLineWidth(0.5);
+                doc.setDrawColor(44, 82, 130);
+                doc.line(20, 55, 190, 55);
+                
+                // Title
+                doc.setFontSize(16);
+                doc.setTextColor(44, 82, 130);
+                doc.text('APPOINTMENT CONFIRMATION', 105, 70, { align: 'center' });
+                
+                // Appointment details
+                doc.setFontSize(11);
+                doc.setTextColor(0, 0, 0);
+                doc.text(`Appointment ID: ${appointment.id}`, 20, 90);
+                doc.text(`Status: ${appointment.status || 'Pending'}`, 20, 97);
+                
+                // Patient details
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('PATIENT DETAILS:', 20, 115);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.text(`Name: ${appointment.name}`, 20, 125);
+                doc.text(`Phone: ${appointment.phone}`, 20, 132);
+                doc.text(`Email: ${appointment.email}`, 20, 139);
+                
+                // Appointment details
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('APPOINTMENT DETAILS:', 20, 155);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.text(`Service: ${appointment.service}`, 20, 165);
+                doc.text(`Date: ${appointment.date}`, 20, 172);
+                doc.text(`Time: ${appointment.time}`, 20, 179);
+                
+                if (appointment.message) {
+                    doc.setFontSize(12);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('MESSAGE:', 20, 195);
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(11);
+                    const splitMessage = doc.splitTextToSize(appointment.message, 170);
+                    doc.text(splitMessage, 20, 205);
+                }
+                
+                // Instructions
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('IMPORTANT INSTRUCTIONS:', 20, 235);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(10);
+                doc.text('• Please arrive 15 minutes before your appointment time', 20, 245);
+                doc.text('• Bring a valid ID and any relevant medical records', 20, 252);
+                doc.text('• Contact us immediately if you need to reschedule', 20, 259);
+                
+                // Footer
+                doc.setFontSize(10);
+                doc.setTextColor(100, 100, 100);
+                doc.text('Thank you for choosing Shalom Dental Care!', 105, 275, { align: 'center' });
+                doc.text('This is a computer-generated appointment confirmation.', 105, 282, { align: 'center' });
+                
+                // Save the PDF
+                doc.save(`appointment-${appointmentId}.pdf`);
+                
+            } catch (error) {
+                console.error('Error generating appointment PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+        }
+
+        // Doctor Portal logic
+        const doctorPortalLink = document.getElementById('doctor-portal-link');
+        const doctorPortalPage = document.getElementById('doctor-portal-page');
+        const closeDoctorPortal = document.getElementById('close-doctor-portal');
+        const doctorPortalLogin = document.getElementById('doctor-portal-login');
+        const doctorPortalMain = document.getElementById('doctor-portal-main');
+        const doctorPortalLoginBtn = document.getElementById('doctor-portal-login-btn');
+        const doctorPortalPassword = document.getElementById('doctor-portal-password');
+        const doctorPortalLoginError = document.getElementById('doctor-portal-login-error');
+        const appointmentsList = document.getElementById('appointments-list');
+        // New tab/page elements
+        const tabPatientEntry = document.getElementById('tab-patient-entry');
+        const tabAppointments = document.getElementById('tab-appointments');
+        const tabBill = document.getElementById('tab-bill');
+        var tabAnalytics = document.getElementById('tab-analytics');
+        var analyticsPage = document.getElementById('doctor-analytics-page');
+        const patientEntryPage = document.getElementById('doctor-patient-entry-page');
+        const appointmentsPage = document.getElementById('doctor-appointments-page');
+        const billPage = document.getElementById('bill-page');
+        // Patient entry form
+        const patientEntryForm = document.getElementById('doctor-patient-entry-form');
+        const patientEntrySuccess = document.getElementById('doctor-patient-entry-success');
+        // Bill form logic (unchanged)
+        const billForm = document.getElementById('bill-form');
+        const billPrintArea = document.getElementById('bill-print-area');
+        const billDetails = document.getElementById('bill-details');
+
+        // Password for doctor portal
+        const DOCTOR_PORTAL_PASSWORD = "shalomdoc@2024";
+
+        // Call tracking function
+        function trackCall(type) {
+            const timestamp = new Date().toISOString();
+            let callLogs = JSON.parse(localStorage.getItem('callLogs') || '[]');
+            callLogs.push({
+                type: type,
+                timestamp: timestamp,
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString()
+            });
+            localStorage.setItem('callLogs', JSON.stringify(callLogs));
+            console.log(`Call tracked: ${type} at ${timestamp}`);
+        }
+
+        doctorPortalLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Show the portal page with animation
+            doctorPortalPage.style.display = 'block';
+            
+            // Trigger animations after a small delay
+            setTimeout(() => {
+                doctorPortalPage.style.opacity = '1';
+                doctorPortalPage.style.transform = 'translateX(0)';
+                
+                // Animate header down after page slides in
+                setTimeout(() => {
+                    const header = doctorPortalPage.querySelector('header');
+                    header.style.transform = 'translateY(0)';
+                    
+                    // Animate content area
+                    const content = document.getElementById('doctor-portal-content');
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateY(0)';
+                }, 300);
+            }, 50);
+            
+            doctorPortalLogin.style.display = '';
+            doctorPortalMain.style.display = 'none';
+            doctorPortalPassword.value = '';
+            doctorPortalLoginError.style.display = 'none';
+        });
+
+        closeDoctorPortal.addEventListener('click', function() {
+            // Animate out
+            const header = doctorPortalPage.querySelector('header');
+            const content = document.getElementById('doctor-portal-content');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(30px)';
+            header.style.transform = 'translateY(-100%)';
+            
+            setTimeout(() => {
+                doctorPortalPage.style.opacity = '0';
+                doctorPortalPage.style.transform = 'translateX(100%)';
+                
+                setTimeout(() => {
+                    doctorPortalPage.style.display = 'none';
+                    // Reset animations for next time
+                    header.style.transform = 'translateY(-100%)';
+                    content.style.opacity = '0';
+                    content.style.transform = 'translateY(30px)';
+                }, 500);
+            }, 200);
+            
+            billPage.style.display = 'none';
+            billPrintArea.style.display = 'none';
+        });
+
+        doctorPortalLoginBtn.addEventListener('click', function() {
+            if (doctorPortalPassword.value === DOCTOR_PORTAL_PASSWORD) {
+                doctorPortalLogin.style.display = 'none';
+                doctorPortalMain.style.display = '';
+                // Show patient entry page by default
+                showDoctorPortalPage('patient');
+            } else {
+                doctorPortalLoginError.style.display = '';
+            }
+        });
+
+        // Tab navigation logic
+        function showDoctorPortalPage(page) {
+            // Reset tab styles
+            tabPatientEntry.style.background = '#eee';
+            tabPatientEntry.style.color = '#333';
+            tabAppointments.style.background = '#eee';
+            tabAppointments.style.color = '#333';
+            tabBill.style.background = '#eee';
+            tabBill.style.color = '#333';
+            tabAnalytics.style.background = '#eee';
+            tabAnalytics.style.color = '#333';
+            // Hide all pages
+            patientEntryPage.style.display = 'none';
+            appointmentsPage.style.display = 'none';
+            billPage.style.display = 'none';
+            billPrintArea.style.display = 'none';
+            analyticsPage.style.display = 'none';
+            // Show selected page
+            if (page === 'patient') {
+                patientEntryPage.style.display = '';
+                tabPatientEntry.style.background = '#3182ce';
+                tabPatientEntry.style.color = '#fff';
+            } else if (page === 'appointments') {
+                appointmentsPage.style.display = '';
+                tabAppointments.style.background = '#3182ce';
+                tabAppointments.style.color = '#fff';
+                showAppointments();
+            } else if (page === 'bill') {
+                billPage.style.display = '';
+                tabBill.style.background = '#3182ce';
+                tabBill.style.color = '#fff';
+                // Load bills history when bill page is opened
+                updateBillsHistory();
+            } else if (page === 'analytics') {
+                analyticsPage.style.display = '';
+                tabAnalytics.style.background = '#3182ce';
+                tabAnalytics.style.color = '#fff';
+                showAnalyticsDashboard();
+            }
+        }
+        tabPatientEntry.addEventListener('click', function() { showDoctorPortalPage('patient'); });
+        tabAppointments.addEventListener('click', function() { showDoctorPortalPage('appointments'); });
+        tabBill.addEventListener('click', function() { showDoctorPortalPage('bill'); });
+        tabAnalytics.addEventListener('click', function() { showDoctorPortalPage('analytics'); });
+
+        // Patient entry form logic
+        patientEntryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Get form data
+            const patient = {
+                name: patientEntryForm['entry-patient-name'].value,
+                phone: patientEntryForm['entry-patient-phone'].value,
+                email: patientEntryForm['entry-patient-email'].value,
+                service: patientEntryForm['entry-patient-service'].value,
+                date: patientEntryForm['entry-patient-date'].value,
+                time: patientEntryForm['entry-patient-time'].value,
+                message: patientEntryForm['entry-patient-message'].value
+            };
+            // Save to localStorage
+            let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            appointments.push(patient);
+            localStorage.setItem('appointments', JSON.stringify(appointments));
+            // Show success
+            patientEntrySuccess.style.display = '';
+            setTimeout(() => { patientEntrySuccess.style.display = 'none'; }, 1500);
+            patientEntryForm.reset();
+        });
+
+        // Bill form logic with enhanced duplicate prevention
+        if (billForm) {
+            billForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Prevent double submission and multiple bill generation
+                const submitBtn = this.querySelector('button[type="submit"]');
+                if (submitBtn.disabled || isGeneratingBill) {
+                    console.log('Form submission blocked - already processing');
+                    return;
+                }
+                
+                // Disable form and set processing state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Generating...';
+                isGeneratingBill = true;
+                
+                // Validate form elements
+                const patientNameEl = document.getElementById('bill-patient-name');
+                const serviceCheckboxes = document.querySelectorAll('input[name="bill-service"]:checked');
+                const amountEl = document.getElementById('bill-amount');
+                const dateEl = document.getElementById('bill-date');
+                
+                if (!patientNameEl || !amountEl || !dateEl) {
+                    alert('Error: Some form elements are missing. Please refresh and try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '💰 Generate Bill';
+                    isGeneratingBill = false;
+                    return;
+                }
+                
+                // Get selected services and calculate total
+                const selectedServices = [];
+                let totalAmount = 0;
+                
+                serviceCheckboxes.forEach(checkbox => {
+                    const serviceName = checkbox.value;
+                    const servicePrice = parseFloat(checkbox.dataset.price);
+                    selectedServices.push({
+                        name: serviceName,
+                        price: servicePrice
+                    });
+                    totalAmount += servicePrice;
+                });
+                
+                // Get form data
+                const billData = {
+                    patientName: patientNameEl.value.trim(),
+                    services: selectedServices,
+                    service: selectedServices.map(s => s.name).join(', '), // For backward compatibility
+                    amount: totalAmount,
+                    date: dateEl.value,
+                    billId: 'BILL' + Date.now().toString().slice(-6),
+                    timestamp: new Date().toLocaleString()
+                };
+                
+                // Validate data
+                if (!billData.patientName) {
+                    alert('Please enter patient name.');
+                    patientNameEl.focus();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '💰 Generate Bill';
+                    isGeneratingBill = false;
+                    return;
+                }
+                
+                if (selectedServices.length === 0) {
+                    alert('Please select at least one service.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '💰 Generate Bill';
+                    isGeneratingBill = false;
+                    return;
+                }
+                
+                if (!billData.amount || billData.amount <= 0) {
+                    alert('Please ensure valid services are selected with proper pricing.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '💰 Generate Bill';
+                    isGeneratingBill = false;
+                    return;
+                }
+                
+                if (!billData.date) {
+                    alert('Please select a date.');
+                    dateEl.focus();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '💰 Generate Bill';
+                    isGeneratingBill = false;
+                    return;
+                }
+                
+                // Save bill to localStorage
+                let bills = JSON.parse(localStorage.getItem('bills') || '[]');
+                bills.push(billData);
+                localStorage.setItem('bills', JSON.stringify(bills));
+                
+                // Generate bill display (this will clear any existing content)
+                generateBillDisplay(billData);
+                
+                // Show the print area
+                if (billPrintArea) {
+                    billPrintArea.style.display = 'block';
+                    billPrintArea.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert('Bill generated successfully! Bill ID: ' + billData.billId);
+                }
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = 'position:fixed;top:20px;right:20px;background:#38a169;color:#fff;padding:12px 20px;border-radius:8px;z-index:5000;font-weight:bold;';
+                successMsg.textContent = 'Bill generated successfully! ID: ' + billData.billId;
+                document.body.appendChild(successMsg);
+                setTimeout(() => document.body.removeChild(successMsg), 3000);
+                
+                // Update bills history with delay to prevent conflicts
+                setTimeout(() => {
+                    updateBillsHistory();
+                }, 200);
+                
+                // Reset form with delay
+                setTimeout(() => {
+                    this.reset();
+                    // Clear services summary and amount after reset
+                    const servicesSummary = document.getElementById('services-summary');
+                    const amountInput = document.getElementById('bill-amount');
+                    if (servicesSummary) {
+                        servicesSummary.style.display = 'none';
+                    }
+                    if (amountInput) {
+                        amountInput.value = 0;
+                    }
+                }, 300);
+                
+                // Re-enable submit button and reset flag
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '💰 Generate Bill';
+                    isGeneratingBill = false;
+                }, 400);
+            });
+        } else {
+            console.error('Bill form not found');
+        }
+
+        // Custom print function to ensure clean bill printing
+        function printBill() {
+            // Prevent multiple print calls
+            if (window.printInProgress) {
+                console.log('Print already in progress');
+                return;
+            }
+            
+            window.printInProgress = true;
+            
+            // Ensure only one bill is visible
+            const allBillContents = document.querySelectorAll('.bill-content');
+            console.log('Found bill contents:', allBillContents.length);
+            
+            if (allBillContents.length === 0) {
+                alert('No bill to print. Please generate a bill first.');
+                window.printInProgress = false;
+                return;
+            }
+            
+            // Hide all but the latest bill to prevent duplicates in print
+            if (allBillContents.length > 1) {
+                for (let i = 0; i < allBillContents.length - 1; i++) {
+                    allBillContents[i].style.display = 'none';
+                }
+                console.log('Hidden', allBillContents.length - 1, 'older bills');
+            }
+            
+            // Ensure the print area is visible
+            if (billPrintArea) {
+                billPrintArea.style.display = 'block';
+            }
+            
+            // Add a small delay to ensure DOM updates, then print
+            setTimeout(() => {
+                try {
+                    window.print();
+                    console.log('Print dialog opened');
+                } catch (error) {
+                    console.error('Print error:', error);
+                    alert('Print function encountered an error. Please try again.');
+                }
+                
+                // Reset print flag immediately after print call
+                window.printInProgress = false;
+                
+                // Restore any hidden bills after printing (with longer delay)
+                setTimeout(() => {
+                    allBillContents.forEach(bill => {
+                        bill.style.display = 'block';
+                    });
+                    console.log('Restored all bill displays');
+                }, 1500);
+            }, 200);
+        }
+        window.printBill = printBill;
+
+        // Function to update bills history display
+        function updateBillsHistory() {
+            const bills = JSON.parse(localStorage.getItem('bills') || '[]');
+            const historyList = document.getElementById('bills-history-list');
+            
+            if (!historyList) {
+                console.error('Bills history list container not found');
+                return;
+            }
+            
+            // Clear existing content to prevent duplication
+            historyList.innerHTML = '';
+            
+            if (bills.length === 0) {
+                historyList.innerHTML = '<div style="padding:20px; text-align:center; color:#888;">No bills generated yet.</div>';
+                return;
+            }
+            
+            historyList.innerHTML = bills.reverse().map((bill, index) => {
+                // Handle both old single service format and new multiple services format
+                let servicesDisplay = '';
+                if (bill.services && bill.services.length > 0) {
+                    // New format with multiple services
+                    servicesDisplay = bill.services.map(s => s.name).join(', ');
+                } else {
+                    // Old format with single service string
+                    servicesDisplay = bill.service || 'Service';
+                }
+                
+                return `
+                <div style="padding:12px 16px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                    <div style="flex:1;">
+                        <div style="font-weight:bold; color:#2d3748;">${bill.patientName}</div>
+                        <div style="color:#555; font-size:0.9rem;">
+                            ${servicesDisplay} | ₹${bill.amount} | ${bill.date}
+                        </div>
+                        <div style="color:#888; font-size:0.8rem;">Bill ID: ${bill.billId}</div>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <button onclick="viewBill('${bill.billId}')" style="background:#3182ce; color:#fff; border:none; padding:6px 12px; border-radius:4px; font-size:0.85rem; cursor:pointer;">
+                            👁️ View
+                        </button>
+                        <button onclick="downloadSingleBill('${bill.billId}')" style="background:#38a169; color:#fff; border:none; padding:6px 12px; border-radius:4px; font-size:0.85rem; cursor:pointer;">
+                            📄 Download
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // Function to view a specific bill
+        function viewBill(billId) {
+            console.log('Viewing bill:', billId);
+            
+            const bills = JSON.parse(localStorage.getItem('bills') || '[]');
+            const bill = bills.find(b => b.billId === billId);
+            
+            if (bill) {
+                // Clear any existing bill display first
+                if (billPrintArea) {
+                    billPrintArea.style.display = 'none';
+                }
+                
+                // Generate the bill display
+                generateBillDisplay(bill);
+                
+                // Show the print area after a short delay
+                setTimeout(() => {
+                    if (billPrintArea) {
+                        billPrintArea.style.display = 'block';
+                        billPrintArea.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+            } else {
+                alert('Bill not found.');
+            }
+        }
+        window.viewBill = viewBill;
+
+        // Function to download a specific bill
+        function downloadSingleBill(billId) {
+            const bills = JSON.parse(localStorage.getItem('bills') || '[]');
+            const bill = bills.find(b => b.billId === billId);
+            
+            if (!bill) {
+                alert('Bill not found.');
+                return;
+            }
+            
+            try {
+                // Create new jsPDF instance
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                // Set font
+                doc.setFont('helvetica');
+                
+                // Header
+                doc.setFontSize(20);
+                doc.setTextColor(44, 82, 130);
+                doc.text('SHALOM DENTAL CARE', 105, 25, { align: 'center' });
+                
+                doc.setFontSize(10);
+                doc.setTextColor(0, 0, 0);
+                doc.text('76/2, Gandhi Road, Srinivasa Nagar, Alappakkam', 105, 35, { align: 'center' });
+                doc.text('New Perungalathur, Tamil Nadu 600063', 105, 42, { align: 'center' });
+                doc.text('Phone: +91 86107 76477 | Email: shalomdentalcare19@gmail.com', 105, 49, { align: 'center' });
+                
+                // Line separator
+                doc.setLineWidth(0.5);
+                doc.setDrawColor(44, 82, 130);
+                doc.line(20, 55, 190, 55);
+                
+                // Invoice title
+                doc.setFontSize(16);
+                doc.setTextColor(44, 82, 130);
+                doc.text('INVOICE', 105, 70, { align: 'center' });
+                
+                // Bill details
+                doc.setFontSize(11);
+                doc.setTextColor(0, 0, 0);
+                doc.text(`Bill ID: ${bill.billId}`, 20, 85);
+                doc.text(`Date: ${bill.date}`, 20, 92);
+                doc.text(`Generated: ${bill.timestamp}`, 20, 99);
+                
+                // Patient details
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('BILL TO:', 20, 115);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.text(bill.patientName, 20, 125);
+                
+                // Service details header
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('SERVICE DETAILS:', 20, 145);
+                
+                // Table header
+                doc.setFillColor(248, 250, 252);
+                doc.rect(20, 155, 170, 10, 'F');
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Service', 25, 162);
+                doc.text('Amount', 160, 162);
+                
+                // Table content
+                let yPosition = 172;
+                doc.setFont('helvetica', 'normal');
+                
+                if (bill.services && bill.services.length > 0) {
+                    // Multiple services
+                    bill.services.forEach((service, index) => {
+                        if (yPosition > 250) {
+                            doc.addPage();
+                            yPosition = 30;
+                        }
+                        doc.text(service.name, 25, yPosition);
+                        doc.text(`₹${service.price}`, 160, yPosition);
+                        yPosition += 8;
+                    });
+                } else {
+                    // Single service (backward compatibility)
+                    doc.text(bill.service || 'Service', 25, yPosition);
+                    doc.text(`₹${bill.amount}`, 160, yPosition);
+                    yPosition += 8;
+                }
+                
+                // Total amount
+                yPosition += 10;
+                doc.setFillColor(240, 249, 255);
+                doc.rect(20, yPosition - 5, 170, 15, 'F');
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text(`TOTAL AMOUNT: ₹${bill.amount}`, 105, yPosition + 5, { align: 'center' });
+                
+                // Footer
+                yPosition += 30;
+                if (yPosition > 250) {
+                    doc.addPage();
+                    yPosition = 30;
+                }
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(100, 100, 100);
+                doc.text('Thank you for choosing Shalom Dental Care!', 105, yPosition, { align: 'center' });
+                doc.text('For any queries, please contact us at +91 86107 76477', 105, yPosition + 7, { align: 'center' });
+                doc.text('This is a computer-generated bill.', 105, yPosition + 14, { align: 'center' });
+                
+                // Save the PDF
+                doc.save(`bill-${bill.billId}.pdf`);
+                
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+        }
+        window.downloadSingleBill = downloadSingleBill;
+
+        // Function to clear bills history
+        function clearBillsHistory() {
+            if (confirm('Are you sure you want to clear all bills history? This action cannot be undone.')) {
+                localStorage.removeItem('bills');
+                updateBillsHistory();
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = 'position:fixed;top:20px;right:20px;background:#38a169;color:#fff;padding:12px 20px;border-radius:8px;z-index:5000;font-weight:bold;';
+                successMsg.textContent = 'Bills history cleared!';
+                document.body.appendChild(successMsg);
+                setTimeout(() => document.body.removeChild(successMsg), 3000);
+            }
+        }
+        window.clearBillsHistory = clearBillsHistory;
+
+        // Flag to prevent multiple bill displays
+        let isGeneratingBill = false;
+        
+        // Function to generate bill display
+        function generateBillDisplay(billData) {
+            // Check if billDetails element exists
+            if (!billDetails) {
+                console.error('Bill details container not found');
+                return;
+            }
+            
+            // Clear any existing content to prevent duplication
+            billDetails.innerHTML = '';
+            
+            // Also clear any existing bills from the print area
+            const existingBills = document.querySelectorAll('.bill-content');
+            existingBills.forEach(bill => bill.remove());
+            
+            // Generate the bill content with unique container
+            const today = new Date();
+            const billContent = `
+                <div class="bill-content" data-bill-id="${billData.billId}" style="page-break-after: auto;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h2 style="color: #3182ce; margin: 0;">Shalom Dental Care</h2>
+                        <p style="margin: 0.5rem 0; color: #666;">76/2, Gandhi Road, Srinivasa Nagar, Alappakkam<br>
+                        New Perungalathur, Tamil Nadu 600063<br>
+                        Phone: +91 86107 76477 | Email: shalomdentalcare19@gmail.com</p>
+                        <hr style="border: none; border-top: 2px solid #3182ce; margin: 1rem 0;">
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 2rem;">
+                        <div>
+                            <h3 style="margin: 0 0 0.5rem 0;">Bill To:</h3>
+                            <p style="margin: 0; font-size: 1.1rem; font-weight: bold;">${billData.patientName}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="margin: 0;"><strong>Bill ID:</strong> ${billData.billId}</p>
+                            <p style="margin: 0;"><strong>Date:</strong> ${billData.date}</p>
+                            <p style="margin: 0;"><strong>Generated:</strong> ${billData.timestamp}</p>
+                        </div>
+                    </div>
+                    
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+                        <thead>
+                            <tr style="background: #f8fafc;">
+                                <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Service</th>
+                                <th style="padding: 12px; text-align: right; border: 1px solid #e2e8f0;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${billData.services && billData.services.length > 0 ? 
+                                billData.services.map(service => `
+                                    <tr>
+                                        <td style="padding: 12px; border: 1px solid #e2e8f0;">${service.name}</td>
+                                        <td style="padding: 12px; text-align: right; border: 1px solid #e2e8f0;">₹${service.price}</td>
+                                    </tr>
+                                `).join('') :
+                                `<tr>
+                                    <td style="padding: 12px; border: 1px solid #e2e8f0;">${billData.service || 'Service'}</td>
+                                    <td style="padding: 12px; text-align: right; border: 1px solid #e2e8f0;">₹${billData.amount}</td>
+                                </tr>`
+                            }
+                        </tbody>
+                    </table>
+                    
+                    <div style="text-align: right; margin-bottom: 2rem;">
+                        <div style="display: inline-block; background: #f8fafc; padding: 1rem; border-radius: 8px;">
+                            <p style="margin: 0; font-size: 1.2rem;"><strong>Total Amount: ₹${billData.amount}</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 3rem; text-align: center; color: #666; font-size: 0.9rem;">
+                        <p>Thank you for choosing Shalom Dental Care!</p>
+                        <p>For any queries, please contact us at +91 86107 76477</p>
+                    </div>
+                </div>
+            `;
+            
+            billDetails.innerHTML = billContent;
+        }
+
+        // Auto-calculate amount when services are selected
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCheckboxes = document.querySelectorAll('input[name="bill-service"]');
+            const amountInput = document.getElementById('bill-amount');
+            
+            function updateTotalAmount() {
+                let total = 0;
+                const selectedServices = [];
+                
+                serviceCheckboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        const price = parseFloat(checkbox.dataset.price);
+                        total += price;
+                        selectedServices.push(checkbox.value);
+                    }
+                });
+                
+                if (amountInput) {
+                    amountInput.value = total;
+                    // Add visual feedback
+                    if (total > 0) {
+                        amountInput.style.background = '#e6fffa';
+                        setTimeout(() => {
+                            amountInput.style.background = 'white';
+                        }, 500);
+                    }
+                }
+                
+                // Update service summary
+                const servicesSummary = document.getElementById('services-summary');
+                if (servicesSummary) {
+                    if (selectedServices.length > 0) {
+                        servicesSummary.textContent = `Selected: ${selectedServices.join(', ')} (Total: ₹${total})`;
+                        servicesSummary.style.display = 'block';
+                    } else {
+                        servicesSummary.style.display = 'none';
+                    }
+                }
+            }
+            
+            // Add event listeners to all service checkboxes
+            serviceCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateTotalAmount);
+            });
+            
+            // Initial calculation
+            updateTotalAmount();
+        });
+
+        // Set today's date as default for bill
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const todayString = today.toISOString().split('T')[0];
+            const billDateInput = document.getElementById('bill-date');
+            if (billDateInput) {
+                billDateInput.value = todayString;
+            }
+        });
+
+        // Download bill as PDF function
+        function downloadBillPDF() {
+            const bills = JSON.parse(localStorage.getItem('bills') || '[]');
+            if (bills.length === 0) {
+                alert('No bills found to download.');
+                return;
+            }
+            
+            // Get the latest bill (the one that was just generated)
+            const latestBill = bills[bills.length - 1];
+            
+            try {
+                // Create new jsPDF instance
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                // Set font
+                doc.setFont('helvetica');
+                
+                // Header
+                doc.setFontSize(20);
+                doc.setTextColor(44, 82, 130);
+                doc.text('SHALOM DENTAL CARE', 105, 25, { align: 'center' });
+                
+                doc.setFontSize(10);
+                doc.setTextColor(0, 0, 0);
+                doc.text('76/2, Gandhi Road, Srinivasa Nagar, Alappakkam', 105, 35, { align: 'center' });
+                doc.text('New Perungalathur, Tamil Nadu 600063', 105, 42, { align: 'center' });
+                doc.text('Phone: +91 86107 76477 | Email: shalomdentalcare19@gmail.com', 105, 49, { align: 'center' });
+                
+                // Line separator
+                doc.setLineWidth(0.5);
+                doc.setDrawColor(44, 82, 130);
+                doc.line(20, 55, 190, 55);
+                
+                // Invoice title
+                doc.setFontSize(16);
+                doc.setTextColor(44, 82, 130);
+                doc.text('INVOICE', 105, 70, { align: 'center' });
+                
+                // Bill details
+                doc.setFontSize(11);
+                doc.setTextColor(0, 0, 0);
+                doc.text(`Bill ID: ${latestBill.billId}`, 20, 85);
+                doc.text(`Date: ${latestBill.date}`, 20, 92);
+                doc.text(`Generated: ${latestBill.timestamp}`, 20, 99);
+                
+                // Patient details
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('BILL TO:', 20, 115);
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.text(latestBill.patientName, 20, 125);
+                
+                // Service details header
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text('SERVICE DETAILS:', 20, 145);
+                
+                // Table header
+                doc.setFillColor(248, 250, 252);
+                doc.rect(20, 155, 170, 10, 'F');
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Service', 25, 162);
+                doc.text('Amount', 160, 162);
+                
+                // Table content
+                let yPosition = 172;
+                doc.setFont('helvetica', 'normal');
+                
+                if (latestBill.services && latestBill.services.length > 0) {
+                    // Multiple services
+                    latestBill.services.forEach((service, index) => {
+                        if (yPosition > 250) {
+                            doc.addPage();
+                            yPosition = 30;
+                        }
+                        doc.text(service.name, 25, yPosition);
+                        doc.text(`₹${service.price}`, 160, yPosition);
+                        yPosition += 8;
+                    });
+                } else {
+                    // Single service (backward compatibility)
+                    doc.text(latestBill.service || 'Service', 25, yPosition);
+                    doc.text(`₹${latestBill.amount}`, 160, yPosition);
+                    yPosition += 8;
+                }
+                
+                // Total amount
+                yPosition += 10;
+                doc.setFillColor(240, 249, 255);
+                doc.rect(20, yPosition - 5, 170, 15, 'F');
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.text(`TOTAL AMOUNT: ₹${latestBill.amount}`, 105, yPosition + 5, { align: 'center' });
+                
+                // Footer
+                yPosition += 30;
+                if (yPosition > 250) {
+                    doc.addPage();
+                    yPosition = 30;
+                }
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(100, 100, 100);
+                doc.text('Thank you for choosing Shalom Dental Care!', 105, yPosition, { align: 'center' });
+                doc.text('For any queries, please contact us at +91 86107 76477', 105, yPosition + 7, { align: 'center' });
+                doc.text('This is a computer-generated bill.', 105, yPosition + 14, { align: 'center' });
+                
+                // Save the PDF
+                doc.save(`bill-${latestBill.billId}.pdf`);
+                
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+        }
+        window.downloadBillPDF = downloadBillPDF;
+
+        function showAppointments(filter = '') {
+            let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            // Add status if missing
+            let changed = false;
+            appointments.forEach(a => {
+                if (!a.status) { a.status = 'pending'; changed = true; }
+            });
+            if (changed) localStorage.setItem('appointments', JSON.stringify(appointments));
+            // Filter
+            if (filter) {
+                const f = filter.toLowerCase();
+                appointments = appointments.filter(a =>
+                    (a.name && a.name.toLowerCase().includes(f)) ||
+                    (a.phone && a.phone.toLowerCase().includes(f)) ||
+                    (a.email && a.email.toLowerCase().includes(f)) ||
+                    (a.service && a.service.toLowerCase().includes(f)) ||
+                    (a.date && a.date.toLowerCase().includes(f)) ||
+                    (a.time && a.time.toLowerCase().includes(f)) ||
+                    (a.status && a.status.toLowerCase().includes(f))
+                );
+            }
+            if (appointments.length === 0) {
+                appointmentsList.innerHTML = '<div style="padding:12px;text-align:center;color:#888;">No appointments found.</div>';
+                return;
+            }
+            appointmentsList.innerHTML = appointments.map((a, i) => `
+                <div style="padding:8px 16px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+                    <div style="flex:2;min-width:180px;">
+                        <strong>${a.name}</strong> (${a.phone})<br>
+                        <span style="color:#555;">${a.service} | ${a.date} ${a.time}</span><br>
+                        <span style="font-size:0.95em;color:#888;">${a.email}</span>
+                        ${a.message ? `<div style="font-size:0.95em;color:#888;">${a.message}</div>` : ''}
+                    </div>
+                    <div style="flex:1;min-width:120px;text-align:center;">
+                        <select onchange="updateAppointmentStatus(${i}, this.value)" style="padding:4px 8px;border-radius:6px;">
+                            <option value="pending" ${a.status==='pending'?'selected':''}>Pending</option>
+                            <option value="completed" ${a.status==='completed'?'selected':''}>Completed</option>
+                            <option value="cancelled" ${a.status==='cancelled'?'selected':''}>Cancelled</option>
+                        </select>
+                        <div style="margin-top:4px;font-size:0.95em;color:${a.status==='completed'?'#38a169':a.status==='cancelled'?'#e53e3e':'#e6b800'};">
+                            ${a.status.charAt(0).toUpperCase()+a.status.slice(1)}
+                        </div>
+                    </div>
+                    <button onclick="deleteAppointment(${i})" style="background:#e53e3e;color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:0.95em;">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        // Update appointment status
+        function updateAppointmentStatus(index, status) {
+            let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            if (index >= 0 && index < appointments.length) {
+                appointments[index].status = status;
+                localStorage.setItem('appointments', JSON.stringify(appointments));
+                showAppointments(document.getElementById('appointments-search').value);
+            }
+        }
+        window.updateAppointmentStatus = updateAppointmentStatus;
+
+        // Delete appointment function
+        function deleteAppointment(index) {
+            if (confirm('Are you sure you want to delete this appointment?')) {
+                let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+                if (index >= 0 && index < appointments.length) {
+                    appointments.splice(index, 1);
+                    localStorage.setItem('appointments', JSON.stringify(appointments));
+                    showAppointments(document.getElementById('appointments-search').value);
+                }
+            }
+        }
+        window.deleteAppointment = deleteAppointment;
+
+        // Search/filter logic
+        const appointmentsSearch = document.getElementById('appointments-search');
+        if (appointmentsSearch) {
+            appointmentsSearch.addEventListener('input', function() {
+                showAppointments(this.value);
+            });
+        }
+
+        // Export CSV
+        const exportAppointmentsCsv = document.getElementById('export-appointments-csv');
+        if (exportAppointmentsCsv) {
+            exportAppointmentsCsv.addEventListener('click', function() {
+                let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+                if (!appointments.length) { alert('No data to export.'); return; }
+                const header = ['Name','Phone','Email','Service','Date','Time','Message','Status'];
+                const rows = appointments.map(a => [a.name,a.phone,a.email,a.service,a.date,a.time,a.message||'',a.status||'pending']);
+                let csv = header.join(',') + '\n' + rows.map(r => r.map(x => '"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\n');
+                const blob = new Blob([csv], {type:'text/csv'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'appointments.csv';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);}, 100);
+            });
+        }
+        // Export PDF
+        const exportAppointmentsPdf = document.getElementById('export-appointments-pdf');
+        if (exportAppointmentsPdf) {
+            exportAppointmentsPdf.addEventListener('click', function() {
+                let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+                if (!appointments.length) { alert('No data to export.'); return; }
+                if (!window.jspdf || !window.jspdf.jsPDF) { alert('PDF library not loaded yet. Please try again.'); return; }
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                doc.setFontSize(14);
+                doc.text('Shalom Dental Care - Appointments', 14, 18);
+                const header = ['Name','Phone','Email','Service','Date','Time','Status'];
+                let y = 30;
+                doc.setFontSize(11);
+                doc.text(header.join(' | '), 14, y);
+                y += 8;
+                appointments.forEach(a => {
+                    const row = [a.name,a.phone,a.email,a.service,a.date,a.time,a.status||'pending'].join(' | ');
+                    doc.text(row, 14, y);
+                    y += 8;
+                    if (y > 270) { doc.addPage(); y = 20; }
+                });
+                doc.save('appointments.pdf');
+            });
+        }
+        // Add analytics tab/page logic (declare only once)
+        var tabAnalytics = document.getElementById('tab-analytics');
+        var analyticsPage = document.getElementById('doctor-analytics-page');
+        if (tabAnalytics) tabAnalytics.addEventListener('click', function() { showDoctorPortalPage('analytics'); });
+        // Chart.js CDN
+        if (!document.getElementById('chartjs-cdn')) {
+            var chartScript = document.createElement('script');
+            chartScript.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+            chartScript.id = 'chartjs-cdn';
+            document.head.appendChild(chartScript);
+        }
+        // Analytics dashboard logic
+        function showAnalyticsDashboard() {
+            // Wait for Chart.js to load
+            function renderAnalytics() {
+                let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+                // Summary
+                let total = appointments.length;
+                let byStatus = {pending:0,completed:0,cancelled:0};
+                let byService = {};
+                let byDay = {};
+                let today = new Date();
+                for (let i=6; i>=0; i--) {
+                    let d = new Date(today.getFullYear(), today.getMonth(), today.getDate()-i);
+                    let key = d.toISOString().slice(0,10);
+                    byDay[key] = 0;
+                }
+                appointments.forEach(a => {
+                    let s = (a.status||'pending').toLowerCase();
+                    if (byStatus[s] !== undefined) byStatus[s]++;
+                    let service = a.service||'Unknown';
+                    byService[service] = (byService[service]||0)+1;
+                    let date = a.date;
+                    if (byDay[date] !== undefined) byDay[date]++;
+                });
+                // Summary cards
+                const summaryDiv = document.getElementById('analytics-summary');
+                summaryDiv.innerHTML = `
+                    <div style="background:#3182ce;color:#fff;padding:18px 32px;border-radius:12px;min-width:160px;">
+                        <div style="font-size:2.2rem;font-weight:bold;">${total}</div>
+                        <div>Total Appointments</div>
+                    </div>
+                    <div style="background:#e6b800;color:#fff;padding:18px 32px;border-radius:12px;min-width:160px;">
+                        <div style="font-size:2.2rem;font-weight:bold;">${byStatus.pending}</div>
+                        <div>Pending</div>
+                    </div>
+                    <div style="background:#38a169;color:#fff;padding:18px 32px;border-radius:12px;min-width:160px;">
+                        <div style="font-size:2.2rem;font-weight:bold;">${byStatus.completed}</div>
+                        <div>Completed</div>
+                    </div>
+                    <div style="background:#e53e3e;color:#fff;padding:18px 32px;border-radius:12px;min-width:160px;">
+                        <div style="font-size:2.2rem;font-weight:bold;">${byStatus.cancelled}</div>
+                        <div>Cancelled</div>
+                    </div>
+                `;
+                // Service chart
+                const serviceLabels = Object.keys(byService);
+                const serviceData = serviceLabels.map(k=>byService[k]);
+                const serviceColors = ['#3182ce','#764ba2','#38a169','#e53e3e','#e6b800','#ee5a24','#718096','#2d3748'];
+                if (window.analyticsServiceChart) window.analyticsServiceChart.destroy();
+                window.analyticsServiceChart = new window.Chart(document.getElementById('analytics-service-chart').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: serviceLabels,
+                        datasets: [{
+                            label: 'Appointments by Service',
+                            data: serviceData,
+                            backgroundColor: serviceColors,
+                        }]
+                    },
+                    options: {
+                        plugins: {legend: {display:false}},
+                        responsive: true,
+                        scales: {y: {beginAtZero:true}}
+                    }
+                });
+                // Daily chart
+                const dayLabels = Object.keys(byDay);
+                const dayData = dayLabels.map(k=>byDay[k]);
+                if (window.analyticsDailyChart) window.analyticsDailyChart.destroy();
+                window.analyticsDailyChart = new window.Chart(document.getElementById('analytics-daily-chart').getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: dayLabels,
+                        datasets: [{
+                            label: 'Appointments (Last 7 Days)',
+                            data: dayData,
+                            borderColor: '#3182ce',
+                            backgroundColor: 'rgba(49,130,206,0.12)',
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        plugins: {legend: {display:false}},
+                        responsive: true,
+                        scales: {y: {beginAtZero:true,stepSize:1}}
+                    }
+                });
+            }
+            if (window.Chart) {
+                renderAnalytics();
+            } else {
+                setTimeout(showAnalyticsDashboard, 400);
+            }
+        }
+
+        // --- Enhanced Chatbot Logic ---
+        const chatbotBtn = document.getElementById('chatbot-btn');
+        const chatbotWidget = document.getElementById('chatbot-widget');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotForm = document.getElementById('chatbot-form');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotTyping = document.getElementById('chatbot-typing');
+
+        // Enhanced dental care responses with rich content
+        const responses = {
+            'appointment': [
+                "📅 <strong>Book Your Appointment</strong><br><br>Call us at <strong>+91 86107 76477</strong> or I can help you schedule right now!<br><br>🕒 <strong>Available Hours:</strong><br>• Mon-Sat: 9:00 AM - 8:00 PM<br>• Sunday: 10:00 AM - 6:00 PM<br><br>We offer flexible scheduling to fit your busy lifestyle!",
+                "Ready to schedule? I can help you book an appointment right here, or call <strong>+91 86107 76477</strong> for immediate assistance! We're known for minimal wait times and punctual service. 😊"
+            ],
+            'services': [
+                "🦷 <strong>Our Comprehensive Services:</strong><br><br>• <strong>General Dentistry</strong> - ₹300+ (Cleanings, Fillings, Checkups)<br>• <strong>Cosmetic Dentistry</strong> - ₹1,500+ (Whitening, Veneers, Smile Makeovers)<br>• <strong>Orthodontics</strong> - Braces & Invisalign<br>• <strong>Oral Surgery</strong> - Extractions, Implants<br>• <strong>Pediatric Care</strong> - Kid-friendly treatments<br>• <strong>Emergency Care</strong> - 24/7 urgent care<br><br>Which service interests you most? 🤔",
+                "We're your one-stop dental care center! From routine cleanings to complete smile transformations, we've got you covered. Our specialties include cosmetic dentistry and pain-free procedures. What brings you in? 😊"
+            ],
+            'price': [
+                "💰 <strong>Our Transparent Pricing:</strong><br><br>• General Checkup: ₹300<br>• Teeth Cleaning: ₹800<br>• Teeth Whitening: ₹2,500<br>• Dental Filling: ₹1,200<br>• Root Canal: ₹3,500<br>• Crown: ₹4,500<br>• Implant: ₹25,000<br><br>💳 We accept all payment methods and offer EMI options!",
+                "We believe in affordable, quality dental care! Consultation fees start at ₹300, and we'll provide a detailed treatment plan with transparent pricing. No hidden costs, ever! 💯"
+            ],
+            'emergency': [
+                "🚨 <strong>DENTAL EMERGENCY? ACT FAST!</strong><br><br>📞 <strong>Call NOW:</strong> +91 86107 76477<br><br>We handle:<br>• Severe tooth pain<br>• Knocked-out teeth<br>• Broken teeth/fillings<br>• Facial swelling<br>• Bleeding gums<br><br>Available 24/7 for emergencies! Don't wait - call immediately! ⚡",
+                "Emergency care is our priority! 🚨 Call +91 86107 76477 right now. We're equipped to handle all dental emergencies and will see you immediately. Your pain relief is just a phone call away!"
+            ],
+            'location': [
+                "📍 <strong>Find Us Here:</strong><br><br><strong>Shalom Dental Care</strong><br>76/2, Gandhi Road<br>Srinivasa Nagar, Alappakkam<br>New Perungalathur<br>Tamil Nadu 600063<br><br>🚇 Easy access by metro & bus<br>🅿️ Free parking available<br>♿ Wheelchair accessible",
+                "We're conveniently located in New Perungalathur! Just off Gandhi Road with ample parking. Look for our modern blue signage - you can't miss us! 🏥✨"
+            ],
+            'hours': [
+                "🕒 <strong>Our Schedule:</strong><br><br><strong>Monday - Saturday:</strong><br>9:00 AM - 8:00 PM<br><br><strong>Sunday:</strong><br>10:00 AM - 6:00 PM<br><br>📞 Call ahead for same-day appointments!<br>⚡ Emergency care available 24/7",
+                "We're open 6 days a week with extended hours for your convenience! Evening appointments available until 8 PM. Sundays too! Call ahead and we'll accommodate your schedule. 😊"
+            ]
+        };
+
+        const fallbackResponses = [
+            "That's a great question! For detailed information, please call us at +91 86107 76477 or visit our clinic. Our expert team can provide personalized answers.",
+            "I'd recommend speaking with our dental professionals directly for the best advice. Call +91 86107 76477 to schedule a consultation!",
+            "For specific dental concerns, our experienced dentists can provide the most accurate guidance. Please call +91 86107 76477 or visit us!",
+            "That's something our dental team would be happy to discuss with you in detail. Contact us at +91 86107 76477 for personalized care!"
+        ];
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+            
+            // Set initial animation state
+            messageDiv.style.opacity = '0';
+            messageDiv.style.transform = 'translateY(10px)';
+            messageDiv.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            
+            if (isUser) {
+                messageDiv.textContent = text;
+                messageDiv.style.alignSelf = 'flex-end';
+            } else {
+                messageDiv.innerHTML = text;
+                messageDiv.style.alignSelf = 'flex-start';
+            }
+            
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            
+            // Animate message in
+            setTimeout(() => {
+                messageDiv.style.opacity = '1';
+                messageDiv.style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        function showTyping() {
+            chatbotTyping.style.display = 'block';
+            chatbotTyping.style.opacity = '0';
+            chatbotTyping.style.transform = 'translateY(10px)';
+            chatbotTyping.style.transition = 'all 0.3s ease';
+            
+            setTimeout(() => {
+                chatbotTyping.style.opacity = '1';
+                chatbotTyping.style.transform = 'translateY(0)';
+            }, 10);
+            
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function hideTyping() {
+            chatbotTyping.style.opacity = '0';
+            chatbotTyping.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                chatbotTyping.style.display = 'none';
+            }, 300);
+        }
+
+        function getResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // Enhanced keyword matching with multiple triggers per response
+            const keywordMap = {
+                'appointment': ['appointment', 'book', 'schedule', 'visit', 'consultation'],
+                'services': ['services', 'treatment', 'procedures', 'what do you', 'dental care'],
+                'price': ['price', 'cost', 'charge', 'fee', 'expensive', 'cheap', 'afford'],
+                'emergency': ['emergency', 'urgent', 'pain', 'hurts', 'broken', 'accident'],
+                'location': ['location', 'address', 'where', 'directions', 'map'],
+                'hours': ['hours', 'time', 'open', 'closed', 'schedule', 'when']
+            };
+            
+            // Find the best matching category
+            for (const [category, keywords] of Object.entries(keywordMap)) {
+                for (const keyword of keywords) {
+                    if (message.includes(keyword)) {
+                        const responseArray = responses[category];
+                        if (responseArray) {
+                            return responseArray[Math.floor(Math.random() * responseArray.length)];
+                        }
+                    }
+                }
+            }
+            
+            return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+        }
+
+        // Handle quick action buttons - updated for new action names
+        function chatbotQuickAction(action) {
+            const actionTexts = {
+                'appointment': 'How do I book an appointment?',
+                'services': 'What services do you offer?',
+                'price': 'What are your prices?',
+                'emergency': 'I have a dental emergency'
+            };
+            
+            const userMessage = actionTexts[action] || action;
+            addMessage(userMessage, true);
+            
+            showTyping();
+            
+            setTimeout(() => {
+                hideTyping();
+                const response = getResponse(action);
+                addMessage(response);
+                
+                // Add suggestion buttons for relevant responses
+                if (action === 'services') {
+                    setTimeout(() => {
+                        const suggestionMessage = document.createElement('div');
+                        suggestionMessage.className = 'chatbot-message bot';
+                        suggestionMessage.style.alignSelf = 'flex-start';
+                        suggestionMessage.innerHTML = `
+                            Would you like to know more about any specific service?
+                            <div class="suggestion-buttons">
+                                <button class="suggestion-btn" onclick="handleSuggestion('General Checkup')">🦷 General Care</button>
+                                <button class="suggestion-btn" onclick="handleSuggestion('Cosmetic Dentistry')">✨ Cosmetic</button>
+                                <button class="suggestion-btn" onclick="handleSuggestion('Emergency Care')">🚨 Emergency</button>
+                            </div>
+                        `;
+                        chatbotMessages.appendChild(suggestionMessage);
+                        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                    }, 1000);
+                }
+            }, Math.random() * 800 + 600);
+        }
+
+        // Handle suggestion button clicks
+        function handleSuggestion(suggestion) {
+            addMessage(`Tell me about ${suggestion}`, true);
+            showTyping();
+            
+            setTimeout(() => {
+                hideTyping();
+                const response = getResponse(suggestion);
+                addMessage(response);
+            }, Math.random() * 600 + 400);
+        }
+
+        // Make functions globally available
+        window.handleSuggestion = handleSuggestion;
+        window.chatbotQuickAction = chatbotQuickAction;
+
+        // Close button functionality with smooth transitions
+        chatbotClose.addEventListener('click', function() {
+            chatbotWidget.style.opacity = '0';
+            chatbotWidget.style.transform = 'translateY(20px) scale(0.95)';
+            setTimeout(() => {
+                chatbotWidget.style.display = 'none';
+            }, 300);
+        });
+
+        // Form submission handler
+        chatbotForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userMessage = chatbotInput.value.trim();
+            if (!userMessage) return;
+            
+            addMessage(userMessage, true);
+            chatbotInput.value = '';
+            
+            showTyping();
+            
+            setTimeout(() => {
+                hideTyping();
+                const response = getResponse(userMessage);
+                addMessage(response);
+            }, Math.random() * 1000 + 500);
+        });
+
+        // Chatbot toggle functionality with smooth transitions
+        chatbotBtn.addEventListener('click', function() {
+            if (chatbotWidget.style.display === 'none' || chatbotWidget.style.display === '') {
+                // Show chatbot with animation
+                chatbotWidget.style.display = 'flex';
+                setTimeout(() => {
+                    chatbotWidget.style.opacity = '1';
+                    chatbotWidget.style.transform = 'translateY(0) scale(1)';
+                }, 10);
+                
+                // Clear messages and add welcome
+                chatbotMessages.innerHTML = '';
+                addMessage('Hi! I\'m your dental care assistant. 😊 How can I help you today?');
+                
+                // Add initial suggestions after a delay
+                setTimeout(() => {
+                    const suggestionMessage = document.createElement('div');
+                    suggestionMessage.className = 'chatbot-message bot';
+                    suggestionMessage.style.alignSelf = 'flex-start';
+                    suggestionMessage.style.opacity = '0';
+                    suggestionMessage.style.transform = 'translateY(10px)';
+                    suggestionMessage.style.transition = 'all 0.3s ease';
+                    suggestionMessage.innerHTML = `
+                        Here are some things I can help you with:
+                        <div class="suggestion-buttons">
+                            <button class="suggestion-btn" onclick="chatbotQuickAction('appointment')">📅 Book Appointment</button>
+                            <button class="suggestion-btn" onclick="chatbotQuickAction('services')">🦷 Services</button>
+                            <button class="suggestion-btn" onclick="chatbotQuickAction('price')">💰 Pricing</button>
+                            <button class="suggestion-btn" onclick="chatbotQuickAction('emergency')">🚨 Emergency</button>
+                        </div>
+                    `;
+                    chatbotMessages.appendChild(suggestionMessage);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                    
+                    // Animate suggestion message in
+                    setTimeout(() => {
+                        suggestionMessage.style.opacity = '1';
+                        suggestionMessage.style.transform = 'translateY(0)';
+                    }, 100);
+                }, 1000);
+                
+                // Auto-focus input with delay
+                setTimeout(() => {
+                    chatbotInput.focus();
+                }, 200);
+            } else {
+                // Hide chatbot with animation
+                chatbotWidget.style.opacity = '0';
+                chatbotWidget.style.transform = 'translateY(20px) scale(0.95)';
+                setTimeout(() => {
+                    chatbotWidget.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        // Allow Enter key to submit form
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                chatbotForm.dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>
