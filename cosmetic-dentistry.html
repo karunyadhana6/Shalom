@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shalom Dental Care - Premier cosmetic dentistry in Chennai. Transform your smile with veneers, whitening, smile makeovers. Expert dentists with financing options available.">
+    <meta name="keywords" content="Shalom Dental Care, cosmetic dentistry Chennai, smile makeover, veneers Chennai, teeth whitening, dental aesthetics, smile transformation, dentist Chennai">
+    <meta name="author" content="Shalom Dental Care">
+    <meta property="og:title" content="Cosmetic Dentistry - Shalom Dental Care Chennai">
+    <meta property="og:description" content="Transform your smile with premium cosmetic dentistry services at Shalom Dental Care. Veneers, whitening, and smile makeovers in Chennai.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=800&q=80">
+    <meta property="og:url" content="https://shalomdentalcare.com/cosmetic-dentistry">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Cosmetic Dentistry - Shalom Dental Care Chennai</title>
+    
+    <!-- Structured Data for Dental Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "Shalom Dental Care",
+      "image": "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=800&q=80",
+      "telephone": "+91 86107 76477",
+      "email": "shalomdentalcare19@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "76/2, Gandhi Road, Srinivasa Nagar, Alappakkam",
+        "addressLocality": "New Perungalathur",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "600063",
+        "addressCountry": "IN"
+      },
+      "openingHours": [
+        "Mo-Sa 09:00-20:00",
+        "Su 10:00-18:00"
+      ],
+      "priceRange": "₹₹",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "150"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Cosmetic Dentistry Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Porcelain Veneers"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Teeth Whitening"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": "Smile Makeover"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-gold-light: #F4E7C1;
+            --primary-gold-dark: #B8941F;
+            --accent-blue: #3B82F6;
+            --accent-blue-light: #60A5FA;
+            --accent-blue-dark: #1E40AF;
+            --neutral-white: #FFFFFF;
+            --neutral-light: #F8FAFC;
+            --neutral-medium: #64748B;
+            --neutral-dark: #1E293B;
+            --success-green: #10B981;
+            --shadow-soft: 0 4px 20px rgba(59, 130, 246, 0.1);
+            --shadow-medium: 0 8px 30px rgba(59, 130, 246, 0.15);
+            --shadow-strong: 0 20px 60px rgba(59, 130, 246, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--neutral-dark);
+            background: linear-gradient(135deg, 
+                #ffffff 0%, 
+                #dbeafe 15%,
+                #bfdbfe 30%,
+                #93c5fd 50%,
+                #60a5fa 70%,
+                #93c5fd 85%,
+                #dbeafe 100%);
+            overflow-x: hidden;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary-gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--neutral-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
+            background: linear-gradient(135deg, var(--accent-blue-dark) 0%, var(--accent-blue) 100%);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.1) 0%, 
+                rgba(255, 255, 255, 0.9) 50%, 
+                rgba(147, 197, 253, 0.1) 100%);
+            padding: 8rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -20%;
+            width: 40%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(59,130,246,0.1)" stroke-width="0.5"/><circle cx="50" cy="50" r="20" fill="none" stroke="rgba(59,130,246,0.15)" stroke-width="0.3"/><circle cx="50" cy="50" r="10" fill="none" stroke="rgba(59,130,246,0.2)" stroke-width="0.2"/></svg>') repeat;
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-blue-dark) 0%, var(--accent-blue) 50%, var(--primary-gold) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--neutral-medium);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-strong);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02) rotateY(5deg);
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 6rem 0;
+            background: var(--neutral-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--neutral-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--neutral-white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--neutral-dark);
+        }
+
+        .service-card p {
+            color: var(--neutral-medium);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Smile Assessment Tool - Modern Redesign */
+        .assessment-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .assessment-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue) 0%, var(--primary-gold) 100%);
+        }
+
+        .assessment-step {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: none;
+        }
+
+        .assessment-step.active {
+            opacity: 1;
+            transform: translateX(0);
+            display: block;
+            animation: slideInFromRight 0.6s ease-out;
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .question {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-dark);
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--accent-blue), var(--primary-gold));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .question-subtitle {
+            font-size: 1rem;
+            color: var(--neutral-medium);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.08), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .option:hover {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.03);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .option:hover::before {
+            left: 100%;
+        }
+
+        .option.selected {
+            border-color: var(--accent-blue);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+            transform: scale(1.03);
+            border-width: 3px;
+        }
+
+        .option-icon {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            min-width: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-blue-light), rgba(59, 130, 246, 0.1));
+            border-radius: 12px;
+            padding: 0.5rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .option-content {
+            flex: 1;
+        }
+
+        .option-title {
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .option-description {
+            font-size: 0.875rem;
+            color: var(--neutral-medium);
+            line-height: 1.4;
+        }
+
+        .option input[type="radio"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent-blue);
+            border-radius: 50%;
+            position: relative;
+            transition: all 0.3s ease;
+            background: white;
+            cursor: pointer;
+        }
+
+        .option input[type="radio"]:checked {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            transform: scale(1.1);
+        }
+
+        .option input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            transform: scale(0.6);
+        }
+
+        .assessment-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(226, 232, 240, 0.5);
+            position: relative;
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: rgba(226, 232, 240, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(59, 130, 246, 0.3) 50%, 
+                transparent 100%);
+            animation: shimmer 3s infinite ease-in-out;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, 
+                var(--accent-blue) 0%, 
+                var(--primary-gold) 50%, 
+                var(--accent-blue) 100%);
+            border-radius: 3px;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.6), 
+                transparent);
+            animation: progressShine 2s ease-in-out;
+        }
+
+        .step-indicators {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .step-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(226, 232, 240, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .step-indicator.active {
+            background: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            transform: scale(1.2);
+        }
+
+        .step-indicator.completed {
+            background: var(--primary-gold);
+            transform: scale(1.1);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+        }
+
+        .step-indicator.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 8px;
+            font-weight: bold;
+        }
+
+        /* Assessment Results */
+        .assessment-result {
+            display: none;
+            padding: 2rem 0;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .assessment-result::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.05) 0%, 
+                rgba(212, 175, 55, 0.05) 100%);
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .assessment-result {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent-blue-light) 0%, var(--neutral-white) 50%, var(--primary-gold-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .assessment-result::before {
+            content: '🎉';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        .result-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .confidence-meter {
+            margin: 0.75rem 0;
+            text-align: center;
+        }
+
+        .meter-container {
+            width: 100%;
+            height: 20px;
+            background: #E2E8F0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #EF4444 0%, #F59E0B 50%, #10B981 100%);
+            border-radius: 10px;
+            transition: width 1s ease-out;
+            position: relative;
+        }
+
+        .meter-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: meterShine 2s ease-in-out infinite;
+        }
+
+        /* Photo Upload Section */
+        .photo-upload {
+            margin: 0.75rem 0;
+            padding: 1rem;
+            border: 2px dashed var(--accent-blue);
+            border-radius: 10px;
+            background: rgba(59, 130, 246, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .photo-upload:hover {
+            border-color: var(--accent-blue-dark);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .photo-upload input {
+            display: none;
+        }
+
+        .upload-placeholder {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .uploaded-image {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-medium);
+            margin-top: 1rem;
+        }
+
+        /* Animations */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes progressShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes meterShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 6rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Dentist Credentials */
+        .credentials-section {
+            padding: 6rem 0;
+            background: var(--neutral-light);
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dentist-card {
+            background: var(--neutral-white);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .dentist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .dentist-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--accent-blue-light), var(--primary-gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent-blue);
+        }
+
+        .certifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .cert-badge {
+            background: var(--accent-blue-light);
+            color: var(--accent-blue-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Financing Options */
+        .financing-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+            color: white;
+        }
+
+        .financing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .financing-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .financing-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .financing-card i {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--neutral-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94A3B8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-gold), var(--primary-gold-dark));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--primary-gold-dark), var(--primary-gold));
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tooth"></i>
+                    Shalom Dental Care
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="DentalV2 Important 1.html">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#dentists">Our Team</a></li>
+                        <li><a href="#financing">Financing</a></li>
+                        <li><a href="DentalV2 Important 1.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#assessment" class="cta-button">Free Smile Assessment</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Transform Your Smile at Shalom Dental Care</h1>
+                    <p>Experience the confidence that comes with a perfect smile. Our award-winning cosmetic dentists in Chennai use cutting-edge technology and artistry to create stunning, natural-looking results that last a lifetime. Join thousands of satisfied patients who have transformed their lives with us.</p>
+                    <div class="hero-buttons">
+                        <a href="#assessment" class="cta-button">Start Your Smile Journey</a>
+                        <a href="#gallery" class="cta-button" style="background: transparent; color: var(--accent-blue); border: 2px solid var(--accent-blue);">View Results</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=600&q=80" alt="Beautiful smile transformation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Transform Your Smile with Premium Cosmetic Dentistry</h2>
+                <p>At Shalom Dental Care, we combine advanced technology with artistic expertise to create beautiful, natural-looking smiles that boost your confidence and transform your life.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <i class="fas fa-gem"></i>
+                    <h3>Porcelain Veneers</h3>
+                    <p>Ultra-thin, custom-made shells that cover the front surface of your teeth for a perfect, natural-looking smile. Our veneers are crafted by master ceramists for exceptional beauty and durability.</p>
+                    <div class="service-price">Starting from ₹25,000</div>
+                    <button class="cta-button">Learn More</button>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-sparkles"></i>
+                    <h3>Professional Teeth Whitening</h3>
+                    <p>Advanced laser whitening technology that removes years of stains and discoloration in just one session. Achieve up to 8 shades whiter with our safe, effective treatments.</p>
+                    <div class="service-price">Starting from ₹12,000</div>
+                    <button class="cta-button">Learn More</button>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-magic"></i>
+                    <h3>Complete Smile Makeover</h3>
+                    <p>A comprehensive transformation combining multiple treatments including veneers, whitening, and contouring for a complete smile redesign that enhances your facial features.</p>
+                    <div class="service-price">Starting from ₹80,000</div>
+                    <button class="cta-button">Learn More</button>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-crown"></i>
+                    <h3>Dental Crowns & Bridges</h3>
+                    <p>Premium all-ceramic crowns and bridges that restore both function and aesthetics. Our crowns are indistinguishable from natural teeth with superior strength and longevity.</p>
+                    <div class="service-price">Starting from ₹18,000</div>
+                    <button class="cta-button">Learn More</button>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-cut"></i>
+                    <h3>Gum Contouring</h3>
+                    <p>Laser gum reshaping to create the perfect gum line and enhance your smile's symmetry. Minimally invasive procedure with immediate results and fast healing.</p>
+                    <div class="service-price">Starting from ₹15,000</div>
+                    <button class="cta-button">Learn More</button>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-tooth"></i>
+                    <h3>Dental Implants</h3>
+                    <p>State-of-the-art titanium implants that replace missing teeth with natural-looking, permanent solutions. Restore your smile's function and aesthetics with our premium implants.</p>
+                    <div class="service-price">Starting from ₹35,000</div>
+                    <button class="cta-button">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smile Assessment Tool -->
+    <section id="assessment" class="assessment-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Free Smile Assessment at Shalom Dental Care</h2>
+                <p>Discover what cosmetic treatments are perfect for you with our comprehensive smile analysis. Get personalized recommendations from our expert team.</p>
+            </div>
+            <div class="assessment-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                
+                <div class="assessment-step active" id="step1">
+                    <div class="question">What's your main smile concern?</div>
+                    <div class="question-subtitle">Select the issue that bothers you most about your current smile</div>
+                    <div class="options">
+                        <label class="option">
+                            <div class="option-icon">🎨</div>
+                            <div class="option-content">
+                                <div class="option-title">Tooth discoloration or staining</div>
+                                <div class="option-description">Yellow, brown, or gray stains from coffee, wine, or aging</div>
+                            </div>
+                            <input type="radio" name="concern" value="color">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">📐</div>
+                            <div class="option-content">
+                                <div class="option-title">Tooth shape or size issues</div>
+                                <div class="option-description">Teeth that are too small, large, pointed, or irregularly shaped</div>
+                            </div>
+                            <input type="radio" name="concern" value="shape">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">↔️</div>
+                            <div class="option-content">
+                                <div class="option-title">Gaps between teeth</div>
+                                <div class="option-description">Spaces between teeth that affect your smile's appearance</div>
+                            </div>
+                            <input type="radio" name="concern" value="gaps">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">🔄</div>
+                            <div class="option-content">
+                                <div class="option-title">Crooked or misaligned teeth</div>
+                                <div class="option-description">Teeth that are rotated, overlapping, or not straight</div>
+                            </div>
+                            <input type="radio" name="concern" value="crooked">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">🦷</div>
+                            <div class="option-content">
+                                <div class="option-title">Missing teeth</div>
+                                <div class="option-description">One or more missing teeth affecting function and appearance</div>
+                            </div>
+                            <input type="radio" name="concern" value="missing">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment-step" id="step2">
+                    <div class="question">Rate your smile confidence</div>
+                    <div class="question-subtitle">How do you feel about your smile in social situations?</div>
+                    <div class="confidence-meter">
+                        <div class="meter-container">
+                            <div class="meter-fill" id="confidenceMeter" style="width: 0%;"></div>
+                        </div>
+                        <p id="confidenceText">Move the slider to rate your confidence</p>
+                    </div>
+                    <input type="range" min="1" max="10" value="5" id="confidenceSlider" style="width: 100%; margin: 1rem 0;">
+                    <div class="options">
+                        <label class="option">
+                            <div class="option-icon">😔</div>
+                            <div class="option-content">
+                                <div class="option-title">Very low confidence</div>
+                                <div class="option-description">I avoid smiling in photos and cover my mouth when laughing</div>
+                            </div>
+                            <input type="radio" name="confidence" value="very-low">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">😐</div>
+                            <div class="option-content">
+                                <div class="option-title">Low confidence</div>
+                                <div class="option-description">I'm self-conscious about my smile in social situations</div>
+                            </div>
+                            <input type="radio" name="confidence" value="low">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">🙂</div>
+                            <div class="option-content">
+                                <div class="option-title">Moderate confidence</div>
+                                <div class="option-description">I'm okay with my smile but want improvement</div>
+                            </div>
+                            <input type="radio" name="confidence" value="medium">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">😊</div>
+                            <div class="option-content">
+                                <div class="option-title">High confidence</div>
+                                <div class="option-description">I just want minor enhancements to perfect my smile</div>
+                            </div>
+                            <input type="radio" name="confidence" value="high">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment-step" id="step3">
+                    <div class="question">Share your smile photo (Optional)</div>
+                    <div class="question-subtitle">Upload a photo for a more personalized assessment</div>
+                    <div class="photo-upload" onclick="document.getElementById('photoInput').click()">
+                        <input type="file" id="photoInput" accept="image/*">
+                        <div class="upload-placeholder">📸</div>
+                        <p>Click to upload a photo of your smile</p>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium); margin-top: 0.5rem;">Your photo will be used only for assessment purposes</p>
+                        <img id="uploadedImage" class="uploaded-image" style="display: none;">
+                    </div>
+                    <div class="question" style="margin-top: 0.75rem;">What's your ideal treatment timeline?</div>
+                    <div class="options">
+                        <label class="option">
+                            <div class="option-icon">⚡</div>
+                            <div class="option-content">
+                                <div class="option-title">As soon as possible</div>
+                                <div class="option-description">I want to start treatment immediately</div>
+                            </div>
+                            <input type="radio" name="timeline" value="asap">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">📅</div>
+                            <div class="option-content">
+                                <div class="option-title">Within a month</div>
+                                <div class="option-description">I can start treatment in the next few weeks</div>
+                            </div>
+                            <input type="radio" name="timeline" value="month">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">🗓️</div>
+                            <div class="option-content">
+                                <div class="option-title">Within 3-6 months</div>
+                                <div class="option-description">I'm planning ahead and researching options</div>
+                            </div>
+                            <input type="radio" name="timeline" value="months">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">📆</div>
+                            <div class="option-content">
+                                <div class="option-title">Within a year</div>
+                                <div class="option-description">I'm in the early planning stages</div>
+                            </div>
+                            <input type="radio" name="timeline" value="year">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment-step" id="step4">
+                    <div class="question">What's your budget range?</div>
+                    <div class="question-subtitle">Select the investment range you're comfortable with</div>
+                    <div class="options">
+                        <label class="option">
+                            <div class="option-icon">💰</div>
+                            <div class="option-content">
+                                <div class="option-title">₹10,000 - ₹25,000</div>
+                                <div class="option-description">Basic cosmetic treatments and whitening</div>
+                            </div>
+                            <input type="radio" name="budget" value="low">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">💎</div>
+                            <div class="option-content">
+                                <div class="option-title">₹25,000 - ₹50,000</div>
+                                <div class="option-description">Advanced treatments like veneers or bonding</div>
+                            </div>
+                            <input type="radio" name="budget" value="medium">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">👑</div>
+                            <div class="option-content">
+                                <div class="option-title">₹50,000 - ₹100,000</div>
+                                <div class="option-description">Comprehensive smile makeover treatments</div>
+                            </div>
+                            <input type="radio" name="budget" value="high">
+                        </label>
+                        <label class="option">
+                            <div class="option-icon">✨</div>
+                            <div class="option-content">
+                                <div class="option-title">₹100,000+</div>
+                                <div class="option-description">Premium full mouth reconstruction and implants</div>
+                            </div>
+                            <input type="radio" name="budget" value="premium">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Single Navigation for All Steps -->
+                <div class="assessment-navigation">
+                    <button id="prevBtn" style="display: none;" class="cta-button">← Previous</button>
+                    <div class="step-indicators" id="stepIndicators">
+                        <div class="step-indicator active"></div>
+                        <div class="step-indicator"></div>
+                        <div class="step-indicator"></div>
+                        <div class="step-indicator"></div>
+                    </div>
+                    <button id="nextBtn" class="cta-button">Next →</button>
+                </div>
+
+                <div class="assessment-result" id="assessmentResult">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 0.75rem; font-size: 1.8rem;">🎯 Your Personalized Smile Plan</h3>
+                    <p style="color: var(--neutral-medium); margin-bottom: 1.5rem;">Based on your responses, our experts at Shalom Dental Care recommend:</p>
+                    
+                    <div class="result-card" id="recommendationCard">
+                        <div id="recommendation"></div>
+                    </div>
+
+                    <div class="result-card" style="background: linear-gradient(135deg, var(--accent-blue-light), rgba(59, 130, 246, 0.1));">
+                        <h4 style="color: var(--accent-blue-dark); margin-bottom: 1rem;">💰 Investment Breakdown</h4>
+                        <div id="investmentBreakdown"></div>
+                    </div>
+
+                    <div class="result-card" style="background: linear-gradient(135deg, var(--success-green), rgba(16, 185, 129, 0.1));">
+                        <h4 style="color: #065F46; margin-bottom: 1rem;">⏱️ Timeline & Process</h4>
+                        <div id="timelineInfo"></div>
+                    </div>
+
+                    <div class="result-card" style="background: linear-gradient(135deg, var(--primary-gold-light), rgba(212, 175, 55, 0.1));">
+                        <h4 style="color: var(--primary-gold-dark); margin-bottom: 1rem;">🎁 Special Offers for You</h4>
+                        <div id="specialOffers"></div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="cta-button" onclick="window.location.href='tel:+918610776477'" style="padding: 0.875rem 1.75rem; font-size: 1rem;">📞 Schedule Free Consultation</button>
+                        <button class="cta-button" onclick="shareResults()" style="background: transparent; color: var(--accent-blue); border: 2px solid var(--accent-blue); padding: 0.875rem 1.75rem; font-size: 1rem;">📤 Share Results</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Shalom Dental Care Smile Transformation Gallery</h2>
+                <p>See the incredible results our patients have achieved with our cosmetic treatments in Chennai. Real patients, real results, real confidence.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=400&q=80" alt="Veneers before and after">
+                    <div class="gallery-overlay">
+                        <h4>Porcelain Veneers</h4>
+                        <p>Complete smile makeover with 8 veneers</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=400&q=80" alt="Teeth whitening results">
+                    <div class="gallery-overlay">
+                        <h4>Laser Whitening</h4>
+                        <p>8 shades whiter in one session</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80" alt="Dental implant result">
+                    <div class="gallery-overlay">
+                        <h4>Dental Implant</h4>
+                        <p>Single tooth replacement with crown</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=400&q=80" alt="Smile makeover result">
+                    <div class="gallery-overlay">
+                        <h4>Complete Makeover</h4>
+                        <p>Veneers, whitening, and gum contouring</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1643297654240-03296501ad02?auto=format&fit=crop&w=400&q=80" alt="Crown restoration">
+                    <div class="gallery-overlay">
+                        <h4>Crown Restoration</h4>
+                        <p>All-ceramic crowns for damaged teeth</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80" alt="Gum contouring result">
+                    <div class="gallery-overlay">
+                        <h4>Gum Contouring</h4>
+                        <p>Laser reshaping for perfect smile line</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dentist Credentials -->
+    <section id="dentists" class="credentials-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Meet Shalom Dental Care's Expert Cosmetic Dentists</h2>
+                <p>Our award-winning team in Chennai combines advanced training, artistic vision, and decades of experience to deliver exceptional cosmetic dentistry results.</p>
+            </div>
+            <div class="credentials-grid">
+                <div class="dentist-card fade-in">
+                    <div class="dentist-image">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Sarah Johnson</h3>
+                    <p style="color: var(--accent-blue); font-weight: 600;">Chief Cosmetic Dentist</p>
+                    <p>20+ years of experience in cosmetic dentistry with expertise in smile design and complex full-mouth rehabilitations. Lead dentist at Shalom Dental Care.</p>
+                    <div class="certifications">
+                        <span class="cert-badge">DDS Harvard</span>
+                        <span class="cert-badge">AACD Accredited</span>
+                        <span class="cert-badge">Smile Design Expert</span>
+                        <span class="cert-badge">Veneer Specialist</span>
+                    </div>
+                </div>
+                <div class="dentist-card fade-in">
+                    <div class="dentist-image">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Michael Chen</h3>
+                    <p style="color: var(--accent-blue); font-weight: 600;">Implant & Restoration Specialist</p>
+                    <p>Advanced training in dental implants and ceramic restorations. Pioneered minimally invasive cosmetic techniques at Shalom Dental Care.</p>
+                    <div class="certifications">
+                        <span class="cert-badge">DMD Columbia</span>
+                        <span class="cert-badge">Implant Certified</span>
+                        <span class="cert-badge">Laser Specialist</span>
+                        <span class="cert-badge">Sedation Certified</span>
+                    </div>
+                </div>
+                <div class="dentist-card fade-in">
+                    <div class="dentist-image">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Emily Rodriguez</h3>
+                    <p style="color: var(--accent-blue); font-weight: 600;">Orthodontic & Aesthetic Specialist</p>
+                    <p>Expert in combining orthodontics with cosmetic treatments for comprehensive smile transformations. Senior specialist at Shalom Dental Care.</p>
+                    <div class="certifications">
+                        <span class="cert-badge">DDS NYU</span>
+                        <span class="cert-badge">Invisalign Diamond</span>
+                        <span class="cert-badge">TMJ Specialist</span>
+                        <span class="cert-badge">Digital Dentistry</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financing Options -->
+    <section id="financing" class="financing-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 style="color: white;">Flexible Financing Options</h2>
+                <p style="color: rgba(255,255,255,0.9);">Make your dream smile affordable with our comprehensive financing solutions</p>
+            </div>
+            <div class="financing-grid">
+                <div class="financing-card fade-in">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Interest-Free Payment Plans</h3>
+                    <p>0% interest for qualified patients with flexible monthly payments spread over 6-24 months.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1rem;">
+                        <li>No credit check required</li>
+                        <li>Instant approval available</li>
+                        <li>Payments as low as ₹2,000/month</li>
+                    </ul>
+                </div>
+                <div class="financing-card fade-in">
+                    <i class="fas fa-percentage"></i>
+                    <h3>Insurance & Benefits</h3>
+                    <p>We accept most dental insurance plans and can help maximize your benefits coverage.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1rem;">
+                        <li>Direct insurance billing</li>
+                        <li>Pre-authorization assistance</li>
+                        <li>HSA/FSA accepted</li>
+                    </ul>
+                </div>
+                <div class="financing-card fade-in">
+                    <i class="fas fa-gift"></i>
+                    <h3>Special Offers</h3>
+                    <p>Take advantage of our current promotions and package deals for multiple treatments.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1rem;">
+                        <li>New patient discounts</li>
+                        <li>Referral rewards program</li>
+                        <li>Seasonal treatment packages</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="cta-button" onclick="window.location.href='tel:+918610776477'">Schedule Free Financial Consultation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Shalom Dental Care</h3>
+                    <p>Transforming smiles and changing lives with premium cosmetic dental care in Chennai since 2015.</p>
+                    <div style="margin-top: 1rem;">
+                        <i class="fas fa-star" style="color: var(--primary-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--primary-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--primary-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--primary-gold);"></i>
+                        <i class="fas fa-star" style="color: var(--primary-gold);"></i>
+                        <span style="margin-left: 0.5rem;">4.8/5 from 150+ reviews</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#gallery">Before & After</a></li>
+                        <li><a href="#dentists">Our Dentists</a></li>
+                        <li><a href="#financing">Financing</a></li>
+                        <li><a href="#assessment">Free Assessment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +91 86107 76477</p>
+                    <p><i class="fas fa-envelope"></i> shalomdentalcare19@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 76/2, Gandhi Road, Srinivasa Nagar<br>New Perungalathur, Chennai 600063</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hours</h3>
+                    <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                    <p>Sunday: 10:00 AM - 6:00 PM</p>
+                    <p style="margin-top: 1rem; color: var(--accent-blue);">Emergency appointments available 24/7</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="tel:+918610776477" style="color: var(--accent-blue); font-weight: 600;">📞 Call Now for Emergency</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shalom Dental Care. All rights reserved. | <a href="DentalV2 Important 1.html#privacy" style="color: var(--accent-blue);">Privacy Policy</a> | <a href="DentalV2 Important 1.html#terms" style="color: var(--accent-blue);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Smile Assessment Tool with Automatic Features
+        let currentStep = 1;
+        const totalSteps = 4;
+        const assessmentData = {};
+        let autoProgressTimeout = null;
+
+        // Initialize assessment with enhanced features
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressBar();
+            setupConfidenceSlider();
+            setupPhotoUpload();
+            setupAutoAdvancement();
+            addKeyboardNavigation();
+            setupAssessmentNavigation();
+        });
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = (currentStep / totalSteps) * 100;
+            const progressBar = document.getElementById('progressBar');
+            if (progressBar) {
+                progressBar.style.width = progress + '%';
+            }
+            
+            // Update step indicators
+            const indicators = document.querySelectorAll('.step-indicator');
+            indicators.forEach((indicator, index) => {
+                if (index < currentStep) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // Setup assessment navigation
+        function setupAssessmentNavigation() {
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const assessmentResult = document.getElementById('assessmentResult');
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    if (currentStep < totalSteps) {
+                        // Check if current step has required selection
+                        const currentStepEl = document.getElementById(`step${currentStep}`);
+                        const requiredInputs = currentStepEl.querySelectorAll('input[type="radio"]');
+                        const hasSelection = Array.from(requiredInputs).some(input => input.checked);
+                        
+                        // For step 2 (confidence), we allow slider without radio selection
+                        const isStep2 = currentStep === 2;
+                        const sliderValue = isStep2 ? document.getElementById('confidenceSlider')?.value : null;
+                        
+                        if (!hasSelection && !(isStep2 && sliderValue)) {
+                            showNotification('Please make a selection before continuing', 'warning');
+                            return;
+                        }
+                        
+                        // Hide current step
+                        if (currentStepEl) {
+                            currentStepEl.classList.remove('active');
+                        }
+                        
+                        currentStep++;
+                        updateProgressBar();
+                        
+                        // Show next step
+                        const nextStepEl = document.getElementById(`step${currentStep}`);
+                        if (nextStepEl) {
+                            nextStepEl.classList.add('active');
+                        }
+                        
+                        // Show/hide navigation buttons
+                        prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+                        nextBtn.innerHTML = currentStep < totalSteps ? 'Next →' : 'Get My Results';
+                        
+                    } else {
+                        // Show results
+                        document.querySelectorAll('.assessment-step').forEach(step => {
+                            step.classList.remove('active');
+                        });
+                        document.querySelector('.assessment-navigation').style.display = 'none';
+                        
+                        // Collect assessment data
+                        collectAssessmentData();
+                        generateRecommendations();
+                        assessmentResult.style.display = 'block';
+                    }
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function() {
+                    if (currentStep > 1) {
+                        // Hide current step
+                        const currentStepEl = document.getElementById(`step${currentStep}`);
+                        if (currentStepEl) {
+                            currentStepEl.classList.remove('active');
+                        }
+                        
+                        currentStep--;
+                        updateProgressBar();
+                        
+                        // Show previous step
+                        const prevStepEl = document.getElementById(`step${currentStep}`);
+                        if (prevStepEl) {
+                            prevStepEl.classList.add('active');
+                        }
+                        
+                        // Show/hide navigation buttons
+                        prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+                        nextBtn.innerHTML = 'Next →';
+                        
+                        // Hide results if going back
+                        document.getElementById('assessmentResult').style.display = 'none';
+                        document.querySelector('.assessment-navigation').style.display = 'flex';
+                    }
+                });
+            }
+        }
+
+        // Collect assessment data
+        function collectAssessmentData() {
+            // Get main concern
+            const concernRadio = document.querySelector('input[name="concern"]:checked');
+            if (concernRadio) {
+                assessmentData.concern = concernRadio.value;
+            }
+            
+            // Get confidence level
+            const confidenceRadio = document.querySelector('input[name="confidence"]:checked');
+            if (confidenceRadio) {
+                assessmentData.confidence = confidenceRadio.value;
+            }
+            
+            // Get timeline
+            const timelineRadio = document.querySelector('input[name="timeline"]:checked');
+            if (timelineRadio) {
+                assessmentData.timeline = timelineRadio.value;
+            }
+            
+            // Get budget
+            const budgetRadio = document.querySelector('input[name="budget"]:checked');
+            if (budgetRadio) {
+                assessmentData.budget = budgetRadio.value;
+            }
+        }
+
+        // Generate recommendations
+        function generateRecommendations() {
+            if (!assessmentData.concern) {
+                // Default recommendation if no data
+                document.getElementById('recommendation').innerHTML = `
+                    <h4 style="color: var(--accent-blue);">🌟 Complete Smile Assessment</h4>
+                    <p>Thank you for your interest! We recommend a comprehensive consultation to assess your specific needs and create the perfect treatment plan for your smile goals.</p>
+                `;
+                document.getElementById('investmentBreakdown').innerHTML = 'Consultation fee: ₹500 (Applied to treatment cost)';
+                document.getElementById('timelineInfo').innerHTML = '1-hour comprehensive consultation';
+                document.getElementById('specialOffers').innerHTML = `
+                    <p>🎁 <strong>New Patient Special:</strong></p>
+                    <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                        <li>Free consultation (Save ₹500)</li>
+                        <li>Digital X-rays included</li>
+                        <li>Treatment plan discussion</li>
+                    </ul>
+                `;
+                return;
+            }
+            
+            generateEnhancedRecommendation(assessmentData);
+        }
+
+        // Auto-advancement setup
+        function setupAutoAdvancement() {
+            // Auto-advance after selection (except for step 2 with slider)
+            document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (currentStep !== 2) {
+                        clearTimeout(autoProgressTimeout);
+                        autoProgressTimeout = setTimeout(() => {
+                            if (this.checked) {
+                                document.getElementById('nextBtn').click();
+                            }
+                        }, 1000); // Wait 1 second before auto-advancing
+                    }
+                });
+            });
+        }
+
+        // Keyboard navigation
+        function addKeyboardNavigation() {
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === 'Enter') {
+                    e.preventDefault();
+                    if (document.getElementById('nextBtn').style.display !== 'none') {
+                        document.getElementById('nextBtn').click();
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    if (document.getElementById('prevBtn').style.display !== 'none') {
+                        document.getElementById('prevBtn').click();
+                    }
+                } else if (e.key >= '1' && e.key <= '5') {
+                    // Quick selection with number keys
+                    const optionIndex = parseInt(e.key) - 1;
+                    const currentStepElement = document.getElementById(`step${currentStep}`);
+                    const options = currentStepElement.querySelectorAll('.option input[type="radio"]');
+                    if (options[optionIndex]) {
+                        options[optionIndex].checked = true;
+                        options[optionIndex].dispatchEvent(new Event('change'));
+                        options[optionIndex].closest('.option').click();
+                    }
+                }
+            });
+        }
+
+        // Enhanced confidence slider with real-time feedback
+        function setupConfidenceSlider() {
+            const slider = document.getElementById('confidenceSlider');
+            const meter = document.getElementById('confidenceMeter');
+            const text = document.getElementById('confidenceText');
+
+            slider.addEventListener('input', function() {
+                const value = this.value;
+                const percentage = (value / 10) * 100;
+                meter.style.width = percentage + '%';
+                
+                const confidenceTexts = [
+                    'Very Low Confidence 😔', 'Low Confidence 😐', 'Below Average 🙁', 'Fair Confidence 😕',
+                    'Average Confidence 😐', 'Good Confidence 🙂', 'High Confidence 😊', 'Very High 😄',
+                    'Excellent Confidence 😁', 'Perfect Confidence 🤩'
+                ];
+                
+                text.textContent = confidenceTexts[value - 1] || 'Rate your confidence';
+                
+                // Auto-select radio button based on slider value
+                const currentStepElement = document.getElementById(`step${currentStep}`);
+                const radioButtons = currentStepElement.querySelectorAll('input[type="radio"]');
+                let selectedValue;
+                
+                if (value <= 2) selectedValue = 'very-low';
+                else if (value <= 4) selectedValue = 'low';
+                else if (value <= 7) selectedValue = 'medium';
+                else selectedValue = 'high';
+                
+                radioButtons.forEach(radio => {
+                    if (radio.value === selectedValue) {
+                        radio.checked = true;
+                        radio.closest('.option').classList.add('selected');
+                    } else {
+                        radio.checked = false;
+                        radio.closest('.option').classList.remove('selected');
+                    }
+                });
+            });
+        }
+
+        // AI-Enhanced Assessment Features
+        
+        // AI Photo Analysis Integration
+        async function analyzeSmilePhoto(imageFile) {
+            if (!imageFile) return null;
+            
+            const formData = new FormData();
+            formData.append('image', imageFile);
+            
+            try {
+                // This would integrate with dental AI analysis services
+                const response = await fetch('/api/ai-smile-analysis', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const analysis = await response.json();
+                return {
+                    teethAlignment: analysis.alignment_score,
+                    colorGrading: analysis.whiteness_grade,
+                    gumHealth: analysis.gum_assessment,
+                    overallScore: analysis.smile_score,
+                    recommendations: analysis.ai_recommendations,
+                    confidenceLevel: analysis.analysis_confidence
+                };
+            } catch (error) {
+                console.error('AI Analysis Error:', error);
+                return null;
+            }
+        }
+
+        // Enhanced photo upload with AI feedback
+        function setupPhotoUpload() {
+            const input = document.getElementById('photoInput');
+            const uploadedImage = document.getElementById('uploadedImage');
+            const uploadArea = document.querySelector('.photo-upload');
+
+            // Add AI analysis container
+            const aiAnalysisContainer = document.createElement('div');
+            aiAnalysisContainer.id = 'aiAnalysis';
+            aiAnalysisContainer.style.cssText = `
+                margin-top: 1rem;
+                padding: 1rem;
+                background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+                border-radius: 10px;
+                display: none;
+            `;
+            uploadArea.appendChild(aiAnalysisContainer);
+
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--accent-blue)';
+                uploadArea.style.background = 'rgba(59, 130, 246, 0.1)';
+            });
+
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#E2E8F0';
+                uploadArea.style.background = 'rgba(59, 130, 246, 0.05)';
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const files = e.dataTransfer.files;
+                if (files[0] && files[0].type.startsWith('image/')) {
+                    handleImageUpload(files[0]);
+                }
+            });
+
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    handleImageUpload(file);
+                }
+            });
+
+            async function handleImageUpload(file) {
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.style.display = 'block';
+                    
+                    // Show loading animation
+                    aiAnalysisContainer.innerHTML = `
+                        <div style="text-align: center;">
+                            <div class="ai-loading">🧠 Analyzing your smile with AI...</div>
+                            <div class="loading-bar">
+                                <div class="loading-fill"></div>
+                            </div>
+                        </div>
+                    `;
+                    aiAnalysisContainer.style.display = 'block';
+                    
+                    // Perform AI analysis
+                    const analysis = await analyzeSmilePhoto(file);
+                    
+                    if (analysis) {
+                        displayAIAnalysis(analysis);
+                        // Store analysis for recommendations
+                        assessmentData.aiAnalysis = analysis;
+                    } else {
+                        aiAnalysisContainer.innerHTML = `
+                            <p style="color: var(--accent-blue);">
+                                📸 Photo uploaded successfully! Our experts will analyze it during your consultation.
+                            </p>
+                        `;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Display AI analysis results
+        function displayAIAnalysis(analysis) {
+            const aiAnalysisContainer = document.getElementById('aiAnalysis');
+            
+            const scoreColor = analysis.overallScore >= 8 ? 'var(--success-green)' : 
+                             analysis.overallScore >= 6 ? 'var(--primary-gold)' : 'var(--accent-blue)';
+            
+            aiAnalysisContainer.innerHTML = `
+                <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">🤖 AI Smile Analysis Results</h4>
+                
+                <div class="analysis-scores" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem;">
+                    <div class="score-item">
+                        <div class="score-label">Overall Score</div>
+                        <div class="score-value" style="color: ${scoreColor}; font-size: 1.5rem; font-weight: bold;">
+                            ${analysis.overallScore}/10
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Teeth Whiteness</div>
+                        <div class="score-value" style="color: var(--accent-blue);">
+                            Grade ${analysis.colorGrading}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ai-recommendations" style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <h5 style="color: var(--accent-blue); margin-bottom: 0.5rem;">💡 AI Recommendations:</h5>
+                    <ul style="margin: 0; padding-left: 1.5rem;">
+                        ${analysis.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <small style="color: var(--neutral-medium);">
+                        Analysis Confidence: ${Math.round(analysis.confidenceLevel * 100)}%
+                    </small>
+                </div>
+            `;
+            
+            // Add some CSS for the loading animation
+            if (!document.getElementById('aiStyles')) {
+                const style = document.createElement('style');
+                style.id = 'aiStyles';
+                style.textContent = `
+                    .ai-loading {
+                        font-weight: 600;
+                        color: var(--accent-blue);
+                        margin-bottom: 1rem;
+                    }
+                    
+                    .loading-bar {
+                        width: 100%;
+                        height: 4px;
+                        background: rgba(59, 130, 246, 0.2);
+                        border-radius: 2px;
+                        overflow: hidden;
+                    }
+                    
+                    .loading-fill {
+                        height: 100%;
+                        background: linear-gradient(90deg, var(--accent-blue), var(--primary-gold));
+                        width: 0%;
+                        animation: loadingProgress 3s ease-out forwards;
+                    }
+                    
+                    @keyframes loadingProgress {
+                        to { width: 100%; }
+                    }
+                    
+                    .score-item {
+                        text-align: center;
+                        padding: 0.5rem;
+                        background: rgba(255,255,255,0.6);
+                        border-radius: 8px;
+                    }
+                    
+                    .score-label {
+                        font-size: 0.9rem;
+                        color: var(--neutral-medium);
+                        margin-bottom: 0.25rem;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // AI-powered recommendation enhancement
+        function generateEnhancedRecommendation(data) {
+            let recommendation = '';
+            let investment = '';
+            let timeline = '';
+            let offers = '';
+            
+            // Main recommendation based on concern
+            switch(data.concern) {
+                case 'color':
+                    recommendation = `
+                        <h4 style="color: var(--accent-blue);">🌟 Professional Teeth Whitening + Maintenance Plan</h4>
+                        <p>Perfect for addressing discoloration! Our advanced laser whitening system can brighten your teeth up to 8 shades in just one visit. We'll include custom take-home trays for maintenance.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>✨ What's included:</strong>
+                            <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                                <li>In-office laser whitening session</li>
+                                <li>Custom take-home whitening trays</li>
+                                <li>Professional whitening gel (3-month supply)</li>
+                                <li>Follow-up consultation</li>
+                            </ul>
+                        </div>
+                    `;
+                    investment = 'Starting at ₹15,000 - ₹25,000';
+                    timeline = '1-2 visits over 2 weeks';
+                    break;
+                    
+                case 'shape':
+                    recommendation = `
+                        <h4 style="color: var(--accent-blue);">✨ Porcelain Veneers or Cosmetic Bonding</h4>
+                        <p>Transform your tooth shape with our precision-crafted solutions. Veneers offer dramatic, long-lasting results, while bonding provides a conservative approach for minor adjustments.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>🎨 Treatment options:</strong>
+                            <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                                <li>Ultra-thin porcelain veneers (premium option)</li>
+                                <li>Composite bonding (conservative option)</li>
+                                <li>Digital smile design preview</li>
+                                <li>Color matching and customization</li>
+                            </ul>
+                        </div>
+                    `;
+                    investment = 'Bonding: ₹8,000-15,000 per tooth<br>Veneers: ₹25,000-35,000 per tooth';
+                    timeline = '2-3 visits over 3-4 weeks';
+                    break;
+                    
+                case 'gaps':
+                    recommendation = `
+                        <h4 style="color: var(--accent-blue);">🎯 Gap Closure with Veneers or Clear Aligners</h4>
+                        <p>Close gaps beautifully with our advanced solutions. Choose veneers for immediate results or Invisalign for a conservative approach that preserves your natural teeth.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>🔧 Treatment approaches:</strong>
+                            <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                                <li>Clear aligners (Invisalign) - gradual closure</li>
+                                <li>Porcelain veneers - immediate results</li>
+                                <li>Composite bonding - minor gaps</li>
+                                <li>3D treatment planning</li>
+                            </ul>
+                        </div>
+                    `;
+                    investment = 'Aligners: ₹80,000-150,000<br>Veneers: ₹25,000-35,000 per tooth';
+                    timeline = 'Aligners: 6-18 months<br>Veneers: 2-3 weeks';
+                    break;
+                    
+                case 'crooked':
+                    recommendation = `
+                        <h4 style="color: var(--accent-blue);">📐 Orthodontic Treatment or Instant Veneers</h4>
+                        <p>Straighten your smile with our comprehensive solutions. Clear aligners gradually move teeth into position, while veneers can create instant straight-tooth appearance.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>⚡ Treatment options:</strong>
+                            <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                                <li>Invisalign clear aligners</li>
+                                <li>Traditional orthodontics</li>
+                                <li>Instant orthodontics with veneers</li>
+                                <li>Retainer and maintenance plan</li>
+                            </ul>
+                        </div>
+                    `;
+                    investment = 'Clear aligners: ₹80,000-150,000<br>Instant veneers: ₹25,000-35,000 per tooth';
+                    timeline = 'Aligners: 8-24 months<br>Veneers: 2-3 weeks';
+                    break;
+                    
+                case 'missing':
+                    recommendation = `
+                        <h4 style="color: var(--accent-blue);">🦷 Dental Implants - The Gold Standard</h4>
+                        <p>Replace missing teeth with our premium titanium implants. They look, feel, and function like natural teeth while preserving your jawbone and facial structure.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>💎 Premium features:</strong>
+                            <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                                <li>Swiss-made titanium implants</li>
+                                <li>Custom ceramic crowns</li>
+                                <li>3D surgical planning</li>
+                                <li>Lifetime warranty on implants</li>
+                            </ul>
+                        </div>
+                    `;
+                    investment = 'Single implant: ₹35,000-50,000<br>Multiple implants: Custom quote';
+                    timeline = '3-6 months (includes healing time)';
+                    break;
+            }
+            
+            // Budget-appropriate additions
+            if (data.budget === 'low') {
+                offers = `
+                    <p>💰 <strong>Budget-Friendly Payment Plan:</strong></p>
+                    <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                        <li>0% interest financing available</li>
+                        <li>Monthly payments as low as ₹2,000</li>
+                        <li>Phase treatment over time</li>
+                        <li>Start with most impactful procedures</li>
+                    </ul>
+                `;
+            } else if (data.budget === 'premium') {
+                offers = `
+                    <p>👑 <strong>Premium Smile Makeover Package:</strong></p>
+                    <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                        <li>Comprehensive smile analysis with 3D imaging</li>
+                        <li>Multiple treatments bundled at discounted rates</li>
+                        <li>VIP scheduling and priority appointments</li>
+                        <li>Complimentary teeth whitening with major treatments</li>
+                    </ul>
+                `;
+            } else {
+                offers = `
+                    <p>🎁 <strong>Special Offers for You:</strong></p>
+                    <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                        <li>Free digital smile design (₹5,000 value)</li>
+                        <li>10% discount for treatment booked within 30 days</li>
+                        <li>Complimentary consultation worth ₹2,000</li>
+                        <li>Flexible payment plans available</li>
+                    </ul>
+                `;
+            }
+            
+            // Timeline adjustments
+            if (data.timeline === 'asap') {
+                timeline += '<br><span style="color: var(--success-green);">⚡ Express scheduling available for urgent cases</span>';
+            }
+            
+            // Update DOM elements
+            document.getElementById('recommendation').innerHTML = recommendation;
+            document.getElementById('investmentBreakdown').innerHTML = investment;
+            document.getElementById('timelineInfo').innerHTML = timeline;
+            document.getElementById('specialOffers').innerHTML = offers;
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                color: white;
+                font-weight: 600;
+                z-index: 10000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+            `;
+            
+            const colors = {
+                success: '#10B981',
+                warning: '#F59E0B',
+                error: '#EF4444',
+                info: '#3B82F6'
+            };
+            
+            notification.style.background = colors[type] || colors.info;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Share results functionality
+        function shareResults() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Smile Assessment Results - Shalom Dental Care',
+                    text: 'I just completed a smile assessment at Shalom Dental Care and got my personalized treatment plan!',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    showNotification('Link copied to clipboard!', 'success');
+                });
+            }
+        }
+
+        // Option selection handling
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from siblings
+                const parentOptions = this.parentElement.querySelectorAll('.option');
+                parentOptions.forEach(sibling => {
+                    sibling.classList.remove('selected');
+                });
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                // Check the radio button
+                const radioButton = this.querySelector('input[type="radio"]');
+                if (radioButton) {
+                    radioButton.checked = true;
+                }
+            });
+        });
+
+        // Also handle radio button changes
+        document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    // Remove selected class from all options in the same group
+                    const allOptionsInGroup = document.querySelectorAll(`input[name="${this.name}"]`);
+                    allOptionsInGroup.forEach(r => {
+                        r.closest('.option').classList.remove('selected');
+                    });
+                    // Add selected class to the checked option
+                    this.closest('.option').classList.add('selected');
+                }
+            });
+        });
+
+        // Smooth scrolling for internal navigation links only
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Only prevent default for internal links (starting with #)
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(212, 175, 55, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(212, 175, 55, 0.1)';
+            }
+        });
+
+        // Gallery lightbox effect (simple implementation)
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                // Create lightbox overlay
+                const lightbox = document.createElement('div');
+                lightbox.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.9);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    cursor: pointer;
+                `;
+                
+                const lightboxImg = document.createElement('img');
+                lightboxImg.src = this.src;
+                lightboxImg.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    border-radius: 10px;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+                `;
+                
+                lightbox.appendChild(lightboxImg);
+                document.body.appendChild(lightbox);
+                
+                // Close lightbox on click
+                lightbox.addEventListener('click', function() {
+                    document.body.removeChild(lightbox);
+                });
+            });
+        });
+
+        // Service card interactions
+        document.querySelectorAll('.service-card .cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Thank you for your interest in Shalom Dental Care! Please call us at +91 86107 76477 to schedule your consultation.');
+            });
+        });
+
+        // Voice interaction for assessment
+        function setupVoiceAssessment() {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'en-IN';
+
+                // Add voice button to each step
+                document.querySelectorAll('.assessment-step').forEach((step, index) => {
+                    const voiceButton = document.createElement('button');
+                    voiceButton.innerHTML = '🎤 Voice Input';
+                    voiceButton.style.cssText = `
+                        margin: 1rem 0;
+                        padding: 0.5rem 1rem;
+                        background: linear-gradient(135deg, #8B5CF6, #A855F7);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 0.9rem;
+                    `;
+                    
+                    voiceButton.addEventListener('click', () => {
+                        voiceButton.innerHTML = '🎤 Listening...';
+                        recognition.start();
+                    });
+                    
+                    recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript.toLowerCase();
+                        processVoiceInput(transcript, index + 1);
+                        voiceButton.innerHTML = '🎤 Voice Input';
+                    };
+                    
+                    step.appendChild(voiceButton);
+                });
+            }
+        }
+
+        // Process voice input for assessment
+        function processVoiceInput(transcript, stepNumber) {
+            const currentStep = document.getElementById(`step${stepNumber}`);
+            const options = currentStep.querySelectorAll('.option input[type="radio"]');
+            
+            // Simple voice command matching
+            const commands = {
+                'color': ['color', 'stain', 'yellow', 'white', 'discolor'],
+                'shape': ['shape', 'size', 'small', 'large', 'pointed'],
+                'gaps': ['gap', 'space', 'between'],
+                'crooked': ['crooked', 'straight', 'aligned', 'twisted'],
+                'missing': ['missing', 'lost', 'gone']
+            };
+            
+            for (const [value, keywords] of Object.entries(commands)) {
+                if (keywords.some(keyword => transcript.includes(keyword))) {
+                    const matchingOption = Array.from(options).find(option => option.value === value);
+                    if (matchingOption) {
+                        matchingOption.checked = true;
+                        matchingOption.closest('.option').classList.add('selected');
+                        showNotification('Voice input recognized! 🎤', 'success');
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Real-time chat integration with assessment
+        function integrateAssessmentWithChat() {
+            // Send assessment progress to chatbot
+            const originalNextBtn = document.getElementById('nextBtn').addEventListener;
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                if (window.dentalAI) {
+                    const context = {
+                        assessment: assessmentData,
+                        currentStep: currentStep,
+                        progress: (currentStep / totalSteps) * 100
+                    };
+                    
+                    window.dentalAI.updateUserContext(context);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
