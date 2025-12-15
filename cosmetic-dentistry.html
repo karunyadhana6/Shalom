@@ -1227,6 +1227,14 @@
                             </div>
                             <input type="radio" name="concern" value="missing">
                         </label>
+                        <label class="option">
+                            <div class="option-icon">👑</div>
+                            <div class="option-content">
+                                <div class="option-title">Damaged or broken teeth</div>
+                                <div class="option-description">Chipped, cracked, or severely damaged teeth needing restoration</div>
+                            </div>
+                            <input type="radio" name="concern" value="damaged">
+                        </label>
                     </div>
                 </div>
 
@@ -1443,10 +1451,10 @@
                     </div>
                 </div>
                 <div class="gallery-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1643297654240-03296501ad02?auto=format&fit=crop&w=400&q=80" alt="Crown restoration">
+                    <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=400&q=80" alt="Crown restoration">
                     <div class="gallery-overlay">
                         <h4>Crown Restoration</h4>
-                        <p>All-ceramic crowns for damaged teeth</p>
+                        <p>Premium ceramic crowns restoring damaged teeth</p>
                     </div>
                 </div>
                 <div class="gallery-item fade-in">
@@ -1602,7 +1610,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Shalom Dental Care. All rights reserved. | <a href="DentalV2 Important 1.html#privacy" style="color: var(--accent-blue);">Privacy Policy</a> | <a href="DentalV2 Important 1.html#terms" style="color: var(--accent-blue);">Terms of Service</a></p>
+                <p>&copy; 2025 Shalom Dental Care. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -2162,6 +2170,24 @@
                     investment = 'Single implant: ₹35,000-50,000<br>Multiple implants: Custom quote';
                     timeline = '3-6 months (includes healing time)';
                     break;
+                    
+                case 'damaged':
+                    recommendation = `
+                        <h4 style="color: var(--accent-blue);">👑 Crown Restoration - Protect and Beautify</h4>
+                        <p>Restore your damaged teeth with our premium all-ceramic crowns. They provide superior protection while creating a natural, beautiful appearance that matches your existing teeth perfectly.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>🔧 Crown restoration includes:</strong>
+                            <ul style="text-align: left; margin: 0.5rem 0; padding-left: 2rem;">
+                                <li>High-strength ceramic crowns</li>
+                                <li>Natural color matching</li>
+                                <li>Full tooth protection and reinforcement</li>
+                                <li>5-year warranty on restoration</li>
+                            </ul>
+                        </div>
+                    `;
+                    investment = 'Single crown: ₹18,000-25,000<br>Multiple crowns: Package discounts available';
+                    timeline = '2-3 visits over 2-3 weeks';
+                    break;
             }
             
             // Budget-appropriate additions
@@ -2442,7 +2468,8 @@
                 'shape': ['shape', 'size', 'small', 'large', 'pointed'],
                 'gaps': ['gap', 'space', 'between'],
                 'crooked': ['crooked', 'straight', 'aligned', 'twisted'],
-                'missing': ['missing', 'lost', 'gone']
+                'missing': ['missing', 'lost', 'gone'],
+                'damaged': ['damaged', 'broken', 'cracked', 'chipped', 'crown']
             };
             
             for (const [value, keywords] of Object.entries(commands)) {
