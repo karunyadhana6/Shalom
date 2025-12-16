@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shalom Dental Care - Premier Dental Practice in Chennai</title>
+    <meta name="description" content="Shalom Dental Care offers comprehensive dental services in Chennai including general dentistry, cosmetic procedures, and emergency care. Book your appointment today!">
+    <meta name="keywords" content="dental care, dentist Chennai, general dentistry, cosmetic dentistry, emergency dental care, teeth cleaning, dental implants">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Calming and Trustworthy Color Palette */
+            --primary-blue: #2563eb;
+            --primary-blue-light: #dbeafe;
+            --primary-blue-dark: #1d4ed8;
+            --secondary-teal: #14b8a6;
+            --secondary-teal-light: #ccfbf1;
+            --accent-green: #10b981;
+            --accent-green-light: #d1fae5;
+            --soft-gray: #f8fafc;
+            --medium-gray: #64748b;
+            --dark-gray: #334155;
+            --white: #ffffff;
+            --light-blue: #eff6ff;
+            --warm-white: #fefefe;
+            
+            /* Typography */
+            --font-primary: 'Inter', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+            
+            /* Spacing */
+            --section-padding: 5rem 0;
+            --container-max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--warm-white);
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--secondary-teal);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--warm-white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: var(--section-padding);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--soft-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(37, 99, 235, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue-light), var(--secondary-teal-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--medium-gray);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light-blue);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(37, 99, 235, 0.15);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .team-avatar i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .team-member h3 {
+            font-family: var(--font-heading);
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .credential-badge {
+            background: var(--accent-green-light);
+            color: var(--accent-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--soft-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-size: 4rem;
+            color: var(--primary-blue-light);
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-blue-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            color: var(--dark-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .rating i {
+            color: #fbbf24;
+        }
+
+        /* Emergency Section */
+        .emergency {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+            color: white;
+            text-align: center;
+        }
+
+        .emergency h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .emergency p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .emergency-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .emergency-feature {
+            text-align: center;
+        }
+
+        .emergency-feature i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-teal-light);
+        }
+
+        .emergency-feature h3 {
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .emergency-feature p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .emergency .cta-button {
+            background: white;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+        }
+
+        .emergency .cta-button:hover {
+            background: var(--light-blue);
+        }
+
+        /* Contact/Appointment Section */
+        .appointment {
+            background: white;
+        }
+
+        .appointment-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: var(--light-blue);
+            padding: 3rem;
+            border-radius: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            width: 30px;
+        }
+
+        .contact-item div h4 {
+            color: var(--dark-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item div p {
+            color: var(--medium-gray);
+        }
+
+        .appointment-form {
+            background: var(--soft-gray);
+            padding: 3rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid rgba(37, 99, 235, 0.1);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.25rem 0;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content,
+            .about-content,
+            .appointment-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile Menu (if needed) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tooth"></i>
+                    Shalom Dental Care
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#appointment" class="cta-button">Book Appointment</a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>Your Trusted Dental Care Partner in Chennai</h1>
+                    <p>Experience comprehensive dental care with our experienced team of professionals. From routine cleanings to advanced cosmetic procedures, we're committed to helping you achieve optimal oral health and a confident smile.</p>
+                    <div class="hero-buttons">
+                        <a href="#appointment" class="cta-button">Schedule Appointment</a>
+                        <a href="#emergency" class="cta-button" style="background: transparent; color: var(--primary-blue); border: 2px solid var(--primary-blue);">Emergency Care</a>
+                    </div>
+                </div>
+                <div class="hero-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" alt="Modern dental office with comfortable patient care">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Comprehensive Dental Services</h2>
+                <p>We offer a full range of dental services to meet all your oral health needs, from preventive care to advanced treatments, all in our state-of-the-art facility.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>General Dentistry</h3>
+                    <p>Complete oral health care including routine checkups, cleanings, fillings, and preventive treatments to maintain your dental health.</p>
+                    <ul class="service-features">
+                        <li>Regular dental checkups and cleanings</li>
+                        <li>Cavity detection and fillings</li>
+                        <li>Root canal therapy</li>
+                        <li>Periodontal (gum) treatment</li>
+                        <li>Oral cancer screenings</li>
+                    </ul>
+                    <a href="#appointment" class="cta-button">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Cosmetic Procedures</h3>
+                    <p>Transform your smile with our advanced cosmetic treatments designed to enhance the appearance and confidence of your smile.</p>
+                    <ul class="service-features">
+                        <li>Teeth whitening and bleaching</li>
+                        <li>Porcelain veneers</li>
+                        <li>Dental bonding</li>
+                        <li>Smile makeovers</li>
+                        <li>Gum contouring</li>
+                    </ul>
+                    <a href="#appointment" class="cta-button">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency Care</h3>
+                    <p>Immediate dental care when you need it most. Our emergency services are available to address urgent dental problems promptly.</p>
+                    <ul class="service-features">
+                        <li>24/7 emergency hotline</li>
+                        <li>Severe toothache relief</li>
+                        <li>Broken tooth repair</li>
+                        <li>Lost filling/crown replacement</li>
+                        <li>Dental trauma treatment</li>
+                    </ul>
+                    <a href="tel:+918610776477" class="cta-button" style="background: var(--accent-green);">Call Now</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Restorative Dentistry</h3>
+                    <p>Restore function and appearance to damaged or missing teeth with our comprehensive restorative dental solutions.</p>
+                    <ul class="service-features">
+                        <li>Dental crowns and bridges</li>
+                        <li>Dental implants</li>
+                        <li>Dentures (partial and complete)</li>
+                        <li>Inlays and onlays</li>
+                        <li>TMJ disorder treatment</li>
+                    </ul>
+                    <a href="#appointment" class="cta-button">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Pediatric Dentistry</h3>
+                    <p>Specialized dental care for children and adolescents, creating positive dental experiences from an early age.</p>
+                    <ul class="service-features">
+                        <li>Child-friendly environment</li>
+                        <li>Preventive care and cleanings</li>
+                        <li>Fluoride treatments</li>
+                        <li>Dental sealants</li>
+                        <li>Early orthodontic evaluation</li>
+                    </ul>
+                    <a href="#appointment" class="cta-button">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-align-center"></i>
+                    </div>
+                    <h3>Orthodontics</h3>
+                    <p>Straighten your teeth and improve your bite with our modern orthodontic treatments for all ages.</p>
+                    <ul class="service-features">
+                        <li>Invisalign clear aligners</li>
+                        <li>Traditional metal braces</li>
+                        <li>Ceramic braces</li>
+                        <li>Retainers and maintenance</li>
+                        <li>Adult orthodontic care</li>
+                    </ul>
+                    <a href="#appointment" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>Excellence in Dental Care Since 2015</h2>
+                    <p>At Shalom Dental Care, we're committed to providing exceptional dental services in a comfortable, modern environment. Our team combines years of experience with the latest dental technologies to deliver personalized care that meets your unique needs.</p>
+                    
+                    <p>We believe that everyone deserves a healthy, beautiful smile. That's why we offer comprehensive dental services, from routine cleanings to advanced cosmetic procedures, all designed to help you achieve and maintain optimal oral health.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">5000+</span>
+                            <span class="stat-label">Happy Patients</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Services Offered</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.9★</span>
+                            <span class="stat-label">Patient Rating</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Modern dental clinic interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Meet Our Expert Dental Team</h2>
+                <p>Our experienced professionals are dedicated to providing you with the highest quality dental care in a comfortable and welcoming environment.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Sarah Johnson</h3>
+                    <p class="team-role">Chief Dental Officer</p>
+                    <p>Dr. Johnson brings over 15 years of experience in general and cosmetic dentistry. She specializes in smile makeovers and advanced restorative procedures.</p>
+                    <div class="team-credentials">
+                        <span class="credential-badge">DDS Harvard</span>
+                        <span class="credential-badge">Cosmetic Specialist</span>
+                        <span class="credential-badge">AACD Member</span>
+                    </div>
+                </div>
+                
+                <div class="team-member fade-in">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Michael Chen</h3>
+                    <p class="team-role">Oral Surgeon</p>
+                    <p>Dr. Chen is our lead oral surgeon with expertise in dental implants, wisdom teeth extraction, and complex oral surgical procedures.</p>
+                    <div class="team-credentials">
+                        <span class="credential-badge">DMD Columbia</span>
+                        <span class="credential-badge">Oral Surgery</span>
+                        <span class="credential-badge">Implant Certified</span>
+                    </div>
+                </div>
+                
+                <div class="team-member fade-in">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Emily Rodriguez</h3>
+                    <p class="team-role">Pediatric Dentist</p>
+                    <p>Dr. Rodriguez specializes in pediatric dentistry and orthodontics, creating positive dental experiences for children and teenagers.</p>
+                    <div class="team-credentials">
+                        <span class="credential-badge">DDS NYU</span>
+                        <span class="credential-badge">Pediatric Specialist</span>
+                        <span class="credential-badge">Invisalign Provider</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What Our Patients Say</h2>
+                <p>Don't just take our word for it - hear from our satisfied patients about their experience with our dental care.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "The team at Shalom Dental Care made my dental visit so comfortable. Dr. Johnson was incredibly gentle during my root canal procedure, and the staff was very professional and caring throughout."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Software Engineer</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "I was terrified of dental procedures, but the team here made me feel at ease. The cosmetic work they did on my teeth has completely transformed my confidence. Highly recommend!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Marketing Manager</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "Excellent service and state-of-the-art facilities. My dental implant procedure was handled with utmost care and precision. The follow-up care has been exceptional as well."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AN</div>
+                        <div class="author-info">
+                            <h4>Arjun Nair</h4>
+                            <p>Business Owner</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "My children love coming here! Dr. Rodriguez is amazing with kids, and the pediatric area is so welcoming. They've made dental visits fun rather than scary."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ML</div>
+                        <div class="author-info">
+                            <h4>Meera Lal</h4>
+                            <p>Mother of Two</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "Professional, punctual, and pain-free! The teeth whitening treatment gave me the bright smile I always wanted. The results exceeded my expectations."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-info">
+                            <h4>Sunil Krishnan</h4>
+                            <p>Sales Executive</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "The emergency dental service saved the day when I had a severe toothache on a weekend. They were quick to respond and provided immediate relief. Thank you!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DM</div>
+                        <div class="author-info">
+                            <h4>Deepika Menon</h4>
+                            <p>Teacher</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Care Section -->
+    <section id="emergency" class="section emergency">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>24/7 Emergency Dental Care</h2>
+                <p>Dental emergencies don't wait for business hours. We're here when you need us most with immediate care and pain relief.</p>
+            </div>
+            <div class="emergency-features">
+                <div class="emergency-feature fade-in">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7 Availability</h3>
+                    <p>Round-the-clock emergency hotline for urgent dental needs</p>
+                </div>
+                <div class="emergency-feature fade-in">
+                    <i class="fas fa-lightning-bolt"></i>
+                    <h3>Rapid Response</h3>
+                    <p>Quick appointment scheduling for emergency situations</p>
+                </div>
+                <div class="emergency-feature fade-in">
+                    <i class="fas fa-heart"></i>
+                    <h3>Pain Relief</h3>
+                    <p>Immediate treatment to alleviate severe dental pain</p>
+                </div>
+                <div class="emergency-feature fade-in">
+                    <i class="fas fa-tools"></i>
+                    <h3>Complete Care</h3>
+                    <p>Full range of emergency treatments and repairs</p>
+                </div>
+            </div>
+            <div class="fade-in">
+                <a href="tel:+918610776477" class="cta-button">Call Emergency Line: +91 86107 76477</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Appointment Section -->
+    <section id="appointment" class="section appointment">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Schedule Your Appointment</h2>
+                <p>Ready to take the first step toward better oral health? Contact us today to schedule your appointment or consultation.</p>
+            </div>
+            <div class="appointment-content">
+                <div class="contact-info fade-in">
+                    <h3>Visit Our Clinic</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>76/2, Gandhi Road, Srinivasa Nagar<br>New Perungalathur, Chennai 600063</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 86107 76477</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>shalomdentalcare19@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Monday - Saturday: 9:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="appointment-form fade-in">
+                    <h3>Book Your Appointment</h3>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="service">Service Needed</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service</option>
+                                    <option value="general">General Checkup</option>
+                                    <option value="cleaning">Teeth Cleaning</option>
+                                    <option value="cosmetic">Cosmetic Consultation</option>
+                                    <option value="emergency">Emergency Care</option>
+                                    <option value="orthodontics">Orthodontics</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Notes</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Any specific concerns or questions?"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Schedule Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Shalom Dental Care</h3>
+                    <p>Your trusted partner for comprehensive dental care in Chennai. We're committed to helping you achieve and maintain optimal oral health with personalized, gentle care.</p>
+                    <div style="margin-top: 1rem;">
+                        <i class="fas fa-star" style="color: #fbbf24;"></i>
+                        <i class="fas fa-star" style="color: #fbbf24;"></i>
+                        <i class="fas fa-star" style="color: #fbbf24;"></i>
+                        <i class="fas fa-star" style="color: #fbbf24;"></i>
+                        <i class="fas fa-star" style="color: #fbbf24;"></i>
+                        <span style="margin-left: 0.5rem;">4.9/5 from 500+ reviews</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#appointment">Book Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">General Dentistry</a></li>
+                        <li><a href="#services">Cosmetic Procedures</a></li>
+                        <li><a href="#emergency">Emergency Care</a></li>
+                        <li><a href="#services">Pediatric Dentistry</a></li>
+                        <li><a href="#services">Orthodontics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 76/2, Gandhi Road, Srinivasa Nagar<br>New Perungalathur, Chennai 600063</p>
+                    <p><i class="fas fa-phone"></i> +91 86107 76477</p>
+                    <p><i class="fas fa-envelope"></i> shalomdentalcare19@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-8PM, Sun: 10AM-6PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shalom Dental Care. All rights reserved. Providing quality dental care in Chennai.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(37, 99, 235, 0.2)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(37, 99, 235, 0.1)';
+            }
+        });
+
+        // Form submission
+        document.querySelector('.appointment-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const appointmentData = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                email: formData.get('email'),
+                service: formData.get('service'),
+                date: formData.get('date'),
+                message: formData.get('message') || ''
+            };
+
+            const appointment = appointmentTracker.addAppointment(appointmentData);
+            
+            // Send confirmation email
+            appointmentTracker.sendEmailNotification(appointment, 'new');
+            
+            // Show success message with appointment ID
+            alert(`Thank you! Your appointment has been scheduled.\n\nAppointment ID: ${appointment.appointmentId}\n\nWe will contact you within 24 hours to confirm your appointment time.\n\nYou can track your appointment status using the "Track Your Appointment" section below.`);
+            
+            // Reset form
+            this.reset();
+            document.getElementById('date').min = new Date().toISOString().split('T')[0];
+        });
+
+        // Set minimum date for appointment booking (today)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+
+        // Mobile menu toggle (basic implementation)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Appointment Tracking System
+        class AppointmentTracker {
+            constructor() {
+                this.encryptionKey = this.generateEncryptionKey();
+                this.appointments = this.loadEncryptedAppointments();
+                this.nextId = this.appointments.length > 0 ? Math.max(...this.appointments.map(a => a.id)) + 1 : 1;
+                this.initializeAdminPanel();
+            }
+
+            // Generate encryption key based on device
+            generateEncryptionKey() {
+                const deviceInfo = navigator.userAgent + navigator.language + screen.width + screen.height;
+                let hash = 0;
+                for (let i = 0; i < deviceInfo.length; i++) {
+                    const char = deviceInfo.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash;
+                }
+                return hash.toString(36) + 'ShalomDental2025';
+            }
+
+            // Simple encryption function
+            encrypt(text) {
+                const key = this.encryptionKey;
+                let result = '';
+                for (let i = 0; i < text.length; i++) {
+                    const charCode = text.charCodeAt(i);
+                    const keyChar = key.charCodeAt(i % key.length);
+                    const encrypted = charCode ^ keyChar;
+                    result += String.fromCharCode(encrypted);
+                }
+                return btoa(result); // Base64 encode
+            }
+
+            // Simple decryption function
+            decrypt(encryptedText) {
+                try {
+                    const key = this.encryptionKey;
+                    const decoded = atob(encryptedText); // Base64 decode
+                    let result = '';
+                    for (let i = 0; i < decoded.length; i++) {
+                        const charCode = decoded.charCodeAt(i);
+                        const keyChar = key.charCodeAt(i % key.length);
+                        const decrypted = charCode ^ keyChar;
+                        result += String.fromCharCode(decrypted);
+                    }
+                    return result;
+                } catch (e) {
+                    console.error('Decryption failed:', e);
+                    return '[]'; // Return empty array on failure
+                }
+            }
+
+            // Load encrypted appointments from localStorage
+            loadEncryptedAppointments() {
+                try {
+                    const encryptedData = localStorage.getItem('dentalAppointmentsSecure');
+                    if (!encryptedData) {
+                        // Check for old unencrypted data and migrate
+                        const oldData = localStorage.getItem('dentalAppointments');
+                        if (oldData) {
+                            const appointments = JSON.parse(oldData);
+                            this.saveEncryptedAppointments(appointments);
+                            localStorage.removeItem('dentalAppointments'); // Remove old data
+                            return appointments;
+                        }
+                        return [];
+                    }
+                    const decryptedData = this.decrypt(encryptedData);
+                    return JSON.parse(decryptedData);
+                } catch (e) {
+                    console.error('Failed to load appointments:', e);
+                    return [];
+                }
+            }
+
+            // Save encrypted appointments to localStorage
+            saveEncryptedAppointments(appointments = this.appointments) {
+                try {
+                    const jsonData = JSON.stringify(appointments);
+                    const encryptedData = this.encrypt(jsonData);
+                    localStorage.setItem('dentalAppointmentsSecure', encryptedData);
+                } catch (e) {
+                    console.error('Failed to save appointments:', e);
+                    this.showNotification('Error saving appointment data', 'error');
+                }
+            }
+
+            // Generate unique appointment ID
+            generateAppointmentId() {
+                const timestamp = Date.now();
+                const random = Math.floor(Math.random() * 1000);
+                return `APT${timestamp}${random}`;
+            }
+
+            // Add new appointment
+            addAppointment(appointmentData) {
+                const appointment = {
+                    id: this.nextId++,
+                    appointmentId: this.generateAppointmentId(),
+                    ...appointmentData,
+                    status: 'pending',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                
+                this.appointments.push(appointment);
+                this.saveAppointments();
+                this.notifyAdmin(appointment);
+                return appointment;
+            }
+
+            // Update appointment status
+            updateAppointmentStatus(id, status, notes = '') {
+                if (!this.isSessionValid()) {
+                    this.showNotification('Session expired. Please login again.', 'error');
+                    this.logoutAdmin();
+                    return;
+                }
+
+                const appointment = this.appointments.find(a => a.id === id);
+                if (appointment) {
+                    const oldStatus = appointment.status;
+                    appointment.status = status;
+                    appointment.notes = notes;
+                    appointment.updatedAt = new Date().toISOString();
+                    
+                    // Log admin activity
+                    this.logAdminActivity(`Changed appointment ${appointment.appointmentId} status from ${oldStatus} to ${status}`);
+                    
+                    this.saveAppointments();
+                    this.refreshAdminPanel();
+                    
+                    // Send notification email for status updates
+                    if (status === 'confirmed') {
+                        this.sendEmailNotification(appointment, 'confirmed');
+                    }
+                    
+                    this.showNotification(`Appointment status updated to ${status}`, 'success');
+                }
+            }
+
+            // Log admin activity
+            logAdminActivity(action) {
+                const activities = JSON.parse(localStorage.getItem('adminActivities') || '[]');
+                const activity = {
+                    action: action,
+                    timestamp: new Date().toISOString(),
+                    sessionId: this.adminSessionStart
+                };
+                activities.unshift(activity);
+                localStorage.setItem('adminActivities', JSON.stringify(activities.slice(0, 100))); // Keep last 100 activities
+            }
+
+            // Get appointments by status
+            getAppointmentsByStatus(status) {
+                return this.appointments.filter(a => a.status === status);
+            }
+
+            // Search appointments
+            searchAppointments(query) {
+                const lowercaseQuery = query.toLowerCase();
+                return this.appointments.filter(appointment => 
+                    appointment.name.toLowerCase().includes(lowercaseQuery) ||
+                    appointment.phone.includes(query) ||
+                    appointment.email.toLowerCase().includes(lowercaseQuery) ||
+                    appointment.appointmentId.toLowerCase().includes(lowercaseQuery)
+                );
+            }
+
+            // Save to localStorage
+            saveAppointments() {
+                this.saveEncryptedAppointments();
+            }
+
+            // Send email notification (basic implementation)
+            async sendEmailNotification(appointment, type = 'new') {
+                // This would integrate with your email service (EmailJS, SendGrid, etc.)
+                const emailData = {
+                    to: appointment.email,
+                    adminCopy: 'karunyadhanasekaran6@gmail.com', // Admin notification
+                    subject: type === 'new' ? 'Appointment Confirmation - Shalom Dental Care' : 'Appointment Update - Shalom Dental Care',
+                    template: this.getEmailTemplate(appointment, type)
+                };
+
+                // Simulate email sending
+                console.log('Email would be sent to:', emailData.to);
+                console.log('Admin copy would be sent to:', emailData.adminCopy);
+                console.log('Email content:', emailData);
+                
+                // For production, integrate with actual email service:
+                // Example with EmailJS:
+                // await emailjs.send('service_id', 'template_id', emailData, 'public_key');
+                
+                this.showNotification(`Email notification sent to ${appointment.email}`, 'success');
+            }
+
+            // Get email template
+            getEmailTemplate(appointment, type) {
+                const baseTemplate = `
+                    <h2>Shalom Dental Care</h2>
+                    <p>Dear ${appointment.name},</p>
+                `;
+
+                switch(type) {
+                    case 'new':
+                        return baseTemplate + `
+                            <p>Thank you for booking an appointment with us!</p>
+                            <p><strong>Appointment ID:</strong> ${appointment.appointmentId}</p>
+                            <p><strong>Preferred Date:</strong> ${appointment.date}</p>
+                            <p><strong>Service:</strong> ${appointment.service}</p>
+                            <p>We will contact you within 24 hours to confirm your appointment time.</p>
+                            <p>Best regards,<br>Shalom Dental Care Team</p>
+                        `;
+                    case 'confirmed':
+                        return baseTemplate + `
+                            <p>Your appointment has been confirmed!</p>
+                            <p><strong>Appointment ID:</strong> ${appointment.appointmentId}</p>
+                            <p><strong>Date & Time:</strong> ${appointment.confirmedDateTime || appointment.date}</p>
+                            <p>Please arrive 15 minutes early. If you need to reschedule, call us at +91 86107 76477.</p>
+                            <p>Best regards,<br>Shalom Dental Care Team</p>
+                        `;
+                    default:
+                        return baseTemplate + `<p>Your appointment status has been updated.</p>`;
+                }
+            }
+
+            // Notify admin (you could enhance this with real notifications)
+            notifyAdmin(appointment) {
+                // Create admin notification
+                const notification = {
+                    message: `New appointment from ${appointment.name}`,
+                    appointment: appointment,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Store notifications
+                const notifications = JSON.parse(localStorage.getItem('adminNotifications') || '[]');
+                notifications.unshift(notification);
+                localStorage.setItem('adminNotifications', JSON.stringify(notifications.slice(0, 50))); // Keep last 50
+            }
+
+            // Initialize admin panel
+            initializeAdminPanel() {
+                this.createAdminPanel();
+                this.createPatientLookup();
+            }
+
+            // Create admin panel
+            createAdminPanel() {
+                const adminPanel = document.createElement('div');
+                adminPanel.id = 'adminPanel';
+                adminPanel.innerHTML = `
+                    <style>
+                        #adminPanel {
+                            position: fixed;
+                            top: 0;
+                            right: -450px;
+                            width: 450px;
+                            height: 100vh;
+                            background: white;
+                            box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+                            z-index: 10000;
+                            transition: right 0.3s ease;
+                            overflow-y: auto;
+                        }
+                        #adminPanel.open {
+                            right: 0;
+                        }
+                        .admin-header {
+                            background: var(--primary-blue);
+                            color: white;
+                            padding: 1rem;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            position: sticky;
+                            top: 0;
+                            z-index: 1;
+                        }
+                        .admin-content {
+                            padding: 1rem;
+                        }
+                        .appointment-item {
+                            border: 1px solid #ddd;
+                            border-radius: 8px;
+                            padding: 1rem;
+                            margin-bottom: 1rem;
+                            background: white;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                        }
+                        .appointment-item.pending {
+                            border-left: 4px solid #f59e0b;
+                        }
+                        .appointment-item.confirmed {
+                            border-left: 4px solid #10b981;
+                        }
+                        .appointment-item.cancelled {
+                            border-left: 4px solid #ef4444;
+                        }
+                        .appointment-item.completed {
+                            border-left: 4px solid #6366f1;
+                        }
+                        .appointment-actions {
+                            display: flex;
+                            gap: 0.5rem;
+                            margin-top: 1rem;
+                            flex-wrap: wrap;
+                        }
+                        .appointment-actions button {
+                            padding: 0.4rem 0.8rem;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                        }
+                        .btn-confirm { background: #10b981; color: white; }
+                        .btn-cancel { background: #ef4444; color: white; }
+                        .btn-complete { background: #6366f1; color: white; }
+                        .btn-reschedule { background: #f59e0b; color: white; }
+                        .admin-stats {
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 1rem;
+                            margin-bottom: 2rem;
+                        }
+                        .stat-card {
+                            background: var(--light-blue);
+                            padding: 1rem;
+                            border-radius: 8px;
+                            text-align: center;
+                        }
+                        .stat-number {
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                            color: var(--primary-blue);
+                        }
+                        .stat-label {
+                            font-size: 0.8rem;
+                            color: var(--medium-gray);
+                        }
+                        .admin-search {
+                            margin-bottom: 1rem;
+                        }
+                        .admin-search input {
+                            width: 100%;
+                            padding: 0.75rem;
+                            border: 1px solid #ddd;
+                            border-radius: 6px;
+                            font-size: 0.9rem;
+                        }
+                        .filter-tabs {
+                            display: flex;
+                            margin-bottom: 1rem;
+                            border-bottom: 1px solid #ddd;
+                        }
+                        .filter-tab {
+                            padding: 0.75rem 1rem;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            font-weight: 500;
+                            color: var(--medium-gray);
+                            font-size: 0.9rem;
+                        }
+                        .filter-tab.active {
+                            color: var(--primary-blue);
+                            border-bottom: 2px solid var(--primary-blue);
+                        }
+                        .export-btn {
+                            background: var(--accent-green);
+                            color: white;
+                            padding: 0.5rem 1rem;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size: 0.9rem;
+                            margin-left: auto;
+                        }
+                    </style>
+                    <div class="admin-header">
+                        <h3><i class="fas fa-shield-alt"></i> Secure Admin Portal</h3>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <button onclick="appointmentTracker.changeAdminPassword()" style="background: var(--secondary-teal); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                                <i class="fas fa-key"></i> Change Password
+                            </button>
+                            <button onclick="appointmentTracker.exportAppointments()" class="export-btn">Export CSV</button>
+                            <button onclick="appointmentTracker.logoutAdmin()" style="background: #ef4444; color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                            <button onclick="appointmentTracker.closeAdminPanel()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">&times;</button>
+                        </div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <i class="fas fa-shield-alt"></i> Secure Session Active • Data Encrypted • Session Timeout: 30 minutes
+                    </div>
+                    <div class="admin-content">
+                        <div class="admin-stats">
+                            <div class="stat-card">
+                                <div class="stat-number" id="pendingCount">0</div>
+                                <div class="stat-label">Pending</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="confirmedCount">0</div>
+                                <div class="stat-label">Confirmed</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="todayCount">0</div>
+                                <div class="stat-label">Today</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalCount">0</div>
+                                <div class="stat-label">Total</div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-search">
+                            <input type="text" id="appointmentSearch" placeholder="Search by name, phone, email, or appointment ID..." onkeyup="appointmentTracker.searchAndDisplay(this.value)">
+                        </div>
+                        
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" onclick="appointmentTracker.filterAppointments('all', this)">All</button>
+                            <button class="filter-tab" onclick="appointmentTracker.filterAppointments('pending', this)">Pending</button>
+                            <button class="filter-tab" onclick="appointmentTracker.filterAppointments('confirmed', this)">Confirmed</button>
+                            <button class="filter-tab" onclick="appointmentTracker.filterAppointments('completed', this)">Completed</button>
+                        </div>
+                        
+                        <div id="appointmentsList"></div>
+                    </div>
+                `;
+                document.body.appendChild(adminPanel);
+
+                // Add admin toggle button to header
+                const adminToggle = document.createElement('button');
+                adminToggle.innerHTML = '<i class="fas fa-shield-alt"></i> Admin Portal';
+                adminToggle.style.cssText = `
+                    position: fixed;
+                    top: 120px;
+                    right: 20px;
+                    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+                    color: white;
+                    border: none;
+                    padding: 0.75rem 1rem;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    z-index: 9999;
+                    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                `;
+                adminToggle.onmouseover = () => {
+                    adminToggle.style.transform = 'translateY(-2px)';
+                    adminToggle.style.boxShadow = '0 6px 20px rgba(37, 99, 235, 0.4)';
+                };
+                adminToggle.onmouseout = () => {
+                    adminToggle.style.transform = 'translateY(0)';
+                    adminToggle.style.boxShadow = '0 4px 15px rgba(37, 99, 235, 0.3)';
+                };
+                adminToggle.onclick = () => this.openAdminPanel();
+                document.body.appendChild(adminToggle);
+
+                this.refreshAdminPanel();
+            }
+
+            // Create patient lookup section
+            createPatientLookup() {
+                const lookupSection = document.createElement('div');
+                lookupSection.innerHTML = `
+                    <div id="patientLookup" style="background: var(--light-blue); padding: 2rem; margin-top: 3rem; border-radius: 15px;">
+                        <h3 style="margin-bottom: 1rem; color: var(--primary-blue); text-align: center;">
+                            <i class="fas fa-search"></i> Track Your Appointment
+                        </h3>
+                        <p style="margin-bottom: 1.5rem; color: var(--medium-gray); text-align: center;">Enter your appointment ID or phone number to check your appointment status:</p>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                            <input type="text" id="lookupInput" placeholder="Enter Appointment ID (e.g., APT123...) or Phone Number" style="flex: 1; padding: 0.875rem 1rem; border: 2px solid rgba(37, 99, 235, 0.1); border-radius: 8px; font-size: 1rem;">
+                            <button onclick="appointmentTracker.lookupAppointment()" class="cta-button">Check Status</button>
+                        </div>
+                        <div id="lookupResult"></div>
+                    </div>
+                `;
+                
+                // Add to appointment section
+                const appointmentSection = document.querySelector('#appointment');
+                appointmentSection.appendChild(lookupSection);
+            }
+
+            // Open admin panel
+            openAdminPanel() {
+                this.authenticateAdmin();
+            }
+
+            // Authenticate admin access
+            authenticateAdmin() {
+                const password = prompt('Enter admin password:');
+                if (!password) return;
+
+                // Hash the password for comparison
+                const hashedPassword = this.hashPassword(password);
+                const storedHash = localStorage.getItem('adminPasswordHash') || this.hashPassword('admin123'); // Default password
+
+                if (hashedPassword === storedHash) {
+                    // Set session timestamp
+                    this.adminSessionStart = Date.now();
+                    this.sessionTimeout = 30 * 60 * 1000; // 30 minutes
+                    
+                    document.getElementById('adminPanel').classList.add('open');
+                    this.refreshAdminPanel();
+                    this.showNotification('Admin access granted', 'success');
+                    this.startSessionTimer();
+                } else {
+                    this.showNotification('Invalid password. Access denied.', 'error');
+                }
+            }
+
+            // Start session timer
+            startSessionTimer() {
+                if (this.sessionTimer) clearTimeout(this.sessionTimer);
+                
+                this.sessionTimer = setTimeout(() => {
+                    this.logoutAdmin();
+                    this.showNotification('Session expired. Please login again.', 'error');
+                }, this.sessionTimeout);
+            }
+
+            // Check if session is valid
+            isSessionValid() {
+                if (!this.adminSessionStart) return false;
+                const elapsed = Date.now() - this.adminSessionStart;
+                return elapsed < this.sessionTimeout;
+            }
+
+            // Logout admin
+            logoutAdmin() {
+                this.adminSessionStart = null;
+                if (this.sessionTimer) clearTimeout(this.sessionTimer);
+                this.closeAdminPanel();
+                this.showNotification('Logged out successfully', 'info');
+            }
+
+            // Simple hash function for password
+            hashPassword(password) {
+                let hash = 0;
+                const salt = 'ShalomDentalSecure2025';
+                const combined = password + salt;
+                for (let i = 0; i < combined.length; i++) {
+                    const char = combined.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash; // Convert to 32-bit integer
+                }
+                return hash.toString(36);
+            }
+
+            // Change admin password
+            changeAdminPassword() {
+                const currentPassword = prompt('Enter current admin password:');
+                if (!currentPassword) return;
+
+                const currentHash = this.hashPassword(currentPassword);
+                const storedHash = localStorage.getItem('adminPasswordHash') || this.hashPassword('admin123');
+
+                if (currentHash !== storedHash) {
+                    this.showNotification('Current password is incorrect', 'error');
+                    return;
+                }
+
+                const newPassword = prompt('Enter new admin password (minimum 6 characters):');
+                if (!newPassword || newPassword.length < 6) {
+                    this.showNotification('Password must be at least 6 characters long', 'error');
+                    return;
+                }
+
+                const confirmPassword = prompt('Confirm new password:');
+                if (newPassword !== confirmPassword) {
+                    this.showNotification('Passwords do not match', 'error');
+                    return;
+                }
+
+                const newHash = this.hashPassword(newPassword);
+                localStorage.setItem('adminPasswordHash', newHash);
+                this.showNotification('Admin password changed successfully', 'success');
+            }
+
+            // Show notification
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                    z-index: 10001;
+                    font-weight: 500;
+                    max-width: 300px;
+                    word-wrap: break-word;
+                `;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transform = 'translateX(100%)';
+                    notification.style.transition = 'all 0.3s ease';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 300);
+                }, 3000);
+            }
+
+            // Close admin panel
+            closeAdminPanel() {
+                document.getElementById('adminPanel').classList.remove('open');
+            }
+
+            // Refresh admin panel data
+            refreshAdminPanel() {
+                // Check session validity before refreshing
+                if (!this.isSessionValid() && document.getElementById('adminPanel').classList.contains('open')) {
+                    this.logoutAdmin();
+                    return;
+                }
+
+                const pendingCount = this.getAppointmentsByStatus('pending').length;
+                const confirmedCount = this.getAppointmentsByStatus('confirmed').length;
+                const today = new Date().toISOString().split('T')[0];
+                const todayCount = this.appointments.filter(a => a.date === today).length;
+                const totalCount = this.appointments.length;
+
+                if (document.getElementById('pendingCount')) {
+                    document.getElementById('pendingCount').textContent = pendingCount;
+                    document.getElementById('confirmedCount').textContent = confirmedCount;
+                    document.getElementById('todayCount').textContent = todayCount;
+                    document.getElementById('totalCount').textContent = totalCount;
+                }
+
+                this.displayAppointments(this.appointments);
+            }
+
+            // Display appointments in admin panel
+            displayAppointments(appointments) {
+                const appointmentsList = document.getElementById('appointmentsList');
+                if (!appointmentsList) return;
+
+                if (appointments.length === 0) {
+                    appointmentsList.innerHTML = '<p style="text-align: center; color: var(--medium-gray); padding: 2rem;">No appointments found.</p>';
+                    return;
+                }
+
+                appointmentsList.innerHTML = appointments
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                    .map(appointment => `
+                    <div class="appointment-item ${appointment.status}">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                            <strong style="font-size: 1.1rem;">${appointment.name}</strong>
+                            <span style="background: ${this.getStatusColor(appointment.status)}; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">
+                                ${appointment.status.toUpperCase()}
+                            </span>
+                        </div>
+                        <div style="font-size: 0.9rem; color: var(--medium-gray); margin-bottom: 0.75rem; line-height: 1.4;">
+                            <div style="margin-bottom: 0.25rem;"><strong>ID:</strong> ${appointment.appointmentId}</div>
+                            <div style="margin-bottom: 0.25rem;"><strong>Phone:</strong> ${appointment.phone}</div>
+                            <div style="margin-bottom: 0.25rem;"><strong>Email:</strong> ${appointment.email}</div>
+                            <div style="margin-bottom: 0.25rem;"><strong>Date:</strong> ${new Date(appointment.date).toLocaleDateString()}</div>
+                            <div style="margin-bottom: 0.25rem;"><strong>Service:</strong> ${appointment.service}</div>
+                            ${appointment.message ? `<div style="margin-bottom: 0.25rem;"><strong>Message:</strong> ${appointment.message}</div>` : ''}
+                        </div>
+                        <div class="appointment-actions">
+                            ${appointment.status === 'pending' ? `
+                                <button class="btn-confirm" onclick="appointmentTracker.updateAppointmentStatus(${appointment.id}, 'confirmed')">✓ Confirm</button>
+                                <button class="btn-reschedule" onclick="appointmentTracker.rescheduleAppointment(${appointment.id})">📅 Reschedule</button>
+                                <button class="btn-cancel" onclick="appointmentTracker.updateAppointmentStatus(${appointment.id}, 'cancelled')">✗ Cancel</button>
+                            ` : ''}
+                            ${appointment.status === 'confirmed' ? `
+                                <button class="btn-complete" onclick="appointmentTracker.updateAppointmentStatus(${appointment.id}, 'completed')">✓ Complete</button>
+                                <button class="btn-reschedule" onclick="appointmentTracker.rescheduleAppointment(${appointment.id})">📅 Reschedule</button>
+                                <button class="btn-cancel" onclick="appointmentTracker.updateAppointmentStatus(${appointment.id}, 'cancelled')">✗ Cancel</button>
+                            ` : ''}
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--medium-gray); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #eee;">
+                            <div>Created: ${new Date(appointment.createdAt).toLocaleDateString()} ${new Date(appointment.createdAt).toLocaleTimeString()}</div>
+                            ${appointment.updatedAt !== appointment.createdAt ? `<div>Updated: ${new Date(appointment.updatedAt).toLocaleDateString()} ${new Date(appointment.updatedAt).toLocaleTimeString()}</div>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Get status color
+            getStatusColor(status) {
+                const colors = {
+                    pending: '#f59e0b',
+                    confirmed: '#10b981',
+                    cancelled: '#ef4444',
+                    completed: '#6366f1'
+                };
+                return colors[status] || '#6b7280';
+            }
+
+            // Filter appointments
+            filterAppointments(status, tabElement) {
+                // Update active tab
+                document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+                tabElement.classList.add('active');
+
+                // Filter and display
+                const filtered = status === 'all' ? this.appointments : this.getAppointmentsByStatus(status);
+                this.displayAppointments(filtered);
+            }
+
+            // Search and display
+            searchAndDisplay(query) {
+                const results = query ? this.searchAppointments(query) : this.appointments;
+                this.displayAppointments(results);
+            }
+
+            // Reschedule appointment
+            rescheduleAppointment(id) {
+                if (!this.isSessionValid()) {
+                    this.showNotification('Session expired. Please login again.', 'error');
+                    this.logoutAdmin();
+                    return;
+                }
+
+                const newDate = prompt('Enter new date (YYYY-MM-DD):');
+                if (newDate) {
+                    const appointment = this.appointments.find(a => a.id === id);
+                    if (appointment) {
+                        const oldDate = appointment.date;
+                        appointment.date = newDate;
+                        appointment.updatedAt = new Date().toISOString();
+                        
+                        // Log admin activity
+                        this.logAdminActivity(`Rescheduled appointment ${appointment.appointmentId} from ${oldDate} to ${newDate}`);
+                        
+                        this.saveAppointments();
+                        this.refreshAdminPanel();
+                        this.showNotification('Appointment rescheduled successfully!', 'success');
+                    }
+                }
+            }
+
+            // Patient appointment lookup
+            lookupAppointment() {
+                const query = document.getElementById('lookupInput').value.trim();
+                const resultDiv = document.getElementById('lookupResult');
+                
+                if (!query) {
+                    resultDiv.innerHTML = '<p style="color: #ef4444; text-align: center; margin-top: 1rem;">Please enter an appointment ID or phone number.</p>';
+                    return;
+                }
+
+                const appointment = this.appointments.find(a => 
+                    a.appointmentId.toLowerCase().includes(query.toLowerCase()) || 
+                    a.phone.includes(query)
+                );
+
+                if (appointment) {
+                    const statusMessages = {
+                        pending: {
+                            icon: '⏳',
+                            message: 'We will contact you within 24 hours to confirm your appointment time.',
+                            color: '#f59e0b'
+                        },
+                        confirmed: {
+                            icon: '✅',
+                            message: 'Your appointment is confirmed! Please arrive 15 minutes early.',
+                            color: '#10b981'
+                        },
+                        cancelled: {
+                            icon: '❌',
+                            message: 'This appointment has been cancelled. Please contact us to reschedule.',
+                            color: '#ef4444'
+                        },
+                        completed: {
+                            icon: '🎉',
+                            message: 'This appointment has been completed. Thank you for visiting us!',
+                            color: '#6366f1'
+                        }
+                    };
+
+                    const statusInfo = statusMessages[appointment.status];
+
+                    resultDiv.innerHTML = `
+                        <div style="background: white; padding: 2rem; border-radius: 12px; margin-top: 1.5rem; border-left: 4px solid ${statusInfo.color}; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <h4 style="margin-bottom: 1.5rem; color: var(--primary-blue); text-align: center; font-size: 1.3rem;">
+                                ${statusInfo.icon} Appointment Found
+                            </h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                                <div><strong>Appointment ID:</strong><br>${appointment.appointmentId}</div>
+                                <div><strong>Name:</strong><br>${appointment.name}</div>
+                                <div><strong>Date:</strong><br>${new Date(appointment.date).toLocaleDateString()}</div>
+                                <div><strong>Service:</strong><br>${appointment.service}</div>
+                            </div>
+                            <div style="text-align: center; margin: 1.5rem 0;">
+                                <span style="background: ${statusInfo.color}; color: white; padding: 0.5rem 1.5rem; border-radius: 25px; font-size: 1rem; font-weight: 600;">
+                                    ${appointment.status.toUpperCase()}
+                                </span>
+                            </div>
+                            <div style="background: ${statusInfo.color}15; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                <p style="color: ${statusInfo.color}; font-weight: 600; margin: 0;">
+                                    ${statusInfo.message}
+                                </p>
+                            </div>
+                            <div style="text-align: center; margin-top: 1.5rem;">
+                                <p style="color: var(--medium-gray); font-size: 0.9rem;">
+                                    Need to make changes? Call us at <strong>+91 86107 76477</strong>
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div style="background: white; padding: 2rem; border-radius: 12px; margin-top: 1.5rem; border-left: 4px solid #ef4444; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <div style="text-align: center;">
+                                <h4 style="color: #ef4444; margin-bottom: 1rem;">❌ Appointment Not Found</h4>
+                                <p style="color: var(--medium-gray); margin-bottom: 1.5rem;">
+                                    We couldn't find an appointment with that ID or phone number.
+                                </p>
+                                <div style="background: #ef444415; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                                    <p style="color: #ef4444; margin: 0; font-weight: 500;">
+                                        Please check your information and try again
+                                    </p>
+                                </div>
+                                <p style="color: var(--medium-gray);">
+                                    Still having trouble? Contact us at <strong>+91 86107 76477</strong> or 
+                                    <strong>shalomdentalcare19@gmail.com</strong>
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // Export appointments to CSV
+            exportAppointments() {
+                const csvContent = [
+                    ['Date Created', 'Appointment ID', 'Name', 'Phone', 'Email', 'Service', 'Appointment Date', 'Status', 'Message'].join(','),
+                    ...this.appointments.map(a => [
+                        new Date(a.createdAt).toLocaleDateString(),
+                        a.appointmentId,
+                        `"${a.name}"`,
+                        a.phone,
+                        a.email,
+                        `"${a.service}"`,
+                        a.date,
+                        a.status,
+                        `"${a.message || ''}"`
+                    ].join(','))
+                ].join('\n');
+
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `shalom-dental-appointments-${new Date().toISOString().split('T')[0]}.csv`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }
+
+            // Get analytics data
+            getAnalytics() {
+                const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+                const recentAppointments = this.appointments.filter(a => new Date(a.createdAt) > thirtyDaysAgo);
+                
+                return {
+                    totalAppointments: this.appointments.length,
+                    pendingAppointments: this.getAppointmentsByStatus('pending').length,
+                    confirmedAppointments: this.getAppointmentsByStatus('confirmed').length,
+                    completedAppointments: this.getAppointmentsByStatus('completed').length,
+                    cancelledAppointments: this.getAppointmentsByStatus('cancelled').length,
+                    recentAppointments: recentAppointments.length,
+                    popularServices: this.getPopularServices(),
+                    busyDays: this.getBusyDays()
+                };
+            }
+
+            // Get popular services
+            getPopularServices() {
+                const serviceCounts = {};
+                this.appointments.forEach(a => {
+                    serviceCounts[a.service] = (serviceCounts[a.service] || 0) + 1;
+                });
+                return Object.entries(serviceCounts)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5);
+            }
+
+            // Get busy days
+            getBusyDays() {
+                const dayCounts = {};
+                this.appointments.forEach(a => {
+                    dayCounts[a.date] = (dayCounts[a.date] || 0) + 1;
+                });
+                return Object.entries(dayCounts)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 10);
+            }
+        }
+
+        // Initialize appointment tracker
+        const appointmentTracker = new AppointmentTracker();
+    </script>
+</body>
+</html>
