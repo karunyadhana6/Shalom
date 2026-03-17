@@ -248,7 +248,7 @@
             }
             .topbar-hamburger { display: inline-flex; }
             .topbar-nav { display: none; flex: none; width: 100%; }
-            .topbar-nav.mobile-open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #0F172A; border-bottom: 1px solid rgba(255,255,255,.1); padding: 8px 0; }
+            .topbar-nav.mobile-open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #0F172A; border-bottom: 1px solid rgba(255,255,255,.1); padding: 8px 0; z-index: 200; }
             .topbar-actions {
                 gap: 4px;
                 order: 2;
@@ -2079,7 +2079,10 @@
             .sidebar { display: none; }
             .sidebar.mobile-open { display: none; }
             .main-wrapper { margin-left: 0 !important; }
-            .page-content { padding: 16px; }
+            .page-content { 
+                padding: 16px; 
+                height: calc(100vh - 60px); 
+            }
             
             /* Top navigation adjustments */
             .topbar { 
@@ -2098,72 +2101,55 @@
                 border-radius: var(--r-sm);
                 overflow: hidden;
             }
-            .topbar-nav-item { 
-                width: 100%;
-                border-bottom: 1px solid rgba(255,255,255,.1);
-                border-radius: 0;
-                margin: 0;
+            .topbar-nav.mobile-open { 
+                display: flex !important;
+            }
+            .topbar-nav-item {
                 padding: 12px 16px;
-                display: flex;
-                align-items: center;
-                gap: 10px;
+                border-bottom: 1px solid rgba(255,255,255,.1);
+                margin-bottom: 0;
+                border-bottom-width: 1px;
+                border-bottom-color: rgba(255,255,255,.1);
             }
-            .topbar-nav-item:last-child { border-bottom: none; }
-            .topbar-nav-item span { display: inline; }
-            .topbar-brand { display: flex !important; order: 1; }
-            .topbar-actions { order: 2; gap: 8px; }
-            
-            /* Login adjustments */
-            .login-screen { flex-direction: column; }
-            .login-hero { flex: 0; min-height: 180px; max-height: 220px; }
-            .login-hero-content { padding: 1.25rem; }
-            .login-hero-content .hero-tagline { font-size: 1.25rem; }
-            .login-hero-badges { display: none; }
-            .login-form-panel { flex: 1; padding: 1.5rem; }
-            
-            /* Grid adjustments */
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .analytics-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .charts-grid { grid-template-columns: 1fr; gap: 12px; }
-            .feedback-content { grid-template-columns: 1fr; }
-            .feedback-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .billing-fields { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .bill-form-row { grid-template-columns: 1fr; }
-            
-            /* Form adjustments */
-            .form-row { grid-template-columns: 1fr; gap: 10px; }
-            .feedback-form-group { margin-bottom: 12px; }
-            
-            /* Card adjustments */
-            .stat-card { padding: 16px; gap: 12px; }
-            .stat-number { font-size: 1.8rem; }
-            .stat-icon { width: 40px; height: 40px; font-size: 1rem; }
-            
-            /* Table adjustments */
-            .appointment-card { padding: 14px 16px; }
-            .appointment-name { font-size: 0.95rem; }
-            
-            /* Button adjustments */
-            .topbar-btn {
-                padding: 6px 10px;
-                font-size: 0.75rem;
+            .topbar-nav-item.active {
+                background: rgba(14,165,233,.2);
+                border-left: 3px solid var(--brand);
+                padding-left: 13px;
             }
+            
+            /* Stats grid responsive */
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            
+            /* Forms responsive */
+            .billing-fields { grid-template-columns: repeat(2, 1fr); }
+            .form-row { grid-template-columns: 1fr; }
+            
+            /* Charts responsive */
+            .analytics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .charts-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
         }
 
         /* Mobile (600px - 767px) */
         @media (max-width: 767px) {
-            .page-content { padding: 12px; }
+            .page-content { 
+                padding: 12px; 
+                height: calc(100vh - 60px);
+                overflow-y: auto;
+            }
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
             .analytics-grid { grid-template-columns: 1fr; gap: 12px; }
             .feedback-stats { grid-template-columns: 1fr; gap: 10px; }
             .charts-grid { grid-template-columns: 1fr; gap: 10px; }
             .billing-fields { grid-template-columns: 1fr; gap: 8px; }
             .bill-form-row { grid-template-columns: 1fr; }
+            .feedback-content { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
             
             /* Topbar adjustments */
             .topbar {
                 padding: 0 10px;
                 gap: 6px;
+                min-height: 56px;
             }
             .topbar-hamburger {
                 width: 32px;
@@ -2171,10 +2157,31 @@
                 font-size: 0.9rem;
                 margin-right: 2px;
             }
-            .topbar-brand { gap: 8px; }
+            .topbar-brand { gap: 8px; display: flex !important; }
             .topbar-brand img { width: 28px; height: 28px; }
             .topbar-brand-text strong { font-size: 0.8rem; }
             .topbar-brand-text span { font-size: 0.58rem; }
+            .topbar-nav { 
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: #0F172A;
+                flex-direction: column;
+                display: none;
+                z-index: 200;
+            }
+            .topbar-nav.mobile-open { display: flex !important; }
+            .topbar-nav-item {
+                padding: 12px 16px;
+                border-bottom: 1px solid rgba(255,255,255,.1);
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin: 0;
+            }
+            .topbar-nav-item span { display: inline; }
             .topbar-actions { 
                 order: 3;
                 flex-basis: 100%;
@@ -2200,11 +2207,12 @@
             .stat-trend { font-size: 0.65rem; }
             
             /* Appointment card */
-            .appointment-card { padding: 12px 14px; }
+            .appointment-card { padding: 12px 14px; margin-bottom: 10px; }
             .appointment-name { font-size: 0.9rem; }
-            .appointment-header { gap: 8px; }
-            .appointment-actions { gap: 6px; }
-            .appointment-actions button { padding: 6px 8px; font-size: 0.7rem; }
+            .appointment-header { gap: 8px; flex-direction: column; }
+            .appointment-actions { gap: 4px; flex-wrap: wrap; }
+            .appointment-actions button { padding: 5px 8px; font-size: 0.7rem; flex: 0 1 auto; }
+            .appt-detail-chip { padding: 4px 8px; font-size: 0.7rem; }
             
             /* Form adjustments */
             .form-control { padding: 7px 10px; font-size: 0.85rem; }
@@ -2224,30 +2232,59 @@
             .btn-lg { padding: 8px 16px; font-size: 0.85rem; }
             
             /* Search bar */
-            .search-bar { padding: 10px 12px; gap: 8px; }
+            .search-bar { padding: 10px 12px; gap: 8px; flex-wrap: wrap; }
             .search-icon-wrap input { padding: 6px 10px 6px 28px; font-size: 0.85rem; }
             .filter-pills { gap: 6px; }
             .pill { padding: 4px 10px; font-size: 0.75rem; }
             
-            /* Login adjustments */
-            .login-form-panel { padding: 1.25rem 1rem; }
+            /* Modal */
+            .modal-content { width: 95%; max-width: 95%; padding: 16px; }
+            .modal-header { margin-bottom: 12px; padding-bottom: 10px; }
+            .modal-header h3 { font-size: 0.9rem; }
+            
+            /* Calendar */
+            .calendar-container { padding: 14px; }
+            .calendar-header h3 { font-size: 0.9rem; }
+            .calendar-day { min-height: 60px; padding: 6px; font-size: 0.75rem; }
+            .day-number { font-size: 0.8rem; }
+            
+            /* Analytics cards */
+            .analytics-card { padding: 14px; }
+            .analytics-card-value { font-size: 1.5rem; }
+            .analytics-card-label { font-size: 0.75rem; }
+            
+            /* Feedback */
+            .feedback-form-body { max-height: 400px; }
+            .feedback-list-body { max-height: 400px; }
+            
+            /* Login */
+            .login-screen { flex-direction: column; }
+            .login-hero { min-height: 140px; flex: 0; }
+            .login-hero-content { padding: 1rem; }
+            .login-hero-content .hero-tagline { font-size: 1.1rem; }
+            .login-hero-badges { display: none; }
+            .login-form-panel { padding: 1.25rem; flex: 1; }
             .login-box { padding: 1.5rem 1rem; }
         }
 
         /* Small Mobile (480px - 599px) */
         @media (max-width: 599px) {
-            .page-content { padding: 10px; }
+            .page-content { 
+                padding: 10px; 
+                height: calc(100vh - 56px);
+            }
             .stats-grid { grid-template-columns: 1fr; gap: 10px; }
             .analytics-grid { grid-template-columns: 1fr; }
             .feedback-stats { grid-template-columns: 1fr; }
             .charts-grid { grid-template-columns: 1fr; }
             .billing-fields { grid-template-columns: 1fr; gap: 8px; }
             .bill-form-row { grid-template-columns: 1fr; }
+            .feedback-content { grid-template-columns: 1fr; }
             
             /* Topbar */
             .topbar {
                 padding: 0 8px;
-                min-height: auto;
+                min-height: 56px;
                 gap: 4px;
             }
             .topbar-hamburger {
@@ -2260,6 +2297,15 @@
             .topbar-brand img { width: 26px; height: 26px; }
             .topbar-brand-text strong { font-size: 0.75rem; }
             .topbar-brand-text span { font-size: 0.55rem; }
+            .topbar-nav { 
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: #0F172A;
+                display: none;
+            }
+            .topbar-nav.mobile-open { display: flex !important; }
             .topbar-actions { 
                 order: 3;
                 flex-basis: 100%;
@@ -2270,6 +2316,7 @@
                 flex: 1;
                 font-size: 0.65rem;
                 padding: 4px 6px;
+                min-width: 40px;
             }
             
             /* Cards */
@@ -2280,11 +2327,11 @@
             .stat-body { min-width: 0; }
             
             /* Appointment cards */
-            .appointment-card { padding: 10px 12px; }
+            .appointment-card { padding: 10px 12px; margin-bottom: 8px; }
             .appointment-name { font-size: 0.85rem; }
+            .appointment-header { flex-direction: column; gap: 6px; }
             .appointment-actions { flex-direction: column; gap: 6px; }
             .appointment-actions button { width: 100%; padding: 6px; font-size: 0.65rem; }
-            .appt-detail-row { flex-direction: column; gap: 6px; }
             .appt-detail-chip { padding: 6px 10px; font-size: 0.7rem; }
             
             /* Forms */
@@ -2304,7 +2351,7 @@
             .btn-sm { padding: 3px 6px; font-size: 0.65rem; }
             
             /* Search */
-            .search-bar { padding: 8px 10px; }
+            .search-bar { padding: 8px 10px; flex-wrap: wrap; }
             .search-icon-wrap input { padding: 5px 8px 5px 26px; font-size: 0.8rem; }
             .pill { padding: 3px 8px; font-size: 0.7rem; }
             
@@ -2312,6 +2359,11 @@
             .modal-content { padding: 16px; width: 95%; }
             .modal-header { margin-bottom: 12px; padding-bottom: 10px; }
             .modal-header h3 { font-size: 0.9rem; }
+            
+            /* Calendar */
+            .calendar-day { min-height: 50px; padding: 4px; }
+            .day-number { font-size: 0.7rem; }
+            .calendar-badge { font-size: 0.55rem; }
             
             /* Login */
             .login-form-panel { padding: 1rem; }
@@ -2322,14 +2374,22 @@
 
         /* Extra Small Mobile (< 480px) */
         @media (max-width: 479px) {
-            .page-content { padding: 8px; }
+            .page-content { 
+                padding: 8px; 
+                height: calc(100vh - 56px);
+            }
             .stats-grid { grid-template-columns: 1fr; gap: 8px; }
             .analytics-grid { grid-template-columns: 1fr; }
+            .feedback-stats { grid-template-columns: 1fr; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .billing-fields { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
             
             /* Topbar */
             .topbar {
                 padding: 0 6px;
                 gap: 2px;
+                min-height: 52px;
             }
             .topbar-hamburger {
                 width: 28px;
@@ -2339,9 +2399,18 @@
             .topbar-brand-text { gap: 0; }
             .topbar-brand-text strong { font-size: 0.7rem; }
             .topbar-brand-text span { display: none; }
+            .topbar-nav { 
+                position: absolute;
+                top: 52px;
+                left: 0;
+                right: 0;
+            }
             
             /* Navigation */
-            .topbar-nav-item { padding: 10px 12px; }
+            .topbar-nav-item { 
+                padding: 10px 12px; 
+                font-size: 0.8rem;
+            }
             .topbar-nav-item span { display: none; }
             .topbar-nav-item i { font-size: 0.9rem; }
             
@@ -2352,20 +2421,37 @@
             .stat-label { font-size: 0.6rem; }
             
             /* Text sizes */
-            .page-content h2 { font-size: 1.1rem; }
-            .section-head h2 { font-size: 1rem; }
+            .page-content h2 { font-size: 1rem; }
+            .section-head h2 { font-size: 0.9rem; }
+            .panel-head h3 { font-size: 0.8rem; }
             
             /* Forms */
             .form-control { padding: 5px 8px; font-size: 0.75rem; }
             .form-label { font-size: 0.65rem; }
+            .feedback-form-group { margin-bottom: 8px; }
             
             /* Buttons */
             .btn { padding: 5px 8px; font-size: 0.65rem; }
+            .btn-sm { padding: 3px 6px; font-size: 0.6rem; }
             .topbar-btn { padding: 3px 5px; font-size: 0.6rem; }
             
+            /* Appointment cards */
+            .appointment-card { padding: 8px 10px; margin-bottom: 6px; }
+            .appointment-name { font-size: 0.8rem; }
+            .appointment-actions button { padding: 4px 6px; font-size: 0.6rem; }
+            .appt-detail-chip { padding: 4px 8px; font-size: 0.65rem; }
+            
             /* Modals */
-            .modal-content { padding: 12px; }
+            .modal-content { padding: 12px; width: 96%; }
             .modal-header h3 { font-size: 0.85rem; }
+            
+            /* Calendar */
+            .calendar-container { padding: 10px; }
+            .calendar-day { min-height: 40px; padding: 2px; font-size: 0.65rem; }
+            .day-number { font-size: 0.65rem; }
+            
+            /* Hide less important elements */
+            .section-head { margin-bottom: 8px; }
         }
 
         /* Mobile menu overlay */
